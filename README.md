@@ -46,3 +46,7 @@ IoT 기술을 활용하여 소형 스마트팜을 구축하는 것을 목표로 
                     - 주기적으로 촬영된 사진을 앨범처럼 보여주면서 디자인과 성장 상태의 변화를 확인할 수 있음
                 - ![PanelPicture.xaml](https://raw.githubusercontent.com/final-project-smartparm/SmartFarm-WPF-Part/main/img/Sparm3.png)
 
+
+
+
+1111
