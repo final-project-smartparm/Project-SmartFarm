@@ -32,8 +32,9 @@
             <RowDefinition Height="20px"/>
         </Grid.RowDefinitions>
 
-        <StackPanel Grid.Row="0" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="-25,0,0,-25">
-            <Label Content="실시간 정보" FontFamily="Nanumgothic" FontSize="35" FontWeight="DemiBold"/>
+        <StackPanel Grid.Row="0" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="-25,-20,0,-25">
+            <Label Content="실시간 정보" FontFamily="Nanumgothic" FontSize="35" FontWeight="DemiBold">
+            </Label>
             <fa:IconImage Icon="SunPlantWilt" Style="{StaticResource PanelLiveInfoicon}" Foreground="{StaticResource color4}"/>
         </StackPanel>
         <!--#region 센서 정보 -->

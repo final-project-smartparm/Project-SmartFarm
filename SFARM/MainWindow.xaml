@@ -6,6 +6,7 @@
         xmlns:fa="http://schemas.awesome.incremented/wpf/xaml/fontawesome.sharp"
         xmlns:local="clr-namespace:SFARM"
         mc:Ignorable="d"
+        WindowStyle="ThreeDBorderWindow"
         Title="MainWindow" Height="700" Width="1200" Loaded="Window_Loaded">
     <Window.Resources>
         <ResourceDictionary>
@@ -15,10 +16,11 @@
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Window.Resources>
-
-    <Grid>
+    <Border BorderThickness="1" CornerRadius="10" BorderBrush="{StaticResource color1}">
+        
+        <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="65px"/>
+            <RowDefinition Height="60px"/>
             <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
@@ -27,30 +29,18 @@
         </Grid.ColumnDefinitions>
 
         <!--#region 상단바 StackPanel-->
-        <StackPanel Grid.Row="0" Grid.Column="0" Background="{StaticResource color1}" Grid.ColumnSpan="2" Orientation="Horizontal">
-            <Label Width="200px">
-                <Label.Content>
-                    <TextBlock Text="S:FARM"/>
-                </Label.Content>
-            </Label>
-            <Label Width="814">
-                <Label.Content>
-                    <TextBlock Text="방토와 함께한지 13일째"/>
-                </Label.Content>
-            </Label>
-            <StackPanel Width="200px">
-                <Label>
-                    <Label.Content>
-                        <TextBlock Text="TODAY 맑은 24도"/>
-                    </Label.Content>
-                </Label>
-                <Label>
-                    <Label.Content>
-                        <TextBlock Text="2024-05-28"/>
-                    </Label.Content>
-                </Label>
-            </StackPanel>
-        </StackPanel>
+        <Grid Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Background="{StaticResource color1}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="200px"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="200px"/>
+            </Grid.ColumnDefinitions>
+            <Label Grid.Column="0" Content="S:FARM" Style="{StaticResource MainLabel}"/>
+            <Label Grid.Column="1" Content="방토와 함께한 지 13일째" Style="{StaticResource TopBarMiddleLabel}"/>
+            <Label Grid.Column="2" Content="2024 - 05 - 28" Style="{StaticResource TopBarRightLabel}"/>
+
+
+        </Grid>
         <!--#endregion-->
 
         <!--#region 왼측 메뉴바 구성-->
@@ -77,7 +67,8 @@
             <!--#endregion-->
             
             <!--#region 메뉴 버튼 -->
-            <RadioButton Grid.Row ="2" Style="{StaticResource menuButton}" Tag="{StaticResource color5}"
+                <Label Grid.Row="0" Style="{StaticResource TopBarMiddleLabel}" Content="안녕하세요. 익명 님!" Margin="0,0,0,-40"/>
+                <RadioButton Grid.Row ="2" Style="{StaticResource menuButton}" Tag="{StaticResource color5}"
                      x:Name="BtnMnuHome" Click="BtnMnuHome_Click">
                 <StackPanel Orientation="Horizontal">
                     <fa:IconImage Icon="Home" Style="{StaticResource menuButtonIcon}"/>
@@ -122,4 +113,5 @@
             <ContentControl x:Name="ActiveItem" Background="White"/>
         </Grid>
     </Grid>
+    </Border>
 </Window>

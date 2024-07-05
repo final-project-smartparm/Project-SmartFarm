@@ -36,6 +36,8 @@
             <Label Style="{StaticResource PanelcontrolLabel}"  Content="온도"/>
             <Slider Width="230" Maximum="100" SmallChange="1" LargeChange="10" Style="{StaticResource CustomSliderStyle}" Foreground="{StaticResource color5}"/>
         </StackPanel>
+        <syncfusion:SfDomainUpDown  Grid.Row="1"  HorizontalAlignment="Left" VerticalAlignment="Center" AccentBrush="{StaticResource color2}"
+                                       BorderBrush="LightGray" ClipToBounds="True"  Value="40" Margin="74,0,0,0" Foreground="{StaticResource color6}" InputScope="RegularExpression" />
         <StackPanel Grid.Row="6" Margin="20,10">
             <Label Style="{StaticResource PanelcontrolLabel}"  Content="식물등 밝기"/>
             <Slider Width="230" Maximum="100" SmallChange="1" LargeChange="10" Style="{StaticResource CustomSliderStyle}" Foreground="{StaticResource color5}"/>
@@ -43,6 +45,11 @@
 
         <Line Grid.Row="2" Style="{StaticResource ControlWigetStroke}"/>
         <Line Grid.Row="5" Style="{StaticResource ControlWigetStroke}"/>
+        <syncfusion:UpDown Grid.Row="4" HorizontalAlignment="Left" Height="24" Margin="55,0,0,0" NullValueText="Enter your weight:" UseNullOption="True" Value="50.25" VerticalAlignment="Center" Width="59">
+            <syncfusion:UpDown.BorderBrush>
+                <SolidColorBrush Color="{DynamicResource primaryBackColor1}"/>
+            </syncfusion:UpDown.BorderBrush>
+        </syncfusion:UpDown>
 
     </Grid>
 </UserControl>

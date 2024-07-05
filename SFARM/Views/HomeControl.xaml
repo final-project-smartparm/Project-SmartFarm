@@ -22,7 +22,7 @@
         </Grid.ColumnDefinitions>
 
         <ContentControl x:Name="ActiveItemPanelLiveInfo" Grid.Column="0" Width="270px" Height="560px"/>
-        <ContentControl x:Name="ActiveItemPanelPicture" Grid.Column="1" Width="270px" Height="560px"/>
+        <ContentControl x:Name="ActiveItemPanelPicture" Grid.Column="1" Width="300px" Height="560px"/>
         <ContentControl x:Name="ActiveItemPanelControl" Grid.Column="2" Width="270px" Height="560px"/>
     </Grid>
 </UserControl>

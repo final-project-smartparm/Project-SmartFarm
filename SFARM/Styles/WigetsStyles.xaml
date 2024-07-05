@@ -2,9 +2,9 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:fa="http://schemas.awesome.incremented/wpf/xaml/fontawesome.sharp"
                     xmlns:Syncfusion="http://schemas.syncfusion.com/wpf">
-                    
 
 
+    <!--#region PanleControl Style -->
     <!--#region 슬라이더바-->
     <Style x:Key="SliderThumbStyle" TargetType="{x:Type Thumb}">
         <Setter Property="Template">
@@ -139,8 +139,8 @@
         </Style.Triggers>
     </Style>
     <!--#endregion-->
-    
-    <!--#region Control패널 텍스트-->
+
+    <!-- Control패널 텍스트 -->
     <Style x:Key="PanelcontrolLabel" TargetType="Label">
         <Setter Property="HorizontalAlignment" Value="Left"/>
         <Setter Property="VerticalAlignment" Value="Bottom"/>
@@ -195,6 +195,8 @@
     <!--#region PanelPicture Style-->
     <Style x:Key="CircularProgressBarStyle" TargetType="Syncfusion:SfCircularProgressBar">
         <Setter Property="TrackColor" Value="Transparent"/>
+        
+        <Setter Property="Width" Value="320"/>
         <Setter Property="RangeColors">
             <Setter.Value>
                 <Syncfusion:RangeColorCollection>
@@ -205,6 +207,13 @@
                 </Syncfusion:RangeColorCollection>
             </Setter.Value>
         </Setter>
+    </Style>
+
+    <Style x:Key="CircularPBarInnerEllipse" TargetType="Ellipse">
+        <Setter Property="Width" Value="200"/>
+        <Setter Property="Height" Value="200"/>
+        <Setter Property="Stroke" Value="{StaticResource color3}"/>
+        <Setter Property="StrokeDashArray" Value="5 8"/>
     </Style>
     <!--#endregion-->
 </ResourceDictionary>
