@@ -195,6 +195,8 @@
     <!--#region PanelPicture Style-->
     <Style x:Key="CircularProgressBarStyle" TargetType="Syncfusion:SfCircularProgressBar">
         <Setter Property="TrackColor" Value="Transparent"/>
+        
+        <Setter Property="Width" Value="320"/>
         <Setter Property="RangeColors">
             <Setter.Value>
                 <Syncfusion:RangeColorCollection>
@@ -205,6 +207,13 @@
                 </Syncfusion:RangeColorCollection>
             </Setter.Value>
         </Setter>
+    </Style>
+
+    <Style x:Key="CircularPBarInnerEllipse" TargetType="Ellipse">
+        <Setter Property="Width" Value="200"/>
+        <Setter Property="Height" Value="200"/>
+        <Setter Property="Stroke" Value="{StaticResource color3}"/>
+        <Setter Property="StrokeDashArray" Value="5 8"/>
     </Style>
     <!--#endregion-->
 </ResourceDictionary>
