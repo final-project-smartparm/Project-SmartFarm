@@ -9,10 +9,21 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Images\방울토마토4.png" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="FontAwesome.Sharp" Version="6.3.0" />
     <PackageReference Include="Syncfusion.Licensing" Version="26.1.40" />
+    <PackageReference Include="Syncfusion.SfInput.WPF" Version="26.1.40" />
     <PackageReference Include="Syncfusion.SfProgressBar.WPF" Version="26.1.40" />
     <PackageReference Include="Syncfusion.Shared.WPF" Version="26.1.40" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Images\방울토마토4.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
   </ItemGroup>
 
   <ItemGroup>

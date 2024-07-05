@@ -2,9 +2,9 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:fa="http://schemas.awesome.incremented/wpf/xaml/fontawesome.sharp"
                     xmlns:Syncfusion="http://schemas.syncfusion.com/wpf">
-                    
 
 
+    <!--#region PanleControl Style -->
     <!--#region 슬라이더바-->
     <Style x:Key="SliderThumbStyle" TargetType="{x:Type Thumb}">
         <Setter Property="Template">
@@ -139,8 +139,8 @@
         </Style.Triggers>
     </Style>
     <!--#endregion-->
-    
-    <!--#region Control패널 텍스트-->
+
+    <!-- Control패널 텍스트 -->
     <Style x:Key="PanelcontrolLabel" TargetType="Label">
         <Setter Property="HorizontalAlignment" Value="Left"/>
         <Setter Property="VerticalAlignment" Value="Bottom"/>

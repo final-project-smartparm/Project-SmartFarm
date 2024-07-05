@@ -2,6 +2,38 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:fa="http://schemas.awesome.incremented/wpf/xaml/fontawesome.sharp">
     
+    <!--#region Top Bar-->
+    <!-- 메인로고 -->
+    <Style x:Key="MainLabel" TargetType="Label">
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="HorizontalAlignment" Value="Left"/>
+        <Setter Property="Margin" Value="30,0,0,0"/>
+        <Setter Property="FontFamily" Value="Nanumgothic"/>
+        <Setter Property="FontSize" Value="20"/>
+        <Setter Property="FontWeight" Value="ExtraBold"/>
+        <Setter Property="Foreground" Value="White"/>
+    </Style>
+    
+    <!-- Top Bar Middle Label -->
+    <Style x:Key="TopBarMiddleLabel" TargetType="Label">
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="HorizontalAlignment" Value="Center"/>
+        <Setter Property="FontFamily" Value="Nanumgothic"/>
+        <Setter Property="FontSize" Value="15"/>
+        <Setter Property="Foreground" Value="White"/>
+    </Style>
+
+    <!-- Top Bar Right Label -->
+    <Style x:Key="TopBarRightLabel" TargetType="Label">
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="HorizontalAlignment" Value="Right"/>
+        <Setter Property="Margin" Value="0,0,30,0"/>
+        <Setter Property="FontFamily" Value="Nanumgothic"/>
+        <Setter Property="FontSize" Value="15"/>
+        <Setter Property="Foreground" Value="White"/>
+    </Style>
+
+    <!--#endregion-->
 
     <!-- Menu Stroke -->
     <Style x:Key="menuStroke" TargetType="Line">

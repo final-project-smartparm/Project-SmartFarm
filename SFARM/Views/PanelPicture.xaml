@@ -6,7 +6,7 @@
              xmlns:Syncfusion="http://schemas.syncfusion.com/wpf"
              xmlns:local="clr-namespace:SFARM.Views"
              mc:Ignorable="d" 
-             d:DesignHeight="560" d:DesignWidth="270">
+             d:DesignHeight="560" d:DesignWidth="300">
          
     <Grid Background="{StaticResource color5}">
         <Grid.RowDefinitions>
@@ -37,5 +37,7 @@
                 방울토마토
             </Label.Content>
         </Label>
+
+       
     </Grid>
 </UserControl>
