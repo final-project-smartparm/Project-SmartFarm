@@ -27,17 +27,27 @@
             <RowDefinition Height="1*"/>
             <RowDefinition Height="2*"/>
         </Grid.RowDefinitions>
-
+        
+        <!-- 카테고리 별 -->
         <StackPanel Grid.Row="0" Margin="20,10">
             <Label Style="{StaticResource PanelcontrolLabel}"  Content="급수량"/>
             <Slider x:Name="CustomSlider" Width="230" Maximum="100" SmallChange="1" LargeChange="10" Style="{StaticResource CustomSliderStyle}" Foreground="{StaticResource color5}"/>
+        </StackPanel>
+        <StackPanel Grid.Row="1" Margin="20,10">
+            <Label Style="{StaticResource PanelcontrolLabel}"  Content="급수 주기"/>
+            <Slider Width="230" Maximum="100" SmallChange="1" LargeChange="10" Style="{StaticResource CustomSliderStyle}" Foreground="{StaticResource color5}"/>
         </StackPanel>
         <StackPanel Grid.Row="3" Margin="20,10">
             <Label Style="{StaticResource PanelcontrolLabel}"  Content="온도"/>
             <Slider Width="230" Maximum="100" SmallChange="1" LargeChange="10" Style="{StaticResource CustomSliderStyle}" Foreground="{StaticResource color5}"/>
         </StackPanel>
+        <StackPanel Grid.Row="4" Margin="20,10">
+            <Label Style="{StaticResource PanelcontrolLabel}"  Content="쿨링팬 작동시간"/>
+            <Slider Width="230" Maximum="100" SmallChange="1" LargeChange="10" Style="{StaticResource CustomSliderStyle}" Foreground="{StaticResource color5}"/>
+        </StackPanel>
+        <!--
         <syncfusion:SfDomainUpDown  Grid.Row="1"  HorizontalAlignment="Left" VerticalAlignment="Center" AccentBrush="{StaticResource color2}"
-                                       BorderBrush="LightGray" ClipToBounds="True"  Value="40" Margin="74,0,0,0" Foreground="{StaticResource color6}" InputScope="RegularExpression" />
+                                       BorderBrush="LightGray" ClipToBounds="True"  Value="40" Margin="74,0,0,0" Foreground="{StaticResource color6}" InputScope="RegularExpression" /> -->
         <StackPanel Grid.Row="6" Margin="20,10">
             <Label Style="{StaticResource PanelcontrolLabel}"  Content="식물등 밝기"/>
             <Slider Width="230" Maximum="100" SmallChange="1" LargeChange="10" Style="{StaticResource CustomSliderStyle}" Foreground="{StaticResource color5}"/>
