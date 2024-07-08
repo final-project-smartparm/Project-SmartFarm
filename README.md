@@ -20,7 +20,9 @@
 ### 개발된 구성 요소:
 
 #### MainWindow.xaml:
-- **역할:** 로그인 후 식물 상세 정보를 표시하는 주 화면
+- **역할**
+    - WPF 애플리케이션에서 메인 창을 구현하고, 버튼 클릭 시 각각 다른 사용자 컨트롤을 화면에 띄우는 기능
+    - 로그인 후 식물 상세 정보를 표시하는 주 화면
     - 메인 화면 후에 보이는 식물의 정보를 보여 줌
     - 전체적인 시스템 상태나 다양한 정보의 통계를 한눈에 파악 할 수 있도록 보여줌
 - **주요 기능:**
@@ -30,6 +32,91 @@
     - 조도 센서에서의 밝기
     - 쿨링 팜 운전 시간
     - 카메라 피드
+- **MainWindow.xaml.cs**
+    1. using 문
+        - WPF와 관련된 다양한 네임스페이스를 사용
+        ```csharp
+            using System.Text;
+            using System.Windows;
+            using System.Windows.Controls;
+            using System.Windows.Data;
+            using System.Windows.Documents;
+            using System.Windows.Input;
+            using System.Windows.Media;
+            using System.Windows.Media.Imaging;
+            using System.Windows.Navigation;
+            using System.Windows.Shapes;
+        ``` 
+
+    2. namespace SFARM
+        - SFARM 이라는 이름의 네임스페이스를 선언
+        ```csharp
+        namespace SFARM
+        {
+            // 클래스들과 인터페이스들 선언
+        }
+        ```
+
+    3. partial class MainWindow : Window
+        - MainWIndow 클래스가 Window 클래스를 상속받음
+        ```csharp
+        public partial class MainWindow : Window
+        {
+            // 클래스 내부의 코드들이 선언
+        }
+        ```
+
+    4. MainWindow 생성자 (public MainWindow())
+        - MainWindow 클래스의 생성자
+        - InitializeComponent() 메서드를 호출하여 XAML 파일과 연결된 UI를 초기화
+        ```csharp
+        public MainWindow()
+        {
+            InitializeComponent();
+        }
+        ```
+
+    5. Window_Loaded 이벤트 핸들러 (private void Window_Loaded(object sender, RoutedEventArgs e))
+        - 창이 로드될 때 발생하는 이벤트 핸들러
+        - ActiveItem이라는 이름의 컨트롤의 Content를 HomeControl의 새 인스턴스로 설정하여 초기 화면을 설정
+        ```csharp
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            ActiveItem.Content = new Views.HomeControl();
+        }
+        ```
+
+    6. BtnMnuHome_Click 이벤트 핸들러 (private void BtnMnuHome_Click(object sender, RoutedEventArgs e))
+        - 'Home' 버튼이 클릭될 때 발생하는 이벤트 핸들러
+        - HomeControl을 화면에 표시
+        ```csharp
+        private void BtnMnuHome_Click(object sender, RoutedEventArgs e)
+        {
+            ActiveItem.Content = new Views.HomeControl();
+        }
+        ```
+
+    7. BtnMunMyPlants_Click 이벤트 핸들러 (private void BtnMunMyPlants_Click(object sender, RoutedEventArgs e))
+        - 'My Plants' 버튼이 클릭될 때 발생하는 이벤트 핸들러
+        - MyPlantsControl을 화면에 표시
+        ```csharp
+        namespace SFARM
+        private void BtnMunMyPlants_Click(object sender, RoutedEventArgs e)
+        {
+            ActiveItem.Content = new Views.MyPlantsControl();
+        }
+        ```
+
+    8. BtnMyInfo_Click 이벤트 핸들러 (private void BtnMyInfo_Click(object sender, RoutedEventArgs e))
+        - 'My Info' 버튼이 클릭될 때 발생하는 이벤트 핸들러
+        - MyInfoControl을 화면에 표시
+        ```csharp
+        private void BtnMyInfo_Click(object sender, RoutedEventArgs e)
+        {
+            ActiveItem.Content = new Views.MyInfoControl();
+        }
+        ```
+
   
 #### HomeControl.xaml:
 - **역할:** 주 대시보드 역할을 수행
