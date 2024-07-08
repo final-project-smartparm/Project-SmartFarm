@@ -235,7 +235,7 @@
         /// </summary>
         public partial class PanelLiveInfo : UserControl
         {
-            // 클래스 내부의 코드들이 선언됩니다.
+            // 클래스 내부의 코드들이 선언
         }
     }
     ```
