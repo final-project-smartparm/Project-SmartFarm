@@ -17,6 +17,7 @@
     <PackageReference Include="Syncfusion.Licensing" Version="26.1.40" />
     <PackageReference Include="Syncfusion.SfInput.WPF" Version="26.1.40" />
     <PackageReference Include="Syncfusion.SfProgressBar.WPF" Version="26.1.40" />
+    <PackageReference Include="Syncfusion.SfTextInputLayout.WPF" Version="26.1.40" />
     <PackageReference Include="Syncfusion.Shared.WPF" Version="26.1.40" />
   </ItemGroup>
 
