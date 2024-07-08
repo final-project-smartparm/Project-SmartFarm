@@ -19,7 +19,7 @@
 
 ### 개발된 구성 요소:
 
-#### MainWindow.xaml:
+#### MainWindow.xaml
 - **역할**
     - WPF 애플리케이션에서 메인 창을 구현하고, 버튼 클릭 시 각각 다른 사용자 컨트롤을 화면에 띄우는 기능
     - 로그인 후 식물 상세 정보를 표시하는 주 화면
@@ -116,24 +116,215 @@
             ActiveItem.Content = new Views.MyInfoControl();
         }
         ```
-
   
-#### HomeControl.xaml:
+#### HomeControl.xaml
 - **역할:** 주 대시보드 역할을 수행
+
+
 - **구성요소:**
 - #### 제어센서 모니터링(PanelControl.xaml)
     - 기본 DB값에서 추천해주는 기본값에 맞춰저 있는 각 수치를 사용자의 기준에 맞춰서 조절하고 환경을 최적화 할 수 있는 컨트롤 화면
     - 물탱크의 급수량, 급수 주기, 온도, 조도 센서의 밝기 정도, 쿨링팬 작동 시간을 제어할 수 있는 기능을 제공
+**PanelControl.xaml.cs**
+1. using 문
+    - System: 기본 .NET 클래스와 구조체를 포함하고 있는 가장 기본적인 네임스페이스
+    - System.Collections.Generic: 제네릭 컬렉션 클래스(예: List, Dictionary 등)를 사용할 수 있게 해줌
+    - System.Linq: LINQ(Language-Integrated Query) 기능을 사용하여 데이터 질의를 수행할 수 있음
+    - System.Text: 문자열 및 문자 데이터를 조작하는 클래스들을 제공
+    - System.Threading.Tasks: 멀티스레드 처리와 비동기 작업을 위한 클래스를 포함
+    - System.Windows: WPF 애플리케이션과 관련된 주요 클래스들을 포함한 네임스페이스
+    - System.Windows.Controls: WPF의 UI 컨트롤(버튼, 텍스트박스 등) 클래스들을 사용할 수 있음
+    - System.Windows.Data: 데이터 바인딩을 위한 클래스들을 제공
+    - System.Windows.Documents: 문서 편집 및 표시를 위한 클래스들을 포함
+    - System.Windows.Input: 사용자 입력(마우스, 키보드 등)을 처리하는 클래스들을 제공
+    - System.Windows.Media: 그래픽스와 미디어 관련 기능을 제공하는 클래스들을 포함
+    - System.Windows.Media.Imaging: 비트맵 이미지 처리를 위한 클래스들을 포함
+    - System.Windows.Navigation: WPF 네비게이션 관련 클래스들을 제공
+    - System.Windows.Shapes: 다양한 도형과 그래픽 요소를 만드는 클래스들을 포함
+    ```csharp
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Text;
+    using System.Threading.Tasks;
+    using System.Windows;
+    using System.Windows.Controls;
+    using System.Windows.Data;
+    using System.Windows.Documents;
+    using System.Windows.Input;
+    using System.Windows.Media;
+    using System.Windows.Media.Imaging;
+    using System.Windows.Navigation;
+    using System.Windows.Shapes;
+    ```
+2. namespace SFARM.Views
+    - SFARM.Views: PanelControl 클래스를 포함
+    - PanelControl 클래스는 UserControl을 상속받음
+    ```csharp
+    namespace SFARM.Views
+    {
+        /// <summary>
+        /// PanelControl.xaml에 대한 상호 작용 논리
+        /// </summary>
+        public partial class PanelControl : UserControl
+        {
+            // 클래스 내부의 코드들이 선언됩니다.
+        }
+    }
+    ```
+
+3. partial class PanelControl : UserControl
+    - PanelControl 클래스: UserControl을 확장한 사용자 정의 컨트롤
+    - 생성자 PanelControl(): 생성자에서는 InitializeComponent() 메서드를 호출하여 XAML 파일과 연결된 UI를 초기화
+    ```csharp
+    public partial class PanelControl : UserControl
+    {
+        public PanelControl()
+        {
+            InitializeComponent();
+        }
+    }
+    ```
+
     - ![PanelControl.xaml](https://raw.githubusercontent.com/final-project-smartparm/SmartFarm-WPF-Part/main/img/Sparm1.png)
 - #### 실시간상태 모니터링(PanelLiveInfo.xaml)
     - 현재 온도 , 토양 수분도 , 조도 , 물탱크 상황 등 스마트팜의 주요 환경 지표를 실시간 반영해여 보여주는 화면
     - 사용자가 위의 실시간 데이터를 통해서 상태를 파악하고 각 필요한 조치를 취할 수가 있음
     - ex : 각각의 모니터링화면에서 경고가 발생!
+**PanelLiveInfo.xaml.cs**
+1. using 문
+    - System: 기본 .NET 클래스와 구조체를 포함하고 있는 가장 기본적인 네임스페이스
+    - System.Collections.Generic: 제네릭 컬렉션 클래스(예: List, Dictionary 등)를 사용할 수 있게 해줌
+    - System.Linq: LINQ(Language-Integrated Query) 기능을 사용하여 데이터 질의를 수행할 수 있음
+    - System.Text: 문자열 및 문자 데이터를 조작하는 클래스들을 제공
+    - System.Threading.Tasks: 멀티스레드 처리와 비동기 작업을 위한 클래스를 포함
+    - System.Windows: WPF 애플리케이션과 관련된 주요 클래스들을 포함한 네임스페이스
+    - System.Windows.Controls: WPF의 UI 컨트롤(버튼, 텍스트박스 등) 클래스들을 사용할 수 있음
+    - System.Windows.Data: 데이터 바인딩을 위한 클래스들을 제공
+    - System.Windows.Documents: 문서 편집 및 표시를 위한 클래스들을 포함
+    - System.Windows.Input: 사용자 입력(마우스, 키보드 등)을 처리하는 클래스들을 제공
+    - System.Windows.Media: 그래픽스와 미디어 관련 기능을 제공하는 클래스들을 포함
+    - System.Windows.Media.Imaging: 비트맵 이미지 처리를 위한 클래스들을 포함
+    - System.Windows.Navigation: WPF 네비게이션 관련 클래스들을 제공
+    - System.Windows.Shapes: 다양한 도형과 그래픽 요소를 만드는 클래스들을 포함
+    ```csharp
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Text;
+    using System.Threading.Tasks;
+    using System.Windows;
+    using System.Windows.Controls;
+    using System.Windows.Data;
+    using System.Windows.Documents;
+    using System.Windows.Input;
+    using System.Windows.Media;
+    using System.Windows.Media.Imaging;
+    using System.Windows.Navigation;
+    using System.Windows.Shapes;
+    ```
+
+2. namespace SFARM.Views
+    - SFARM.Views: PanelLiveInfo 클래스를 포함
+    - PanelLiveInfo 클래스는 UserControl을 상속받음
+    ```csharp
+    namespace SFARM.Views
+    {
+        /// <summary>
+        /// PanelLiveInfo.xaml에 대한 상호 작용 논리
+        /// </summary>
+        public partial class PanelLiveInfo : UserControl
+        {
+            // 클래스 내부의 코드들이 선언됩니다.
+        }
+    }
+    ```
+
+3. partial class PanelLiveInfo : UserControl
+    - PanelLiveInfo 클래스: PanelLiveInfo 클래스는 UserControl을 확장한 사용자 정의 컨트롤
+    - 생성자 PanelLiveInfo(): 생성자에서는 InitializeComponent() 메서드를 호출하여 XAML 파일과 연결된 UI를 초기화
+    ```csharp
+    public partial class PanelLiveInfo : UserControl
+    {
+        public PanelLiveInfo()
+        {
+            InitializeComponent();
+        }
+    }
+    ```
     - ![PanelLiveInfo.xaml](https://raw.githubusercontent.com/final-project-smartparm/SmartFarm-WPF-Part/main/img/Sparm2.png)
+
 - #### 성장 진행률 모니터링(PanelPicture.xaml)
     - 식물의 성장 과정을 시각적으로 추적 할 수 있는 화면
     - 주기적으로 촬영된 사진을 앨범처럼 보여주면서 디자인과 성장 상태의 변화를 확인할 수 있음
-    - ![PanelPicture.xaml](https://raw.githubusercontent.com/final-project-smartparm/SmartFarm-WPF-Part/main/img/Sparm3.png)
+**PanelPicture.xaml.cs**
+1. using 문
+    - System: 기본 .NET 클래스와 구조체를 포함하고 있는 가장 기본적인 네임스페이스
+    - System.Collections.Generic: 제네릭 컬렉션 클래스(예: List, Dictionary 등)를 사용할 수 있게 해줌
+    - System.Linq: LINQ(Language-Integrated Query) 기능을 사용하여 데이터 질의를 수행할 수 있음
+    - System.Text: 문자열 및 문자 데이터를 조작하는 클래스들을 제공
+    - System.Threading.Tasks: 멀티스레드 처리와 비동기 작업을 위한 클래스를 포함
+    - System.Windows: WPF 애플리케이션과 관련된 주요 클래스들을 포함한 네임스페이스
+    - System.Windows.Controls: WPF의 UI 컨트롤(버튼, 텍스트박스 등) 클래스들을 사용할 수 있음
+    - System.Windows.Data: 데이터 바인딩을 위한 클래스들을 제공
+    - System.Windows.Documents: 문서 편집 및 표시를 위한 클래스들을 포함
+    - System.Windows.Input: 사용자 입력(마우스, 키보드 등)을 처리하는 클래스들을 제공
+    - System.Windows.Media: 그래픽스와 미디어 관련 기능을 제공하는 클래스들을 포함
+    - System.Windows.Media.Imaging: 비트맵 이미지 처리를 위한 클래스들을 포함
+    - System.Windows.Navigation: WPF 네비게이션 관련 클래스들을 제공
+    - System.Windows.Shapes: 다양한 도형과 그래픽 요소를 만드는 클래스들을 포함
+    ```csharp
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Text;
+    using System.Threading.Tasks;
+    using System.Windows;
+    using System.Windows.Controls;
+    using System.Windows.Data;
+    using System.Windows.Documents;
+    using System.Windows.Input;
+    using System.Windows.Media;
+    using System.Windows.Media.Imaging;
+    using System.Windows.Navigation;
+    using System.Windows.Shapes;
+    ```
+
+2. namespace SFARM.Views
+    - SFARM.Views라는 이름의 네임스페이스를 선언
+    - PanelPicture 클래스를 포함
+    - PanelPicture 클래스는 UserControl을 상속받음
+    ```csharp
+    namespace SFARM.Views
+    {
+        /// <summary>
+        /// PanelPicture.xaml에 대한 상호 작용 논리
+        /// </summary>
+        public partial class PanelPicture : UserControl
+        {
+            // 클래스 내부의 코드들이 선언됩니다.
+        }
+    }
+    ```
+
+3. partial class PanelPicture : UserControl
+    - PanelPicture 클래스는 UserControl을 확장한 사용자 정의 컨트롤
+    - 생성자 PanelPicture()에서 InitializeComponent() 메서드를 호출하여 XAML과 연결된 UI를 초기화
+    ```csharp
+    public partial class PanelPicture : UserControl
+    {
+        public PanelPicture()
+        {
+            InitializeComponent();
+        }
+    }
+    ```
+- ![PanelPicture.xaml](https://raw.githubusercontent.com/final-project-smartparm/SmartFarm-WPF-Part/main/img/Sparm3.png)
+
+
+#### MyPlantsControl.xaml
+#### MyInfoControl.xaml
+
 
 --------------------------------------------------------------
 
