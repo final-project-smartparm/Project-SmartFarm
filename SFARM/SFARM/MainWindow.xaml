@@ -27,6 +27,7 @@
         </Grid.ColumnDefinitions>
 
         <!--#region 상단바 StackPanel-->
+<<<<<<< Updated upstream:SFARM/SFARM/MainWindow.xaml
         <StackPanel Grid.Row="0" Grid.Column="0" Background="{StaticResource color1}" Grid.ColumnSpan="2" Orientation="Horizontal">
             <Label Width="200px">
                 <Label.Content>
@@ -51,6 +52,20 @@
                 </Label>
             </StackPanel>
         </StackPanel>
+=======
+        <Grid Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Background="{StaticResource color1}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="200px"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="200px"/>
+            </Grid.ColumnDefinitions>
+            <Label Grid.Column="0" Content="S:FARM" Style="{StaticResource MainLabel}"/>
+            <Label Grid.Column="1" Content="방토와 함께한 지 " Style="{StaticResource TopBarMiddleLabel}"/>
+            <Label Grid.Column="2" Content="2024 - 05 - 28" Style="{StaticResource TopBarRightLabel}"/>
+
+
+        </Grid>
+>>>>>>> Stashed changes:SFARM/MainWindow.xaml
         <!--#endregion-->
 
         <!--#region 왼측 메뉴바 구성-->
