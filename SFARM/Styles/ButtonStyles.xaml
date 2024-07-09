@@ -4,7 +4,7 @@
     
     <!--#region Top Bar-->
     <!-- 메인로고 -->
-    <Style x:Key="MainLabel" TargetType="Label">
+    <Style x:Key="MainLabel" TargetType="{x:Type Label}">
         <Setter Property="VerticalAlignment" Value="Center"/>
         <Setter Property="HorizontalAlignment" Value="Left"/>
         <Setter Property="Margin" Value="30,0,0,0"/>
@@ -54,7 +54,124 @@
         <Setter Property="HorizontalAlignment" Value="Center"/>
         <Setter Property="VerticalAlignment" Value="Center"/>
     </Style>
+    
+    <!-- Combobox Style-->
+    <!-- ToggleButton Style for ComboBox -->
+    <ControlTemplate x:Key="ComboBoxToggleButton" TargetType="ToggleButton">
+        <Border x:Name="templateRoot" BorderBrush="#FFACACAC" BorderThickness="1" CornerRadius="5" Background="{TemplateBinding Background}">
+            <Path x:Name="Arrow" VerticalAlignment="Center" HorizontalAlignment="Right" Fill="{StaticResource color4}" Data="M 0 0 L 4 4 L 8 0 Z"/>
+        </Border>
+        <ControlTemplate.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter TargetName="templateRoot" Property="BorderBrush" Value="Black"/>
+            </Trigger>
+            <Trigger Property="IsChecked" Value="True">
+                <Setter TargetName="templateRoot" Property="BorderBrush" Value="Black"/>
+            </Trigger>
+            <Trigger Property="IsEnabled" Value="False">
+                <Setter TargetName="templateRoot" Property="Background" Value="#FFF0F0F0"/>
+                <Setter TargetName="templateRoot" Property="BorderBrush" Value="#FFD9D9D9"/>
+                <Setter Property="Foreground" Value="#FFBFBFBF"/>
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
 
+    <!-- TextBox Style for ComboBox -->
+    <ControlTemplate x:Key="ComboBoxTextBox" TargetType="TextBox">
+        <Border x:Name="templateRoot" Background="{StaticResource color3}" BorderBrush="Red" BorderThickness="1">
+            <ScrollViewer Margin="0" x:Name="PART_ContentHost"/>
+        </Border>
+        <ControlTemplate.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter TargetName="templateRoot" Property="BorderBrush" Value="red"/>
+            </Trigger>
+            <Trigger Property="IsKeyboardFocused" Value="True">
+                <Setter TargetName="templateRoot" Property="BorderBrush" Value="blue"/>
+            </Trigger>
+            <Trigger Property="IsEnabled" Value="False">
+                <Setter TargetName="templateRoot" Property="Background" Value="#FFF0F0F0"/>
+                <Setter TargetName="templateRoot" Property="BorderBrush" Value="#FFD9D9D9"/>
+                <Setter Property="Foreground" Value="#FFBFBFBF"/>
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+
+    <!-- ComboBox Style with Curved Corners -->
+    <Style x:Key="CurvedComboBoxStyle" TargetType="ComboBox">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="ComboBox">
+                    <Grid>
+                        <ToggleButton
+                            Name="ToggleButton"
+                            Template="{StaticResource ComboBoxToggleButton}"
+                            Grid.Column="2"
+                            Focusable="False"
+                            IsChecked="{Binding Path=IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}"
+                            ClickMode="Press">
+                        </ToggleButton>
+                        <ContentPresenter
+                            Name="ContentSite"
+                            IsHitTestVisible="False"
+                            Content="{TemplateBinding SelectionBoxItem}"
+                            ContentTemplate="{TemplateBinding SelectionBoxItemTemplate}"
+                            ContentTemplateSelector="{TemplateBinding ItemTemplateSelector}"
+                            VerticalAlignment="Center"
+                            HorizontalAlignment="Left"
+                            Margin="5,3,23,3"
+                            >
+                            
+                        </ContentPresenter>
+                        <TextBox
+                            x:Name="PART_EditableTextBox"
+                            Style="{x:Null}"
+                            Template="{Binding ComboBoxTextBox}"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Center"
+                            Margin="3,3,23,3"
+                            Focusable="True"
+                            Background="{StaticResource color1}"
+                            Visibility="Hidden"
+                            IsReadOnly="{TemplateBinding IsReadOnly}">
+                        </TextBox>
+                        <Popup
+                            Name="Popup"
+                            Placement="Bottom"
+                            IsOpen="{TemplateBinding IsDropDownOpen}"
+                            AllowsTransparency="True"
+                            Focusable="False"
+                            PopupAnimation="Slide">
+                            <Grid
+                                Name="DropDown"
+                                SnapsToDevicePixels="True"
+                                MinWidth="{TemplateBinding ActualWidth}"
+                                MaxHeight="{TemplateBinding MaxDropDownHeight}">
+                                <Border
+                                    x:Name="DropDownBorder"
+                                    Background="{StaticResource {x:Static SystemColors.WindowBrushKey}}"
+                                    BorderThickness="1"
+                                    BorderBrush="{StaticResource {x:Static SystemColors.ActiveBorderBrushKey}}"
+                                    CornerRadius="5">
+                                    <ScrollViewer Margin="4,6,4,6" SnapsToDevicePixels="True">
+                                        <StackPanel IsItemsHost="True" KeyboardNavigation.DirectionalNavigation="Contained"/>
+                                    </ScrollViewer>
+                                </Border>
+                            </Grid>
+                        </Popup>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsEditable" Value="True">
+                            <Setter Property="IsTabStop" Value="False"/>
+                            <Setter TargetName="PART_EditableTextBox" Property="Visibility" Value="Visible"/>
+                            <Setter TargetName="ContentSite" Property="Visibility" Value="Hidden"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    
     <!--Menu button-->
     <Style x:Key="menuButton" TargetType="RadioButton">
         <!--Normal button style-->

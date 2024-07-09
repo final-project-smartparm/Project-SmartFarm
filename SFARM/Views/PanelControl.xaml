@@ -18,8 +18,8 @@
     </UserControl.Resources>
     <Grid Background="{StaticResource color5}">
         <Grid.RowDefinitions>
-            <RowDefinition Height="1*"/>
             <RowDefinition Height="1.2*"/>
+            <RowDefinition Height="1*"/>
             <RowDefinition Height="20px"/>
             <RowDefinition Height="1*"/>
             <RowDefinition Height="1.2*"/>
@@ -27,32 +27,28 @@
             <RowDefinition Height="1*"/>
             <RowDefinition Height="2*"/>
         </Grid.RowDefinitions>
-        
+
         <!-- 카테고리 별 -->
         <StackPanel Grid.Row="0" Margin="20,10">
-            <Label Style="{StaticResource PanelcontrolLabel}"  Content="급수량"/>
-            <Slider x:Name="CustomSlider" Value="20" Width="230" Maximum="100" SmallChange="1" LargeChange="10" Style="{StaticResource CustomSliderStyle}" Foreground="{StaticResource color5}"/>
+            <Label Style="{StaticResource PanelcontrolLabel}"  Content="급수"/>
+            <WrapPanel HorizontalAlignment="Center" Orientation="Horizontal" Width="230">
+                <Slider x:Name="CustomSlider" IsSnapToTickEnabled="True" Value="{Binding ElementName=textBox_CumstomSliderWithTick, Path=Text, Mode=TwoWay}" Width="190" Maximum="250" TickPlacement="BottomRight" TickFrequency="20" Style="{StaticResource CustomSliderStyle}" Foreground="{StaticResource color3}"/>
+                <TextBox x:Name="textBox_CumstomSliderWithTick" Margin="10,0,0,0" Height="23" Width="30" Text="{Binding Value, ElementName=CustomSlider, Mode=TwoWay}" HorizontalContentAlignment="Center" Foreground="{StaticResource color2}" BorderBrush="{StaticResource color1}">
+                    <TextBox.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="4"/>
+                        </Style>
+                    </TextBox.Resources>
+                </TextBox>
+            </WrapPanel>
         </StackPanel>
-        <StackPanel Grid.Row="1" Margin="20, 0">
-            <Label Style="{StaticResource PanelcontrolLabel}"  Content="급수 주기"/>
-            <Grid Height="60">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="1*"/>
-                    <ColumnDefinition Width="1*"/>
-                    <ColumnDefinition Width="1*"/>
-                </Grid.ColumnDefinitions>
-
-                <syncfusion:SfTextInputLayout Grid.Column="0" Width="70" FlowDirection="RightToLeft" Hint="시간" FocusedForeground="{StaticResource color6}" Foreground="{StaticResource color2}" ContainerType="Outlined">
-                    <TextBox Text=""/>
-                </syncfusion:SfTextInputLayout>
-                <syncfusion:SfTextInputLayout Grid.Column="1" Width="70" FlowDirection="RightToLeft" Hint="일" FocusedForeground="{StaticResource color6}" Foreground="{StaticResource color2}" ContainerType="Outlined">
-                    <TextBox Text=""/>
-                </syncfusion:SfTextInputLayout>
-                <syncfusion:SfTextInputLayout Grid.Column="2" Width="70" FlowDirection="RightToLeft" Hint="주" FocusedForeground="{StaticResource color6}" Foreground="{StaticResource color2}" ContainerType="Outlined">
+        <StackPanel Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Horizontal">
+            <Grid Height="60" Width="170">
+                <syncfusion:SfTextInputLayout Grid.Column="0" FlowDirection="RightToLeft" Hint="토양 수분도" FocusedForeground="{StaticResource color6}" Foreground="{StaticResource color2}" ContainerType="Outlined">
                     <TextBox Text=""/>
                 </syncfusion:SfTextInputLayout>
             </Grid>
-            
+            <Button Width="50" Height="46" Style="{StaticResource RoundButtonTemplate}" Content="save" Margin="10,0,0,0"/>
         </StackPanel>
         
         <StackPanel Grid.Row="3" Margin="20,10">
@@ -67,16 +63,9 @@
                     <ColumnDefinition Width="1*"/>
                     <ColumnDefinition Width="1*"/>
                 </Grid.ColumnDefinitions>
-
-                <syncfusion:SfTextInputLayout Grid.Column="0" Width="70" FlowDirection="RightToLeft" Hint="시" FocusedForeground="{StaticResource color2}" Foreground="{StaticResource color6}" ContainerType="Outlined">
-                    <TextBox Text=""/>
-                </syncfusion:SfTextInputLayout>
-                <syncfusion:SfTextInputLayout Grid.Column="1" Width="70" FlowDirection="RightToLeft" Hint="분" FocusedForeground="{StaticResource color6}" Foreground="{StaticResource color2}" ContainerType="Outlined">
-                    <TextBox Text=""/>
-                </syncfusion:SfTextInputLayout>
-                <syncfusion:SfTextInputLayout Grid.Column="2" Width="70" FlowDirection="RightToLeft" Hint="초" FocusedForeground="{StaticResource color6}" Foreground="{StaticResource color2}" ContainerType="Outlined">
-                    <TextBox Text=""/>
-                </syncfusion:SfTextInputLayout>
+                <RadioButton Grid.Column="0" Content="강" HorizontalAlignment="Center" VerticalAlignment="Center" Width="30" IsChecked="True"/>
+                <RadioButton Grid.Column="1" Content="중" HorizontalAlignment="Center" VerticalAlignment="Center" Width="30"/>
+                <RadioButton Grid.Column="2" Content="약" HorizontalAlignment="Center" VerticalAlignment="Center" Width="30"/>
             </Grid>
         </StackPanel>
         <StackPanel Grid.Row="6" Margin="20,10">
@@ -87,6 +76,5 @@
 
         <Line Grid.Row="2" Style="{StaticResource ControlWigetStroke}"/>
         <Line Grid.Row="5" Style="{StaticResource ControlWigetStroke}"/>
-
     </Grid>
 </UserControl>
