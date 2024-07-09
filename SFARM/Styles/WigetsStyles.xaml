@@ -16,14 +16,29 @@
         </Setter>
     </Style>
 
-    <Style x:Key="RoundedRepeatButton" TargetType="RepeatButton">
+    <Style x:Key="RoundedRepeatButtonLeft" TargetType="RepeatButton">
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="RepeatButton">
                     <Border Background="{TemplateBinding Background}" 
                             BorderBrush="{TemplateBinding BorderBrush}" 
                             BorderThickness="{TemplateBinding BorderThickness}" 
-                            CornerRadius="3">
+                            CornerRadius="3,0,0,3">
+                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="RoundedRepeatButtonRight" TargetType="RepeatButton">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="RepeatButton">
+                    <Border Background="{TemplateBinding Background}" 
+                        BorderBrush="{TemplateBinding BorderBrush}" 
+                        BorderThickness="{TemplateBinding BorderThickness}" 
+                        CornerRadius="0,3,3,0">
                         <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
                     </Border>
                 </ControlTemplate>
@@ -53,12 +68,12 @@
                                 <Track Grid.Row="1" x:Name="PART_Track">
                                     <!-- 감소 트랙 -->
                                     <Track.DecreaseRepeatButton>
-                                        <RepeatButton Style="{StaticResource RoundedRepeatButton}" Command="Slider.DecreaseLarge" Background="{StaticResource color2}" Height="8" BorderBrush="Gray" Opacity="1" BorderThickness="0.5"/>
+                                        <RepeatButton Style="{StaticResource RoundedRepeatButtonLeft}" Command="Slider.DecreaseLarge" Background="{StaticResource color2}" Height="8"  Opacity="1" BorderThickness="0.5"/>
                                     </Track.DecreaseRepeatButton>
 
                                     <!-- 증가 트랙 -->
                                     <Track.IncreaseRepeatButton>
-                                        <RepeatButton Style="{StaticResource RoundedRepeatButton}" Command="Slider.IncreaseLarge" Background="{StaticResource color4}" Height="8" BorderBrush="Gray" Opacity="1" BorderThickness="0.5"/>
+                                        <RepeatButton Style="{StaticResource RoundedRepeatButtonRight}" Command="Slider.IncreaseLarge" Background="{StaticResource color4}" Height="8" Opacity="1" BorderThickness="0.5"/>
                                     </Track.IncreaseRepeatButton>
 
                                     <!-- つまみ -->
