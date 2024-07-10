@@ -197,7 +197,7 @@ void WarrningLCD() {
 
 void FanONOFF(int OnOff)
 {
-  swtitch(onoff){
+  switch( OnOff){
     case 0:
      analogWrite(AA, 0);
      analogWrite(BA, 0);
