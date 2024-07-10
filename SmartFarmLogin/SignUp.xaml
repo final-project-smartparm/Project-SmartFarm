@@ -1,0 +1,82 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:inputLayout="clr-namespace:Syncfusion.UI.Xaml.TextInputLayout;assembly=Syncfusion.SfTextInputLayout.WPF"
+        xmlns:local="clr-namespace:SmartFarmLogin"
+        xmlns:syncfusion="http://schemas.syncfusion.com/wpf" x:Class="SmartFarmLogin.SignUp"
+        mc:Ignorable="d"
+        Title="SignUp" Height="450" Width="280">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20*"/>
+            <RowDefinition Height="40*"/>
+            <RowDefinition Height="40*"/>
+            <RowDefinition Height="40*"/>
+            <RowDefinition Height="40*"/>
+            <RowDefinition Height="40*"/>
+            <RowDefinition Height="40*"/>
+            <RowDefinition Height="40*"/>
+            <RowDefinition Height="20*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="28*"/>
+            <ColumnDefinition Width="159*"/>
+            <ColumnDefinition Width="28*"/>
+        </Grid.ColumnDefinitions>
+
+        <StackPanel Grid.Row="1" Grid.Column="1">
+            <Label Content="회원가입"/>
+        </StackPanel>
+
+        <StackPanel Grid.Row="2" Grid.Column="1">
+            <Label Content="User Name"/>
+            <inputLayout:SfTextInputLayout 
+                Hint="Your Name"
+                HintFloatMode="None" >
+                <TextBox />
+            </inputLayout:SfTextInputLayout>
+        </StackPanel>
+
+        <StackPanel Grid.Row="3" Grid.Column="1">
+            <Label Content="Email address"/>
+            <inputLayout:SfTextInputLayout 
+                Hint="email@address.com"
+                HintFloatMode="None" >
+                <TextBox />
+            </inputLayout:SfTextInputLayout>
+        </StackPanel>
+
+        <StackPanel Grid.Row="4" Grid.Column="1">
+            <Label Content="Password"/>
+            <inputLayout:SfTextInputLayout
+                Hint="●●●●●●●●●"
+                HintFloatMode="None" >
+                <PasswordBox/>
+            </inputLayout:SfTextInputLayout>
+        </StackPanel>
+
+        <StackPanel Grid.Row="5" Grid.Column="1">
+            <Label Content="Phone Number"/>
+            <inputLayout:SfTextInputLayout 
+                Hint="010-1234-5678"
+                HintFloatMode="None" >
+                <TextBox />
+            </inputLayout:SfTextInputLayout>
+        </StackPanel>
+
+        <StackPanel Grid.Row="7" Grid.Column="1">
+            <Label Content="Already have an account? Log in here." />
+        </StackPanel>
+
+        <StackPanel Grid.Row="6" Grid.Column="1">
+            <syncfusion:ButtonAdv 
+            Label="Create Account"
+            Height="35" />
+        </StackPanel>
+
+    </Grid>
+
+
+</Window>

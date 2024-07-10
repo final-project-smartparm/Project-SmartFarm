@@ -1,0 +1,73 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:inputLayout="clr-namespace:Syncfusion.UI.Xaml.TextInputLayout;assembly=Syncfusion.SfTextInputLayout.WPF"        
+        xmlns:local="clr-namespace:SmartFarmLogin"
+        xmlns:syncfusion="http://schemas.syncfusion.com/wpf" x:Class="SmartFarmLogin.AddPlant"
+        mc:Ignorable="d"
+        Title="AddPlant" Height="450" Width="280">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20*"/>
+            <RowDefinition Height="40*"/>
+            <RowDefinition Height="40*"/>
+            <RowDefinition Height="40*"/>
+            <RowDefinition Height="40*"/>
+            <RowDefinition Height="40*"/>
+            <RowDefinition Height="40*"/>
+            <RowDefinition Height="40*"/>
+            <RowDefinition Height="20*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="28*"/>
+            <ColumnDefinition Width="159*"/>
+            <ColumnDefinition Width="28*"/>
+        </Grid.ColumnDefinitions>
+
+        <StackPanel Grid.Row="1" Grid.Column="1">
+            <Label Content="식물 추가하기"/>
+        </StackPanel>
+
+        <StackPanel Grid.Row="2" Grid.Column="1">
+            <Label Content="식물 종류"/>
+            <syncfusion:ComboBoxAdv x:Name="comboBoxAdv" AllowMultiSelect="True" DefaultText="ComboBox Items" Height="30" Width="150">
+                <syncfusion:ComboBoxItemAdv Content="방울토마토"/>
+                <syncfusion:ComboBoxItemAdv Content="강낭콩"/>
+            </syncfusion:ComboBoxAdv>
+        </StackPanel>
+
+        <StackPanel Grid.Row="3" Grid.Column="1">
+            <Label Content="식물 이름"/>
+            <inputLayout:SfTextInputLayout 
+                Hint="Name"
+                HintFloatMode="None" >
+                <TextBox />
+            </inputLayout:SfTextInputLayout>
+        </StackPanel>
+
+        <StackPanel Grid.Row="4" Grid.Column="1">
+            <Label Content="기르기 시작한 날"/>
+            <inputLayout:SfTextInputLayout 
+                Hint="Nam"
+                HintFloatMode="None" >
+                <TextBox />
+            </inputLayout:SfTextInputLayout>
+        </StackPanel>
+
+        <StackPanel Grid.Row="5" Grid.Column="1">
+            <Label Content="또 뭐 추가할 거 있나?"/>
+            <inputLayout:SfTextInputLayout 
+                Hint="010-1234-5678"
+                HintFloatMode="None" >
+                <TextBox />
+            </inputLayout:SfTextInputLayout>
+        </StackPanel>
+
+        <StackPanel Grid.Row="7" Grid.Column="1">
+            <Label Content=".." />
+        </StackPanel>
+
+    </Grid>
+</Window>
