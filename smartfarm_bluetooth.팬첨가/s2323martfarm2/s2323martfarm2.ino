@@ -22,8 +22,7 @@ int AB = 4;               // 모터A
 int BA = 6;               // 모터B 
 int BB = 7;               // 모터B 
 
-int ON = 1;
-int OFF = 0;
+int fanSpeed = 0;  // 팬 속도 상태 변수
 
 // 급수
 const int relayPin = 11;
@@ -68,6 +67,11 @@ void setup() {
 }
 
 void loop() {
+  if (bluetoothSerial.available()) {
+    char command = bluetoothSerial.read();
+    fanSpeed = command - '0'; // 문자형 숫자를 정수형 숫자로 변환
+  }
+  
   unsigned long currentMillis = millis();
 
   if (motorState) {
@@ -124,26 +128,23 @@ void loop() {
     lcd.print("Soil_M: "); lcd.print(strC_Soil); lcd.print("   ");
   }
 
-  if ((temp > fMax_temp && hum > fMax_hum) || temp > fMax_temp)  // 온습도 둘다 높을때, 온도가 높을때 -> Fan ON , LED OFF
-  {
-    FanONOFF(ON);
+  // 온도와 습도에 따른 팬 제어
+  if ((temp > fMax_temp && hum > fMax_hum) || temp > fMax_temp) {
+    fanSpeed = 2; // Middle 상태
+    RGB_Color(RGB_LED.Color(0, 0, 0), 10);
+  } else if (hum > fMax_hum) {
+    fanSpeed = 2; // Middle 상태
+    RGB_Color(RGB_LED.Color(100, 100, 100), 10);
+  } else if (temp < fMin_temp) {
+    fanSpeed = 0; // OFF 상태
+    RGB_Color(RGB_LED.Color(100, 100, 100), 10);
+  } else {
+    fanSpeed = 0; // OFF 상태
     RGB_Color(RGB_LED.Color(0, 0, 0), 10);
   }
-  else if (hum > fMax_hum)  // 습도가 높을 때 -> Fan ON , LED OFF
-  {
-    FanONOFF(ON);
-    RGB_Color(RGB_LED.Color(100, 100, 100), 10);
-  }
-  else if (temp < fMin_temp)  // 온도가 낮을 때 -> Fan OFF , LED ON
-  {
-    FanONOFF(OFF);
-    RGB_Color(RGB_LED.Color(100, 100, 100), 10);
-  }
-  else
-  {
-    FanONOFF(OFF);
-    RGB_Color(RGB_LED.Color(0, 0, 0), 10);
-  }
+  
+  // 팬 속도 설정
+  FanONOFF(fanSpeed);
   
   delay(500);
 }
@@ -194,39 +195,27 @@ void WarrningLCD() {
     delay(200);
 }
 
-// 쿨링팬 조절
-void Strongfan(){
-  analogWrite(AA,255);
-  analogWrite(BA,255);
-  delay(1000);
-}
-
-void Middlefan(){
-  analogWrite(AA,150);
-  analogWrite(BA,150);
-  delay(1000);
-}
-
-void Weakfan(){
-  analogWrite(AA,50);
-  analogWrite(BA,50);
-  delay(1000);
-}
-
 void FanONOFF(int OnOff)
 {
-  if (OnOff == 1)
-  {
-      digitalWrite(AA, HIGH);
-      digitalWrite(AB, LOW);
-      digitalWrite(BA, HIGH);
-      digitalWrite(BB, LOW);
+  swtitch(onoff){
+    case 0:
+     analogWrite(AA, 0);
+     analogWrite(BA, 0);
+     break;
+    case 1:
+      analogWrite(AA, 85);
+      analogWrite(BA, 85);
+      break;
+    case 2:
+      analogWrite(AA, 170);
+      analogWrite(BA, 170);
+      break;
+    case 3:
+      analogWrite(AA, 255);
+      analogWrite(BA, 255);
+      break;
+    defalut:
+      break;
   }
-  else
-  {
-     digitalWrite(AA, LOW);
-     digitalWrite(AB, LOW);
-     digitalWrite(BA, LOW);
-     digitalWrite(BB, LOW);
-  }
+  
 }
