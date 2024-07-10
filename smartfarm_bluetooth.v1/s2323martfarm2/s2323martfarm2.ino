@@ -23,6 +23,7 @@ int BA = 6;               // 모터B
 int BB = 7;               // 모터B 
 
 int fanSpeed = 0;  // 팬 속도 상태 변수
+int brightness = 0;  // 받은 밝기 값 변수
 
 // 급수
 const int relayPin = 11;
@@ -67,10 +68,23 @@ void setup() {
 }
 
 void loop() {
-  if (bluetoothSerial.available()) {
+   if (bluetoothSerial.available()) {
     char command = bluetoothSerial.read();
-    fanSpeed = command - '0'; // 문자형 숫자를 정수형 숫자로 변환
-  }
+    
+    // 받은 데이터에 따라서 밝기 혹은 팬 속도 설정
+    if (command >= '0' && command <= '100') {
+      brightness = command - '0'; // 문자형 숫자를 정수형 숫자로 변환
+      
+      // Neopixel 밝기 설정
+      int mappedBrightness = map(brightness, 0, 9, 0, 255); // 받은 값 범위를 Neopixel 밝기 범위로 매핑
+      RGB_LED.setBrightness(mappedBrightness); // Neopixel 밝기 설정
+      RGB_LED.show(); // Neopixel 표시
+
+    }
+    else if (command == 'A' || command == 'B' || command == 'C') {
+      fanSpeed = command - 'A'; // 'A'를 기준으로 0, 1, 2로 매핑
+    }
+   }
   
   unsigned long currentMillis = millis();
 
@@ -130,10 +144,10 @@ void loop() {
 
   // 온도와 습도에 따른 팬 제어
   if ((temp > fMax_temp && hum > fMax_hum) || temp > fMax_temp) {
-    fanSpeed = 2; // Middle 상태
+    FanONOFF(fanSpeed); 
     RGB_Color(RGB_LED.Color(0, 0, 0), 10);
   } else if (hum > fMax_hum) {
-    fanSpeed = 2; // Middle 상태
+    FanONOFF(fanSpeed); 
     RGB_Color(RGB_LED.Color(100, 100, 100), 10);
   } else if (temp < fMin_temp) {
     fanSpeed = 0; // OFF 상태
@@ -142,9 +156,6 @@ void loop() {
     fanSpeed = 0; // OFF 상태
     RGB_Color(RGB_LED.Color(0, 0, 0), 10);
   }
-  
-  // 팬 속도 설정
-  FanONOFF(fanSpeed);
   
   delay(500);
 }
