@@ -259,5 +259,22 @@
         <Setter Property="Stroke" Value="{StaticResource color3}"/>
         <Setter Property="StrokeDashArray" Value="5 8"/>
     </Style>
+
+
+    <Style x:Key="CircularPictureEllipse" TargetType="Ellipse">
+        <Setter Property="Width" Value="70"/>
+        <Setter Property="Height" Value="70"/>
+        <Setter Property="Stroke" Value="Gray"/>
+        <Setter Property="StrokeDashArray" Value="2 2"/>
+        <Setter Property="Fill" Value="{StaticResource color4}"/>
+
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Width" Value="80"/>
+                <Setter Property="Height" Value="80"/>
+                <Setter Property="Fill" Value="{StaticResource color1}"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
     <!--#endregion-->
 </ResourceDictionary>
