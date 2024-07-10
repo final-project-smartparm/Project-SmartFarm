@@ -32,100 +32,174 @@
     - 조도 센서에서의 밝기
     - 쿨링 팜 운전 시간
     - 카메라 피드
-- **MainWindow.xaml.cs**
-    1. using 문
-        - WPF와 관련된 다양한 네임스페이스를 사용
-        ```csharp
-            using System.Text;
-            using System.Windows;
-            using System.Windows.Controls;
-            using System.Windows.Data;
-            using System.Windows.Documents;
-            using System.Windows.Input;
-            using System.Windows.Media;
-            using System.Windows.Media.Imaging;
-            using System.Windows.Navigation;
-            using System.Windows.Shapes;
-        ``` 
+- ### MainWindow.xaml.cs
+1. using 문
+    - WPF와 관련된 다양한 네임스페이스를 사용
+    ```csharp
+        using System.Text;
+        using System.Windows;
+        using System.Windows.Controls;
+        using System.Windows.Data;
+        using System.Windows.Documents;
+        using System.Windows.Input;
+        using System.Windows.Media;
+        using System.Windows.Media.Imaging;
+        using System.Windows.Navigation;
+        using System.Windows.Shapes;
+    ``` 
 
-    2. namespace SFARM
-        - SFARM 이라는 이름의 네임스페이스를 선언
-        ```csharp
-        namespace SFARM
-        {
-            // 클래스들과 인터페이스들 선언
-        }
-        ```
+2. namespace SFARM
+    - SFARM 이라는 이름의 네임스페이스를 선언
+    ```csharp
+    namespace SFARM
+    {
+        // 클래스들과 인터페이스들 선언
+    }
+    ```
 
-    3. partial class MainWindow : Window
-        - MainWIndow 클래스가 Window 클래스를 상속받음
-        ```csharp
-        public partial class MainWindow : Window
-        {
-            // 클래스 내부의 코드들이 선언
-        }
-        ```
+3. partial class MainWindow : Window
+    - MainWIndow 클래스가 Window 클래스를 상속받음
+    ```csharp
+    public partial class MainWindow : Window
+    {
+        // 클래스 내부의 코드들이 선언
+    }
+    ```
 
-    4. MainWindow 생성자 (public MainWindow())
-        - MainWindow 클래스의 생성자
-        - InitializeComponent() 메서드를 호출하여 XAML 파일과 연결된 UI를 초기화
-        ```csharp
-        public MainWindow()
-        {
-            InitializeComponent();
-        }
-        ```
+4. MainWindow 생성자 (public MainWindow())
+    - MainWindow 클래스의 생성자
+    - InitializeComponent() 메서드를 호출하여 XAML 파일과 연결된 UI를 초기화
+    ```csharp
+    public MainWindow()
+    {
+        InitializeComponent();
+    }
+    ```
 
-    5. Window_Loaded 이벤트 핸들러 (private void Window_Loaded(object sender, RoutedEventArgs e))
-        - 창이 로드될 때 발생하는 이벤트 핸들러
-        - ActiveItem이라는 이름의 컨트롤의 Content를 HomeControl의 새 인스턴스로 설정하여 초기 화면을 설정
-        ```csharp
-        private void Window_Loaded(object sender, RoutedEventArgs e)
-        {
-            ActiveItem.Content = new Views.HomeControl();
-        }
-        ```
+5. Window_Loaded 이벤트 핸들러 (private void Window_Loaded(object sender, RoutedEventArgs e))
+    - 창이 로드될 때 발생하는 이벤트 핸들러
+    - ActiveItem이라는 이름의 컨트롤의 Content를 HomeControl의 새 인스턴스로 설정하여 초기 화면을 설정
+    ```csharp
+    private void Window_Loaded(object sender, RoutedEventArgs e)
+    {
+        ActiveItem.Content = new Views.HomeControl();
+    }
+    ```
 
-    6. BtnMnuHome_Click 이벤트 핸들러 (private void BtnMnuHome_Click(object sender, RoutedEventArgs e))
-        - 'Home' 버튼이 클릭될 때 발생하는 이벤트 핸들러
-        - HomeControl을 화면에 표시
-        ```csharp
-        private void BtnMnuHome_Click(object sender, RoutedEventArgs e)
-        {
-            ActiveItem.Content = new Views.HomeControl();
-        }
-        ```
+6. BtnMnuHome_Click 이벤트 핸들러 (private void BtnMnuHome_Click(object sender, RoutedEventArgs e))
+    - 'Home' 버튼이 클릭될 때 발생하는 이벤트 핸들러
+    - HomeControl을 화면에 표시
+    ```csharp
+    private void BtnMnuHome_Click(object sender, RoutedEventArgs e)
+    {
+        ActiveItem.Content = new Views.HomeControl();
+    }
+    ```
 
-    7. BtnMunMyPlants_Click 이벤트 핸들러 (private void BtnMunMyPlants_Click(object sender, RoutedEventArgs e))
-        - 'My Plants' 버튼이 클릭될 때 발생하는 이벤트 핸들러
-        - MyPlantsControl을 화면에 표시
-        ```csharp
-        namespace SFARM
-        private void BtnMunMyPlants_Click(object sender, RoutedEventArgs e)
-        {
-            ActiveItem.Content = new Views.MyPlantsControl();
-        }
-        ```
+7. BtnMunMyPlants_Click 이벤트 핸들러 (private void BtnMunMyPlants_Click(object sender, RoutedEventArgs e))
+    - 'My Plants' 버튼이 클릭될 때 발생하는 이벤트 핸들러
+    - MyPlantsControl을 화면에 표시
+    ```csharp
+    namespace SFARM
+    private void BtnMunMyPlants_Click(object sender, RoutedEventArgs e)
+    {
+        ActiveItem.Content = new Views.MyPlantsControl();
+    }
+    ```
 
-    8. BtnMyInfo_Click 이벤트 핸들러 (private void BtnMyInfo_Click(object sender, RoutedEventArgs e))
-        - 'My Info' 버튼이 클릭될 때 발생하는 이벤트 핸들러
-        - MyInfoControl을 화면에 표시
-        ```csharp
-        private void BtnMyInfo_Click(object sender, RoutedEventArgs e)
-        {
-            ActiveItem.Content = new Views.MyInfoControl();
-        }
-        ```
+8. BtnMyInfo_Click 이벤트 핸들러 (private void BtnMyInfo_Click(object sender, RoutedEventArgs e))
+    - 'My Info' 버튼이 클릭될 때 발생하는 이벤트 핸들러
+    - MyInfoControl을 화면에 표시
+    ```csharp
+    private void BtnMyInfo_Click(object sender, RoutedEventArgs e)
+    {
+        ActiveItem.Content = new Views.MyInfoControl();
+    }
+    ```
   
 #### HomeControl.xaml
 - **역할:** 주 대시보드 역할을 수행
+- ### HomeControl.xaml.cs
+1. 네임스페이스와 사용할 라이브러리 가져오기
+    - System: 기본적인 데이터 형식, 예외 처리, 이벤트 처리 등의 기본적인 클래스와 구조체를 제공합니다. 이 네임스페이스는 모든 .NET 애플리케이션에서 기본적으로 사용
+    - System.Collections.Generic: 제네릭(Generic) 컬렉션을 지원하는 클래스들을 포함합니다. 제네릭 컬렉션은 데이터 형식에 대한 안전성을 보장하며, 보다 효율적인 데이터 저장 및 처리를 가능하게 함
+    - System.Linq: Language Integrated Query (LINQ)를 지원하는 클래스들을 포함합니다. LINQ는 데이터 소스에서 데이터를 쿼리하고 조작할 수 있는 강력한 기능을 제공
+    - System.Text: 문자열 처리, 인코딩 및 디코딩, 형식화된 출력 등을 지원하는 클래스들을 제공
+    - System.Threading.Tasks: 병렬 및 비동기 프로그래밍을 지원하는 클래스들을 포함합니다. Task와 같은 클래스를 사용하여 비동기적으로 실행할 코드를 정의할 수 있음
+    - System.Windows: WPF(Windows Presentation Foundation)에서 사용하는 기본적인 윈도우 및 UI 요소 클래스들을 제공
+    - System.Windows.Controls: WPF에서 사용하는 다양한 컨트롤 요소들을 포함합니다. 예를 들어, Button, TextBox, ListBox 등의 UI 컨트롤을 이 네임스페이스에서 제공
+    - System.Windows.Data: 데이터 바인딩과 관련된 클래스들을 포함합니다. 데이터 바인딩은 UI 요소와 데이터 소스를 연결하여 데이터의 변화를 자동으로 반영할 수 있도록 도와줌
+    - System.Windows.Documents: 텍스트 및 문서 처리와 관련된 클래스들을 포함합니다. 예를 들어, FlowDocument, TextBlock 등의 요소를 이용하여 텍스트 기반 문서를 생성하고 편집할 수 있음
+    - System.Windows.Input: 사용자 입력을 처리하는 클래스들을 포함합니다. 마우스, 키보드 등의 입력에 대한 이벤트를 처리하고 관리할 수 있음
+    - System.Windows.Media: 그래픽 처리와 관련된 클래스들을 포함합니다. 다양한 미디어 요소를 처리하고, 2D/3D 그래픽을 구현하는 데 사용
+    - System.Windows.Media.Imaging: 이미지 처리와 관련된 클래스들을 포함합니다. BitmapImage와 같은 클래스를 사용하여 이미지를 로드하고 표시할 수 있음
+    - System.Windows.Navigation: 네비게이션과 관련된 클래스들을 포함합니다. 예를 들어, 페이지 간 이동을 관리하고 URI 기반의 네비게이션을 처리하는 데 사용
+    ```csharp
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Text;
+    using System.Threading.Tasks;
+    using System.Windows;
+    using System.Windows.Controls;
+    using System.Windows.Data;
+    using System.Windows.Documents;
+    using System.Windows.Input;
+    using System.Windows.Media;
+    using System.Windows.Media.Imaging;
+    using System.Windows.Navigation;
+    ```
 
+2. SFARM.Views 네임스페이스와 HomeControl 클래스 정의
+    - SFARM.Views 네임스페이스 안에 위치한 HomeControl 클래스
+    - UserControl을 상속받아 사용자 정의 UI 컨트롤을 구현
+    - partial class HomeControl에서 partial 키워드는 클래스가 여러 파일에 걸쳐 정의될 수 있음을 나타냄
+    ```csharp
+    namespace SFARM.Views
+    {
+        /// <summary>
+        /// HomeControl.xaml에 대한 상호 작용 논리
+        /// </summary>
+        public partial class HomeControl : UserControl
+        {
+    ```
+
+3. 생성자 메서드
+    - HomeControl 클래스의 생성자
+    - 생성자는 클래스가 인스턴스화될 때 호출
+    - InitializeComponent() 메서드는 UI 요소들이 정의된 XAML 파일을 초기화하는 역할, 일반적으로 UI 요소들을 메모리에 로드하고 연결
+    ```csharp
+        // HomeControl 클래스 정의
+        public HomeControl()
+        {
+            InitializeComponent(); // 초기화 함수 호출
+        }
+    ```
+
+4. UserControl_Loaded 이벤트 핸들러
+    - UserControl_Loaded 메서드는 UserControl이 로드될 때 발생하는 이벤트 핸들러 (해당 UI 요소가 화면에 나타날 때 호출)
+    - 세 개의 패널 (ActiveItemPanelLiveInfo, ActiveItemPanelPicture, ActiveItemPanelControl)의 Content 프로퍼티에 각각의 패널을 채워 넣는 작업
+        ```csharp
+        // UserControl이 로드될 때 호출되는 이벤트 핸들러
+        private void UserControl_Loaded(object sender, RoutedEventArgs e)
+        {
+            // ActiveItemPanelLiveInfo의 Content에 Views.PanelLiveInfo 인스턴스 설정
+            ActiveItemPanelLiveInfo.Content = new Views.PanelLiveInfo();
+            
+            // ActiveItemPanelPicture의 Content에 Views.PanelPicture 인스턴스 설정
+            ActiveItemPanelPicture.Content = new Views.PanelPicture();
+            
+            // ActiveItemPanelControl의 Content에 Views.PanelControl 인스턴스 설정
+            ActiveItemPanelControl.Content = new Views.PanelControl();
+        }
+    ```
 
 - **구성요소:**
 - #### 제어센서 모니터링(PanelControl.xaml)
     - 기본 DB값에서 추천해주는 기본값에 맞춰저 있는 각 수치를 사용자의 기준에 맞춰서 조절하고 환경을 최적화 할 수 있는 컨트롤 화면
     - 물탱크의 급수량, 급수 주기, 온도, 조도 센서의 밝기 정도, 쿨링팬 작동 시간을 제어할 수 있는 기능을 제공
-**PanelControl.xaml.cs**
+
+### PanelControl.xaml.cs
 1. using 문
     - System: 기본 .NET 클래스와 구조체를 포함하고 있는 가장 기본적인 네임스페이스
     - System.Collections.Generic: 제네릭 컬렉션 클래스(예: List, Dictionary 등)를 사용할 수 있게 해줌
@@ -191,7 +265,7 @@
     - 현재 온도 , 토양 수분도 , 조도 , 물탱크 상황 등 스마트팜의 주요 환경 지표를 실시간 반영해여 보여주는 화면
     - 사용자가 위의 실시간 데이터를 통해서 상태를 파악하고 각 필요한 조치를 취할 수가 있음
     - ex : 각각의 모니터링화면에서 경고가 발생!
-**PanelLiveInfo.xaml.cs**
+### PanelLiveInfo.xaml.cs
 1. using 문
     - System: 기본 .NET 클래스와 구조체를 포함하고 있는 가장 기본적인 네임스페이스
     - System.Collections.Generic: 제네릭 컬렉션 클래스(예: List, Dictionary 등)를 사용할 수 있게 해줌
@@ -257,7 +331,7 @@
 - #### 성장 진행률 모니터링(PanelPicture.xaml)
     - 식물의 성장 과정을 시각적으로 추적 할 수 있는 화면
     - 주기적으로 촬영된 사진을 앨범처럼 보여주면서 디자인과 성장 상태의 변화를 확인할 수 있음
-**PanelPicture.xaml.cs**
+### PanelPicture.xaml.cs
 1. using 문
     - System: 기본 .NET 클래스와 구조체를 포함하고 있는 가장 기본적인 네임스페이스
     - System.Collections.Generic: 제네릭 컬렉션 클래스(예: List, Dictionary 등)를 사용할 수 있게 해줌
@@ -321,13 +395,95 @@
     ```
 - ![PanelPicture.xaml](https://raw.githubusercontent.com/final-project-smartparm/SmartFarm-WPF-Part/main/img/Sparm3.png)
 
+### MyPlantsControl.xaml
+```csharp
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Text;
+    using System.Threading.Tasks;
+    using System.Windows;
+    using System.Windows.Controls;
+    using System.Windows.Data;
+    using System.Windows.Documents;
+    using System.Windows.Input;
+    using System.Windows.Media;
+    using System.Windows.Media.Imaging;
+    using System.Windows.Navigation;
+    using System.Windows.Shapes;
 
-#### MyPlantsControl.xaml
-#### MyInfoControl.xaml
+    namespace SFARM.Views
+    {
+        /// <summary>
+        /// MyPlantsControl.xaml에 대한 상호 작용 논리
+        /// </summary>
+        public partial class MyPlantsControl : UserControl
+        {
+            public MyPlantsControl()
+            {
+                InitializeComponent();
+            }
+        }
+    }
+```
+
+### MyInfoControl.xaml
+```csharp
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Text;
+    using System.Threading.Tasks;
+    using System.Windows;
+    using System.Windows.Controls;
+    using System.Windows.Data;
+    using System.Windows.Documents;
+    using System.Windows.Input;
+    using System.Windows.Media;
+    using System.Windows.Media.Imaging;
+    using System.Windows.Navigation;
+    using System.Windows.Shapes;
+
+    namespace SFARM.Views
+    {
+        /// <summary>
+        /// MyInfoControl.xaml에 대한 상호 작용 논리
+        /// </summary>
+        public partial class MyInfoControl : UserControl
+        {
+            public MyInfoControl()
+            {
+                InitializeComponent();
+            }
+        }
+    }
+```
+
+### App.xaml.cs
+```csharp
+using System.Configuration;
+using System.Data;
+using System.Windows;
+
+namespace SFARM
+{
+    /// <summary>
+    /// Interaction logic for App.xaml
+    /// </summary>
+    public partial class App : Application
+    {
+        public App()
+        {
+            Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("Ngo9BigBOggjHTQxAR8/V1NCaF5cXmZCeUx3RHxbf1x0ZFZMZFpbRHFPMyBoS35RckVkWXtec3BTRmdbVEFz");
+        }
+    }
+}
+```
+
+
 
 
 --------------------------------------------------------------
-
 
 ## SmartFarm---Arduino-IDE
 스마트팜 아두이노 개발 (하드웨어)
