@@ -194,6 +194,25 @@ void WarrningLCD() {
     delay(200);
 }
 
+// 쿨링팬 조절
+void Strongfan(){
+  analogWrite(AA,255);
+  analogWrite(BA,255);
+  delay(1000);
+}
+
+void Middlefan(){
+  analogWrite(AA,150);
+  analogWrite(BA,150);
+  delay(1000);
+}
+
+void Weakfan(){
+  analogWrite(AA,50);
+  analogWrite(BA,50);
+  delay(1000);
+}
+
 void FanONOFF(int OnOff)
 {
   if (OnOff == 1)
