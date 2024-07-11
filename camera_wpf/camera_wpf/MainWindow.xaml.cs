@@ -18,7 +18,7 @@ namespace camera_wpf
     {
         private WebClient _webClient;
         private bool _isStreaming;
-        private const string StreamUrl = "http://1234/mjpeg/1"; // Replace with your ESP32-CAM MJPEG stream URL
+        private const string StreamUrl = "http://210.119.12.74/mjpeg/1"; // Replace with your ESP32-CAM MJPEG stream URL
 
         public MainWindow()
         {
