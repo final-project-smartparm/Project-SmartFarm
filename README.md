@@ -17,7 +17,7 @@
 - **매력적인 디자인:** WPF는 시각적으로 매력적인 UI 디자인을 제공하며, 컨트롤 배치와 애니메이션 적용을 자유롭게 할 수 있어 사용자에게 매력적인 화면을 제공할 수 있습니다.
 - **디자인과 코드 분리:** WPF를 사용하면 디자인(XAML)과 기능(C# 코드)을 명확히 분리할 수 있어 프로젝트 내에서의 협업과 통합이 원활합니다.
 
-### 개발된 구성 요소:
+### 개발된 구성 요소
 
 #### MainWindow.xaml
 - **역할**
@@ -480,6 +480,38 @@ namespace SFARM
 }
 ```
 
+#### Color
+- Background Colors
+    - #467362
+    - #568C73
+    - #81A68A
+    - #C4D9BF
+- Window Border Colors
+    - #6D2FFF
+    - #FB539B
+    - #836EFB
+- Color Palette
+    - #467362
+    - #568C73
+    - #81A68A
+    - #C4D9BF
+    - #F2F2F2
+    - #7C625A
+    - #172026
+- Font Colors
+    - #E0E1F1
+    - #D5CFF5
+    - #BCBEE0
+    - #9497CD
+    - #7C80C2
+    - #7376BD
+- Panel Colors
+    - #200F53
+    - #281269
+    - #2B1372
+- Button Colors
+- TextBox Colors
+- Etc
 
 
 
