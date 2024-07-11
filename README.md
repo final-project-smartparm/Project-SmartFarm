@@ -482,6 +482,8 @@ namespace SFARM
 
 #### Color
 - Background Colors
+    - <p>$\bf{\large{\color{#467362}두꺼운\ 글씨체,\ 큰글씨,\ 파란색}}$</p>
+    - <p>$\bf{\large{\color{#6580DD}두꺼운\ #467362}}$</p>
     - <p>$\bf{\large{\color{#467362}#467362}}$</p> 
     - #568C73
     - #81A68A
