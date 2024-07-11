@@ -482,7 +482,7 @@ namespace SFARM
 
 #### Color
 - Background Colors
-    - <p>$\bf{\large{\color{#467362}467362}}$</p>
+    - <p>$\bf{\large{\color{#467362}\#467362}}$</p>
     - <p>$\bf{\large{\color{#568C73}568C73}}$</p>
     - <p>$\bf{\large{\color{#81A68A}81A68A}}$</p>
     - <p>$\bf{\large{\color{#C4D9BF}C4D9BF}}$</p>
