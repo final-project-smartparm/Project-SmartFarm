@@ -44,9 +44,9 @@ void setup() {
   pinMode(relayPin, OUTPUT); // 릴레이 핀을 출력으로 설정
   digitalWrite(relayPin, LOW); // 릴레이 초기 상태를 꺼짐으로 설정
 
-  fMax_hum  = 60.0;                            // 센서 기준값 설정
-  fMax_temp = 30.0;
-  fMin_temp = 22.0;
+  // 센서 기준값 설정
+  fMax_temp = 22.0;
+  fMin_temp = 18.0;
   Soil_moisture_reference = 50;                // 기준 수분값 설정 0 ~ 100%
   pinMode(JODO_PIN, INPUT);  // A0 핀을 입력으로 설정
   
@@ -68,9 +68,11 @@ void setup() {
 }
 
 void loop() {
+   fanSpeed = 2;
    if (bluetoothSerial.available()) {
     char command = bluetoothSerial.read();
-    
+    Serial.print("recived:");
+    Serial.print(command);
     
     // 받은 데이터에 따라서 밝기 혹은 팬 속도 설정
     if (command >= '0' && command <= '10') {
@@ -81,10 +83,13 @@ void loop() {
       RGB_LED.setBrightness(mappedBrightness); // Neopixel 밝기 설정
       RGB_LED.show(); // Neopixel 표시
 
-    }
-    else if (command == 'A' || command == 'B' || command == 'C'|| command == 'D') {
-      fanSpeed = command - 'A'; // 'A'를 기준으로 0, 1, 2로 매핑
-    }
+    } else if (command == "A") {
+      fanSpeed = 1;
+    } else if (command == "B") {
+      fanSpeed = 2;
+    } else if (command == "C") {
+      fanSpeed = 3;
+    } 
    }
   
   unsigned long currentMillis = millis();
@@ -144,12 +149,9 @@ void loop() {
   }
 
   // 온도와 습도에 따른 팬 제어
-  if ((temp > fMax_temp && hum > fMax_hum) || temp > fMax_temp) {
+  if (temp > fMax_temp) {
     FanONOFF(fanSpeed); 
     RGB_Color(RGB_LED.Color(0, 0, 0), 10);
-  } else if (hum > fMax_hum) {
-    FanONOFF(fanSpeed); 
-    RGB_Color(RGB_LED.Color(100, 100, 100), 10);
   } else if (temp < fMin_temp) {
     fanSpeed = 0; // OFF 상태
     RGB_Color(RGB_LED.Color(100, 100, 100), 10);
@@ -226,7 +228,9 @@ void FanONOFF(int OnOff)
       analogWrite(AA, 255);
       analogWrite(BA, 255);
       break;
-    defalut:
+    default: // 오타 수정 및 기본 처리
+      analogWrite(AA, 0);
+      analogWrite(BA, 0);
       break;
   }
   

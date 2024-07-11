@@ -25,17 +25,14 @@ namespace SFARM.Views
                 string fanSpeed = rb.Content.ToString();
                 switch (fanSpeed)
                 {
-                    case "Off":
+                    case "약":
                         bluetoothManager.SendData("A");
                         break;
-                    case "약":
+                    case "중":
                         bluetoothManager.SendData("B");
                         break;
-                    case "중":
-                        bluetoothManager.SendData("C");
-                        break;
                     case "강":
-                        bluetoothManager.SendData("D");
+                        bluetoothManager.SendData("C");
                         break;
                 }
             }
