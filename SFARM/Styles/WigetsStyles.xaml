@@ -2,6 +2,7 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:fa="http://schemas.awesome.incremented/wpf/xaml/fontawesome.sharp"
                     xmlns:Syncfusion="http://schemas.syncfusion.com/wpf">
+    
     <Style x:Key="CustomTextBoxStyle" TargetType="TextBox">
         <Setter Property="Margin" Value="10,0,0,0"/>
         <Setter Property="Height" Value="23"/>
@@ -10,7 +11,100 @@
         <Setter Property="Foreground" Value="{StaticResource color2}"/>
     </Style>
     
+    <!--#region MyPalntsControl Style-->
+    
+    <!-- Infomation MainTitle -->
+    <Style x:Key="InfoMainTitleLbl" TargetType="Label">
+        <Setter Property="FontFamily" Value="NunumGothic"/>
+        <Setter Property="FontWeight" Value="DemiBold"/>
+        <Setter Property="FontSize" Value="25"/>
+        <Setter Property="HorizontalAlignment" Value="Center"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+    </Style>
+    
+    <!-- Infomation SubTitle -->
+    <Style x:Key="InfoSubTitleLbl" TargetType="Label">
+        <Setter Property="FontFamily" Value="NunumGothic"/>
+        <Setter Property="FontWeight" Value="Bold"/>
+        <Setter Property="Foreground" Value="{StaticResource color6}"/>
+        <Setter Property="FontSize" Value="14"/>
+    </Style>
+
+    <!-- Infomation SubTitleIcon -->
+    <Style x:Key="InfoSubTitleIcon" TargetType="fa:IconImage">
+        <Setter Property="Foreground" Value="{StaticResource color3}"/>
+        <Setter Property="Width" Value="15"/>
+        <Setter Property="Height" Value="15"/>
+    </Style>
+
+    <!-- Infomation Description TextBlock-->
+    <Style x:Key="InfoDescripTxt" TargetType="TextBlock">
+        <Setter Property="FontSize" Value="12"/>
+        <Setter Property="Margin" Value="5,0"/>
+        <Setter Property="TextWrapping" Value="Wrap"/>
+        <Setter Property="IsEnabled" Value="False"/>
+    </Style>
+    
+    <!-- LEDLight on/off Btn-->
+
+    <!--#endregion-->
+    
     <!--#region PanleControl Style -->
+    <!-- 강 중 약 RadioButton -->
+    <Style x:Key="RadioButtonStyle1" TargetType="{x:Type RadioButton}">
+        <!--<Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}"/>
+        <Setter Property="Background" Value="{StaticResource RadioButton.Static.Background}"/>-->
+        <Setter Property="BorderBrush" Value="Gray"/>
+        <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="HorizontalAlignment" Value="Center"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="Width" Value="50"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type RadioButton}">
+                    <Grid x:Name="templateRoot" Background="Transparent" SnapsToDevicePixels="True">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Border x:Name="radioButtonBorder" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="100" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="1,1,2,1" VerticalAlignment="{TemplateBinding VerticalContentAlignment}">
+                            <Grid x:Name="markGrid" Margin="2">
+                                <Ellipse x:Name="optionMark" Fill="{StaticResource color1}" MinWidth="15" MinHeight="15" Opacity="0"/>
+                            </Grid>
+                        </Border>
+                        <ContentPresenter x:Name="contentPresenter" Grid.Column="1" Focusable="False" HorizontalAlignment="Center" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="Center"/>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="HasContent" Value="true">
+                            <Setter Property="Padding" Value="4,-1,0,0"/>
+                        </Trigger>
+                        <Trigger Property="IsMouseOver" Value="true">
+                            <Setter Property="BorderBrush" TargetName="radioButtonBorder" Value="{StaticResource color6}"/>
+                            <Setter Property="Fill" TargetName="optionMark" Value="{StaticResource color3}"/>
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="false">
+                            <!--<Setter Property="Background" TargetName="radioButtonBorder" Value="{StaticResource RadioButton.Disabled.Background}"/>
+                            <Setter Property="BorderBrush" TargetName="radioButtonBorder" Value="{StaticResource RadioButton.Disabled.Border}"/>
+                            <Setter Property="Fill" TargetName="optionMark" Value="{StaticResource RadioButton.Disabled.Glyph}"/>-->
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="true">
+                            <!--<Setter Property="Background" TargetName="radioButtonBorder" Value="{StaticResource RadioButton.MouseOver.Background}"/>-->
+                            <Setter Property="BorderBrush" TargetName="radioButtonBorder" Value="{StaticResource color6}"/>
+                            <Setter Property="Fill" TargetName="optionMark" Value="{StaticResource color4}"/>
+                        </Trigger>
+                        <Trigger Property="IsChecked" Value="true">
+                            <Setter Property="Opacity" TargetName="optionMark" Value="1"/>
+                        </Trigger>
+                        <Trigger Property="IsChecked" Value="{x:Null}">
+                            <Setter Property="Opacity" TargetName="optionMark" Value="0.56"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    
     <!--#region 슬라이더바-->
     <Style x:Key="SliderThumbStyle" TargetType="{x:Type Thumb}">
         <Setter Property="Template">
@@ -84,61 +178,6 @@
     <SolidColorBrush x:Key="RadioButton.Disabled.Glyph" Color="#FF707070"/>
     
     
-    <Style x:Key="RadioButtonStyle1" TargetType="{x:Type RadioButton}">
-        <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}"/>
-        <Setter Property="Background" Value="{StaticResource RadioButton.Static.Background}"/>
-        <Setter Property="BorderBrush" Value="Gray"/>
-        <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
-        <Setter Property="BorderThickness" Value="1"/>
-        <Setter Property="HorizontalAlignment" Value="Center"/>
-        <Setter Property="VerticalAlignment" Value="Center"/>
-        <Setter Property="Width" Value="50"/>
-        <Setter Property="Template">
-            <Setter.Value>
-                <ControlTemplate TargetType="{x:Type RadioButton}">
-                    <Grid x:Name="templateRoot" Background="Transparent" SnapsToDevicePixels="True">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="Auto"/>
-                            <ColumnDefinition Width="*"/>
-                        </Grid.ColumnDefinitions>
-                        <Border x:Name="radioButtonBorder" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="100" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="1,1,2,1" VerticalAlignment="{TemplateBinding VerticalContentAlignment}">
-                            <Grid x:Name="markGrid" Margin="2">
-                                <Ellipse x:Name="optionMark" Fill="{StaticResource color1}" MinWidth="15" MinHeight="15" Opacity="0"/>
-                            </Grid>
-                        </Border>
-                        <ContentPresenter x:Name="contentPresenter" Grid.Column="1" Focusable="False" HorizontalAlignment="Center" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="Center"/>
-                    </Grid>
-                    <ControlTemplate.Triggers>
-                        <Trigger Property="HasContent" Value="true">
-                            <Setter Property="FocusVisualStyle" Value="{StaticResource OptionMarkFocusVisual}"/>
-                            <Setter Property="Padding" Value="4,-1,0,0"/>
-                        </Trigger>
-                        <Trigger Property="IsMouseOver" Value="true">
-                            <Setter Property="Background" TargetName="radioButtonBorder" Value="{StaticResource RadioButton.MouseOver.Background}"/>
-                            <Setter Property="BorderBrush" TargetName="radioButtonBorder" Value="{StaticResource color6}"/>
-                            <Setter Property="Fill" TargetName="optionMark" Value="{StaticResource color3}"/>
-                        </Trigger>
-                        <Trigger Property="IsEnabled" Value="false">
-                            <Setter Property="Background" TargetName="radioButtonBorder" Value="{StaticResource RadioButton.Disabled.Background}"/>
-                            <Setter Property="BorderBrush" TargetName="radioButtonBorder" Value="{StaticResource RadioButton.Disabled.Border}"/>
-                            <Setter Property="Fill" TargetName="optionMark" Value="{StaticResource RadioButton.Disabled.Glyph}"/>
-                        </Trigger>
-                        <Trigger Property="IsPressed" Value="true">
-                            <Setter Property="Background" TargetName="radioButtonBorder" Value="{StaticResource RadioButton.MouseOver.Background}"/>
-                            <Setter Property="BorderBrush" TargetName="radioButtonBorder" Value="{StaticResource color6}"/>
-                            <Setter Property="Fill" TargetName="optionMark" Value="{StaticResource color4}"/>
-                        </Trigger>
-                        <Trigger Property="IsChecked" Value="true">
-                            <Setter Property="Opacity" TargetName="optionMark" Value="1"/>
-                        </Trigger>
-                        <Trigger Property="IsChecked" Value="{x:Null}">
-                            <Setter Property="Opacity" TargetName="optionMark" Value="0.56"/>
-                        </Trigger>
-                    </ControlTemplate.Triggers>
-                </ControlTemplate>
-            </Setter.Value>
-        </Setter>
-    </Style>
     
     <Style x:Key="CustomSliderStyle" TargetType="{x:Type Slider}">
         <Style.Triggers>
@@ -249,7 +288,7 @@
     </Style>
     <!--#endregion-->
       
-    <!-- Control패널 텍스트 -->
+    <!-- Control패널 SubLbl 텍스트 -->
     <Style x:Key="PanelcontrolLabel" TargetType="{x:Type Label}">
         <Setter Property="HorizontalAlignment" Value="Left"/>
         <Setter Property="VerticalAlignment" Value="Bottom"/>
@@ -260,6 +299,18 @@
     </Style>
     
     
+    <!-- Control패널 Green Data TextBox (급수량, 온도) -->
+    <Style x:Key="SubValueTextBox" TargetType="TextBox">
+        <Setter Property="HorizontalAlignment" Value="Center"/>
+        <Setter Property="FontSize" Value="20"/>
+        <Setter Property="FontWeight" Value="DemiBold"/>
+        <!--<Setter Property="FontFamily" Value="Nanumgothic"/>-->
+        <Setter Property="Foreground" Value="{StaticResource color3}"/>
+        <Setter Property="BorderBrush" Value="Transparent"/>
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="Margin" Value="0,3,0,0"/>
+    </Style>
+
     <!-- CntrolPanel SaveBtn-->
     <Style x:Key="RoundButtonTemplate" TargetType="Button">
         <Setter Property="Background" Value="Transparent"/>
@@ -350,17 +401,17 @@
 
 
     <Style x:Key="CircularPictureEllipse" TargetType="Ellipse">
+        <Setter Property="Opacity" Value="0.7"/>
         <Setter Property="Width" Value="70"/>
         <Setter Property="Height" Value="70"/>
-        <Setter Property="Stroke" Value="Gray"/>
-        <Setter Property="StrokeDashArray" Value="2 2"/>
+        <Setter Property="Stroke" Value="LightGray"/>
         <Setter Property="Fill" Value="{StaticResource color4}"/>
 
         <Style.Triggers>
             <Trigger Property="IsMouseOver" Value="True">
-                <Setter Property="Width" Value="80"/>
-                <Setter Property="Height" Value="80"/>
-                <Setter Property="Fill" Value="{StaticResource color1}"/>
+                <Setter Property="Opacity" Value="1.2"/>
+                <Setter Property="Width" Value="75"/>
+                <Setter Property="Height" Value="75"/>
             </Trigger>
         </Style.Triggers>
     </Style>

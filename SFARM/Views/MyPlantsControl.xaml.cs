@@ -119,8 +119,9 @@ namespace SFARM.Views
                     BitmapEncoder encoder = new PngBitmapEncoder(); // You can use different encoder based on your need (e.g., JpegBitmapEncoder)
                     encoder.Frames.Add(BitmapFrame.Create(bitmapSource));
 
+                    string filePath = @"C:\SFAMCapture\"; // 캡처이미지 저장경로(폴더) 지정
                     string fileName = $"capture_{DateTime.Now:yyyyMMdd_HHmmss}.png"; // Unique file name based on timestamp
-                    using (FileStream fileStream = new FileStream(fileName, FileMode.Create))
+                    using (FileStream fileStream = new FileStream(filePath + fileName, FileMode.Create))
                     {
                         encoder.Save(fileStream);
                     }
