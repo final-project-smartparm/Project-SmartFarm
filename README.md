@@ -1,5 +1,6 @@
 # 프로젝트-SmartParm
-
+  <img src="https://img.shields.io/badge/리액트-61DAFB?style=flat&logo=React&logoColor=white"/>
+출처: https://yoon990.tistory.com/38 [개발저장소:티스토리]
 **프로젝트 목표:** IoT 기술을 활용하여 소형 스마트팜 구축한다. 아두이노 온도 및 습도 센서를 사용하여 환경 데이터 수집한다. 빅데이터를 이용해 날씨 데이터베이스 구축 후 WPF 환경에서 작물 재배 환경 최적화한다.
 
 ## SmartFarm-WPF-Part
