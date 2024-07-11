@@ -1,5 +1,5 @@
 # 프로젝트-SmartParm
-<p>$\bf{\large{\color{#6580DD}두꺼운\ 글씨체,\ 큰글씨,\ 파란색}}$</p>
+
 **프로젝트 목표:** IoT 기술을 활용하여 소형 스마트팜 구축한다. 아두이노 온도 및 습도 센서를 사용하여 환경 데이터 수집한다. 빅데이터를 이용해 날씨 데이터베이스 구축 후 WPF 환경에서 작물 재배 환경 최적화한다.
 
 ## SmartFarm-WPF-Part
@@ -482,7 +482,7 @@ namespace SFARM
 
 #### Color
 - Background Colors
-    - #467362
+    - <p>$\bf{\large{\color{#467362}#467362}}$</p> 
     - #568C73
     - #81A68A
     - #C4D9BF
