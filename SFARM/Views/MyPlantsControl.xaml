@@ -6,6 +6,7 @@
              xmlns:local="clr-namespace:SFARM.Views"
              mc:Ignorable="d" 
              d:DesignHeight="635" d:DesignWidth="1000">
+    
     <Grid Margin="100,70">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*"/>
@@ -50,4 +51,5 @@
             <TextBox x:Name="PlantsInfoPlace" Grid.Row="1" Margin="10,10"/>
         </Grid>
     </Grid>
+    
 </UserControl>

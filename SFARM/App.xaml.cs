@@ -11,7 +11,7 @@ namespace SFARM
     {
         public App()
         {
-            Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("Ngo9BigBOggjHTQxAR8/V1NCaF5cXmZCeUx3RHxbf1x0ZFZMZFpbRHFPMyBoS35RckVkWXtec3BTRmdbVEFz");
+            Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("MzM3NjIzMUAzMjM2MmUzMDJlMzBlV2kzSlFvdjJLS0RVbWV2SC9zcUtSY204K0RIWGtxUmNuc0ZIRElmUVBFPQ==");
         }
     }
 }

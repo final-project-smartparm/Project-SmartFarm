@@ -9,6 +9,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="SFARM\**" />
+    <EmbeddedResource Remove="SFARM\**" />
+    <None Remove="SFARM\**" />
+    <Page Remove="SFARM\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Remove="Images\pic1.png" />
     <None Remove="Images\방울토마토4.png" />
   </ItemGroup>
