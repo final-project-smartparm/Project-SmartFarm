@@ -71,8 +71,9 @@ void loop() {
    if (bluetoothSerial.available()) {
     char command = bluetoothSerial.read();
     
+    
     // 받은 데이터에 따라서 밝기 혹은 팬 속도 설정
-    if (command >= '0' && command <= '100') {
+    if (command >= '0' && command <= '10') {
       brightness = command - '0'; // 문자형 숫자를 정수형 숫자로 변환
       
       // Neopixel 밝기 설정
@@ -81,7 +82,7 @@ void loop() {
       RGB_LED.show(); // Neopixel 표시
 
     }
-    else if (command == 'A' || command == 'B' || command == 'C') {
+    else if (command == 'A' || command == 'B' || command == 'C'|| command == 'D') {
       fanSpeed = command - 'A'; // 'A'를 기준으로 0, 1, 2로 매핑
     }
    }
@@ -208,7 +209,7 @@ void WarrningLCD() {
 
 void FanONOFF(int OnOff)
 {
-  switch( OnOff){
+  switch(OnOff){
     case 0:
      analogWrite(AA, 0);
      analogWrite(BA, 0);
