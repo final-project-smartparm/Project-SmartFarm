@@ -483,32 +483,32 @@ namespace SFARM
 #### Color
 - Background Colors
     - <p>$\bf{\large{\color{#467362}467362}}$</p>
-    - #568C73
-    - #81A68A
-    - #C4D9BF
+    - <p>$\bf{\large{\color{#568C73}568C73}}$</p>
+    - <p>$\bf{\large{\color{#81A68A}81A68A}}$</p>
+    - <p>$\bf{\large{\color{#C4D9BF}C4D9BF}}$</p>
 - Window Border Colors
-    - #6D2FFF
-    - #FB539B
-    - #836EFB
+    - <p>$\bf{\large{\color{#6D2FFF}6D2FFF}}$</p>
+    - <p>$\bf{\large{\color{#FB539B}FB539B}}$</p>
+    - <p>$\bf{\large{\color{#836EFB}836EFB}}$</p>
 - Color Palette
-    - #467362
-    - #568C73
-    - #81A68A
-    - #C4D9BF
-    - #F2F2F2
-    - #7C625A
-    - #172026
+    - <p>$\bf{\large{\color{#467362}467362}}$</p>
+    - <p>$\bf{\large{\color{#568C73}568C73}}$</p>
+    - <p>$\bf{\large{\color{#81A68A}81A68A}}$</p>
+    - <p>$\bf{\large{\color{#C4D9BF}C4D9BF}}$</p>
+    - <p>$\bf{\large{\color{#F2F2F2}F2F2F2}}$</p>
+    - <p>$\bf{\large{\color{#7C625A}7C625A}}$</p>
+    - <p>$\bf{\large{\color{#172026}172026}}$</p>
 - Font Colors
-    - #E0E1F1
-    - #D5CFF5
-    - #BCBEE0
-    - #9497CD
-    - #7C80C2
-    - #7376BD
+    - <p>$\bf{\large{\color{#E0E1F1}E0E1F1}}$</p>
+    - <p>$\bf{\large{\color{#D5CFF5}D5CFF5}}$</p>
+    - <p>$\bf{\large{\color{#BCBEE0}BCBEE0}}$</p>
+    - <p>$\bf{\large{\color{#9497CD}9497CD}}$</p>
+    - <p>$\bf{\large{\color{#7C80C2}7C80C2}}$</p>
+    - <p>$\bf{\large{\color{#7376BD}7376BD}}$</p>
 - Panel Colors
-    - #200F53
-    - #281269
-    - #2B1372
+    - <p>$\bf{\large{\color{#200F53}200F53}}$</p>
+    - <p>$\bf{\large{\color{#281269}281269}}$</p>
+    - <p>$\bf{\large{\color{#2B1372}2B1372}}$</p>
 - Button Colors
 - TextBox Colors
 - Etc
