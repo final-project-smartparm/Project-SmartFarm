@@ -7,29 +7,21 @@
              mc:Ignorable="d" 
              d:DesignHeight="635" d:DesignWidth="1000">
     
-    <Grid Margin="100,70">
+    <Grid Margin="50,35">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*"/>
             <ColumnDefinition Width="2*"/>
         </Grid.ColumnDefinitions>
 
-        <Grid Grid.Column="0" Background="#A79277">
+        <Grid Grid.Column="0" Background="{StaticResource color5}">
             <Grid.RowDefinitions>
                 <RowDefinition Height="1*"/>
                 <RowDefinition Height="9*"/>
             </Grid.RowDefinitions>
 
-            <Button x:Name="Capture" Content="Capture!"  Margin="10,10,140,10" Background="White"></Button>
+            <Button x:Name="CaptureButton" Content="Capture!"  Margin="10,10,140,10" Background="White" Click="CaptureButton_Click"></Button>
             <Button x:Name="LightOn" Content="LightON!"  Margin="140,10,10,10" Background="White"></Button>
-
-            <Grid Grid.Row="1" Margin="10,10">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="1*"/>
-                    <ColumnDefinition Width="1*"/>
-                </Grid.ColumnDefinitions>
-            </Grid>
-
-            <TextBox x:Name="PlantsCameraPlace" Grid.Row="1" Grid.RowSpan="2" Margin="10,10"/>
+            <Image Name="streamImage" Stretch="Fill" Grid.Row="1" Margin="10,10"/>
         </Grid>
 
         <Grid Grid.Column="1" Background="#FFF2E1">
