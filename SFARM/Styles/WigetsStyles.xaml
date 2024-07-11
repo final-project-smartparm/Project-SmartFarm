@@ -95,10 +95,10 @@
                                     <ColumnDefinition Width="25" />
                                     <ColumnDefinition Width="Auto" />
                                 </Grid.ColumnDefinitions>
-                                <!-- 左の目盛り -->
+                                <!-- 왼쪽 눈금 -->
                                 <TickBar Grid.Column="0" x:Name="LeftTick" Placement="Left" Visibility="Collapsed" Fill="{TemplateBinding Foreground}" Width="8" Opacity="0.64" Margin="0,0,2,0" />
 
-                                <!-- 右の目盛り -->
+                                <!-- 오른쪽 눈금 -->
                                 <TickBar Grid.Column="2" x:Name="RightTick" Placement="Right" Visibility="Collapsed" Fill="{TemplateBinding Foreground}" Width="8" Opacity="0.64" Margin="2,0,0,0" />
 
                                 <Track Grid.Column="1" x:Name="PART_Track" IsDirectionReversed="true">
