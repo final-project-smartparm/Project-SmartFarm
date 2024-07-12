@@ -41,7 +41,7 @@
         <StackPanel Grid.Row="2" VerticalAlignment="Center" Orientation="Horizontal">
             <Grid Margin="20,0">
                 <Ellipse Style="{StaticResource PanelLiveInfoEllipse}"/>
-                <fa:IconImage Icon="Temperature3" Style="{StaticResource PanelLiveInfoicon}" Foreground="#FF7043"/>
+                <fa:IconImage Icon="Temperature3" Style="{StaticResource PanelLiveInfoicon}" Foreground="#FFEA4429"/>
             </Grid>
             <Grid HorizontalAlignment="Right">
                 <StackPanel HorizontalAlignment="Left" Width="140">
@@ -53,7 +53,7 @@
         <StackPanel Grid.Row="4" VerticalAlignment="Center" Orientation="Horizontal">
             <Grid Margin="20,0">
                 <Ellipse Style="{StaticResource PanelLiveInfoEllipse}"/>
-                <fa:IconImage Icon="GlassWaterDroplet" Style="{StaticResource PanelLiveInfoicon}" Foreground="#A1887F"/>
+                <fa:IconImage Icon="GlassWaterDroplet" Style="{StaticResource PanelLiveInfoicon}" Foreground="#FF947C73"/>
             </Grid>
             <Grid HorizontalAlignment="Right">
                 <StackPanel HorizontalAlignment="Left" Width="140">

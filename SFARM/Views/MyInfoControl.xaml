@@ -24,7 +24,7 @@
 
 
             <Ellipse Stroke="#C4D9BF" Width="130" Height="130" Fill="White"  StrokeThickness="2" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-            <TextBox Grid.Row="1" BorderThickness="2" Margin="10,10">
+            <TextBox Grid.Row="1" BorderThickness="2" Margin="10,10" Width="200">
                 <TextBox.Resources>
                     <Style TargetType="{x:Type Border}">
                         <Setter Property="CornerRadius" Value="6"/>
@@ -34,7 +34,7 @@
                     <StaticResource ResourceKey="color4"/>
                 </TextBox.BorderBrush>
             </TextBox>
-            <TextBox Grid.Row="2" BorderThickness="2" Margin="10,10">
+            <TextBox Grid.Row="2" BorderThickness="2" Margin="10,10" Width="200">
                 <TextBox.Resources>
                     <Style TargetType="{x:Type Border}">
                         <Setter Property="CornerRadius" Value="6"/>
@@ -45,7 +45,17 @@
                 </TextBox.BorderBrush>
             </TextBox>
 
-            <syncfusion:CalendarEdit Grid.Row="3" Date="1/1/2020" HorizontalAlignment="Left" VerticalAlignment="Top" Width="200" WeekNumberForeground="#FF1F5D73"/>
+            <Grid Grid.Row="3" HorizontalAlignment="Center">
+                <syncfusion:CalendarEdit Date="7/12/2024" HorizontalAlignment="Left" VerticalAlignment="Top" Width="200" MouseOverBackground="{DynamicResource color4}" SelectedDayCellBackground="{DynamicResource color6}" HeaderBackground="{DynamicResource color4}" TodayCellSelectedBackground="{DynamicResource color1}">
+                    <syncfusion:CalendarEdit.BorderBrush>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <GradientStop Color="{DynamicResource primaryBackColor3}"/>
+                            <GradientStop Color="{DynamicResource primaryBackColor1}" Offset="1"/>
+                            <GradientStop Color="{DynamicResource primaryBackColor2}" Offset="0.474"/>
+                        </LinearGradientBrush>
+                    </syncfusion:CalendarEdit.BorderBrush>
+                </syncfusion:CalendarEdit>
+            </Grid>
 
 
 
