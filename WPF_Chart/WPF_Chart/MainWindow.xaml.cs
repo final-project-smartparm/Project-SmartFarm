@@ -39,7 +39,7 @@ namespace WPF_Chart
                                 { 
                                     Title = "Sample2", 
                                     Stroke = new SolidColorBrush(Colors.Red), 
-                                    Values = new LiveCharts.ChartValues<double>(new List<double> { 70, 20, 100, 140, 50, 60, 70, 80, 90, 100, 111, 120 }) 
+                                    Values = new LiveCharts.ChartValues<double>(new List<double> { 70, 20, 100, 180, 50, 60, 110, 80, 30, 100, 111, 120 }) 
                                 }
             );
 
