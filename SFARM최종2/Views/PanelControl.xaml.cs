@@ -71,26 +71,7 @@ namespace SFARM.Views
 
         private void SendTemperatureToArduino()
         {
-            if (int.TryParse(textBox_TempTick.Text, out int currentTemperature))
-            {
-                // 현재 온도에 100을 더한 값을 아두이노로 전송
-                int adjustedTemperature = currentTemperature + 100;
-
-                try
-                {
-                    // adjustedTemperature를 문자열로 변환하여 아두이노로 전송
-                    bluetoothManager.SendData(adjustedTemperature.ToString());
-                    Console.WriteLine($"Sent temperature data: {adjustedTemperature}");
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show($"데이터 전송 중 오류 발생: {ex.Message}");
-                }
-            }
-            else
-            {
-                MessageBox.Show("올바른 온도 값을 입력하세요.");
-            }
+           
         }
     }
 }
