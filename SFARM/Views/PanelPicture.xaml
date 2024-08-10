@@ -11,7 +11,7 @@
     <Grid Background="{StaticResource color5}">
         <Grid.RowDefinitions>
             <RowDefinition Height="4*"/>
-            <RowDefinition Height="0.5*"/>
+            <RowDefinition Height="0.4*"/>
             <RowDefinition Height="2*"/>
         </Grid.RowDefinitions>
         <Grid Grid.Row="0" Margin="-30,-30,-30,-100">
@@ -38,6 +38,33 @@
             </Label.Content>
         </Label>
 
-       
+        <Grid Grid.Row="2" Margin="30,10">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+
+            <Ellipse  x:Name="ImageEllipse1" Grid.Row="0" Grid.Column="0" Style="{StaticResource CircularPictureEllipse}"/>
+            <Ellipse  x:Name="ImageEllipse2" Grid.Row="0" Grid.Column="1" Style="{StaticResource CircularPictureEllipse}"/>
+            <Ellipse  x:Name="ImageEllipse3" Grid.Row="0" Grid.Column="2" Style="{StaticResource CircularPictureEllipse}"/>
+            <Ellipse  x:Name="ImageEllipse4" Grid.Row="1" Grid.Column="0" Style="{StaticResource CircularPictureEllipse}"/>
+            <Ellipse  x:Name="ImageEllipse5" Grid.Row="1" Grid.Column="1" Style="{StaticResource CircularPictureEllipse}"/>
+            <Ellipse  x:Name="ImageEllipse6" Grid.Row="1" Grid.Column="2" Style="{StaticResource CircularPictureEllipse}"/>
+            <!--<Ellipse Grid.Row="0" Grid.Column="1" Style="{StaticResource CircularPictureEllipse}">
+                <Ellipse.Fill>
+                    <ImageBrush ImageSource="C:\SFAMCapture\capture_20240711_150444.png"/>
+                </Ellipse.Fill>
+            </Ellipse>
+
+            <Ellipse Grid.Row="0" Grid.Column="2" Width="60" Height="60" Stroke="Gray"/>
+            <Ellipse Grid.Row="1" Grid.Column="0" Width="60" Height="60" Stroke="Gray"/>
+            <Ellipse Grid.Row="1" Grid.Column="1" Width="60" Height="60" Stroke="Gray"/>
+            <Ellipse Grid.Row="1" Grid.Column="2" Width="60" Height="60" Stroke="Gray"/>-->
+        </Grid>
     </Grid>
 </UserControl>

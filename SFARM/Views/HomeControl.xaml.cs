@@ -30,7 +30,6 @@ namespace SFARM.Views
             ActiveItemPanelLiveInfo.Content = new Views.PanelLiveInfo();
             ActiveItemPanelPicture.Content = new Views.PanelPicture();
             ActiveItemPanelControl.Content = new Views.PanelControl();
-            
         }
     }
 }

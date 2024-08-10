@@ -41,7 +41,7 @@
         <StackPanel Grid.Row="2" VerticalAlignment="Center" Orientation="Horizontal">
             <Grid Margin="20,0">
                 <Ellipse Style="{StaticResource PanelLiveInfoEllipse}"/>
-                <fa:IconImage Icon="Temperature3" Style="{StaticResource PanelLiveInfoicon}" Foreground="Red"/>
+                <fa:IconImage Icon="Temperature3" Style="{StaticResource PanelLiveInfoicon}" Foreground="#FFEA4429"/>
             </Grid>
             <Grid HorizontalAlignment="Right">
                 <StackPanel HorizontalAlignment="Left" Width="140">
@@ -53,7 +53,7 @@
         <StackPanel Grid.Row="4" VerticalAlignment="Center" Orientation="Horizontal">
             <Grid Margin="20,0">
                 <Ellipse Style="{StaticResource PanelLiveInfoEllipse}"/>
-                <fa:IconImage Icon="GlassWaterDroplet" Style="{StaticResource PanelLiveInfoicon}" Foreground="Brown"/>
+                <fa:IconImage Icon="GlassWaterDroplet" Style="{StaticResource PanelLiveInfoicon}" Foreground="#FF947C73"/>
             </Grid>
             <Grid HorizontalAlignment="Right">
                 <StackPanel HorizontalAlignment="Left" Width="140">
@@ -65,7 +65,7 @@
         <StackPanel Grid.Row="6" VerticalAlignment="Center" Orientation="Horizontal">
             <Grid Margin="20,0">
                 <Ellipse Style="{StaticResource PanelLiveInfoEllipse}"/>
-                <fa:IconImage Icon="Sun" Style="{StaticResource PanelLiveInfoicon}" Foreground="Yellow"/>
+                <fa:IconImage Icon="Sun" Style="{StaticResource PanelLiveInfoicon}" Foreground="#FFD700"/>
             </Grid>
             <Grid HorizontalAlignment="Right">
                 <StackPanel HorizontalAlignment="Left" Width="140">
@@ -77,7 +77,7 @@
         <StackPanel Grid.Row="8" VerticalAlignment="Center" Orientation="Horizontal">
             <Grid Margin="20,0">
                 <Ellipse Style="{StaticResource PanelLiveInfoEllipse}"/>
-                <fa:IconImage Icon="HouseFloodWater" Style="{StaticResource PanelLiveInfoicon}" Foreground="LightBlue"/>
+                <fa:IconImage Icon="HouseFloodWater" Style="{StaticResource PanelLiveInfoicon}" Foreground="#4DB6AC"/>
             </Grid>
             <Grid HorizontalAlignment="Right">
                 <StackPanel HorizontalAlignment="Left" Width="140">
