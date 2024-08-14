@@ -16,13 +16,21 @@ using System.Windows.Shapes;
 namespace SFARM.Views
 {
     /// <summary>
-    /// MyInfoControl.xaml에 대한 상호 작용 논리
+    /// HomeControl.xaml에 대한 상호 작용 논리
     /// </summary>
-    public partial class MyInfoControl : UserControl
+    public partial class HomeControl : UserControl
     {
-        public MyInfoControl()
+        public HomeControl()
         {
             InitializeComponent();
+        }
+
+        private void UserControl_Loaded(object sender, RoutedEventArgs e)
+        {
+            ActiveItemPanelLiveInfo.Content = new Views.PanelLiveInfo();
+            ActiveItemPanelPicture.Content = new Views.PanelPicture();
+            ActiveItemPanelControl.Content = new Views.PanelControl();
+            
         }
     }
 }
