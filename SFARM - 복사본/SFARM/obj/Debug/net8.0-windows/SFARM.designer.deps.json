@@ -1,0 +1,80 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v8.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v8.0": {
+      "FontAwesome.Sharp/6.3.0": {
+        "runtime": {
+          "lib/net6.0-windows7.0/FontAwesome.Sharp.dll": {
+            "assemblyVersion": "6.3.0.0",
+            "fileVersion": "6.3.0.0"
+          }
+        }
+      },
+      "Syncfusion.Licensing/26.1.40": {
+        "runtime": {
+          "lib/net8.0/Syncfusion.Licensing.dll": {
+            "assemblyVersion": "26.1.40.0",
+            "fileVersion": "26.1.40.0"
+          }
+        }
+      },
+      "Syncfusion.SfProgressBar.WPF/26.1.40": {
+        "dependencies": {
+          "Syncfusion.Licensing": "26.1.40",
+          "Syncfusion.Shared.WPF": "26.1.40"
+        },
+        "runtime": {
+          "lib/net6.0-windows7.0/Syncfusion.SfProgressBar.WPF.dll": {
+            "assemblyVersion": "26.1.40.0",
+            "fileVersion": "26.1.40.0"
+          }
+        }
+      },
+      "Syncfusion.Shared.WPF/26.1.40": {
+        "dependencies": {
+          "Syncfusion.Licensing": "26.1.40"
+        },
+        "runtime": {
+          "lib/net6.0-windows7.0/Syncfusion.Shared.WPF.dll": {
+            "assemblyVersion": "26.1.40.0",
+            "fileVersion": "26.1.40.0"
+          }
+        }
+      }
+    }
+  },
+  "libraries": {
+    "FontAwesome.Sharp/6.3.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-3/Fb0N04yYK8An07oox5ISlUyNgsnWildHfoP69uqTEOsemQemRyciphMkXZOcdBupjUD+lVsRE3FqG41/dzPA==",
+      "path": "fontawesome.sharp/6.3.0",
+      "hashPath": "fontawesome.sharp.6.3.0.nupkg.sha512"
+    },
+    "Syncfusion.Licensing/26.1.40": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-Bkv28Hy2DbBsyKZkrcjh50LTWd0kBtYPCAG3slNC8DIwQSFCcniIcEpNhp7rEQdUnWNw7b57UbxGKIsNAFXf1g==",
+      "path": "syncfusion.licensing/26.1.40",
+      "hashPath": "syncfusion.licensing.26.1.40.nupkg.sha512"
+    },
+    "Syncfusion.SfProgressBar.WPF/26.1.40": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-8f+noN9aQPjnuXzV3/Q4QzqHcd7bJs3lgxlrI/EBO9CarvZuXJIY/dzoDOS9A0XPIVaQwh2zn6lD1pYnd8Pgug==",
+      "path": "syncfusion.sfprogressbar.wpf/26.1.40",
+      "hashPath": "syncfusion.sfprogressbar.wpf.26.1.40.nupkg.sha512"
+    },
+    "Syncfusion.Shared.WPF/26.1.40": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-QSqVbAEOfHDupFJ8XW8sMVk6//HNHfHdPHwN3/+VlkdFm8NTrpD28OedtSfYyIdooHnw1QoCnpbeaeOugLIf+Q==",
+      "path": "syncfusion.shared.wpf/26.1.40",
+      "hashPath": "syncfusion.shared.wpf.26.1.40.nupkg.sha512"
+    }
+  }
+}
