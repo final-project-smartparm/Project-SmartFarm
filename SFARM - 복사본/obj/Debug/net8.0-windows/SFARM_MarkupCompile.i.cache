@@ -1,0 +1,20 @@
+﻿SFARM
+1.0.0.0
+
+winexe
+C#
+.cs
+C:\Sources\Project-SmartParm\SFARM - 복사본\obj\Debug\net8.0-windows\
+SFARM
+none
+false
+TRACE;DEBUG;NET;NET8_0;NETCOREAPP
+C:\Sources\Project-SmartParm\SFARM - 복사본\App.xaml
+9-209925101
+
+11-2037102683
+210-112138923
+MainWindow.xaml;Styles\ButtonStyles.xaml;Styles\UIColor.xaml;Styles\WigetsStyles.xaml;Views\HomeControl.xaml;Views\MyPlantsControl.xaml;Views\PanelControl.xaml;Views\PanelLiveInfo.xaml;Views\PanelPicture.xaml;
+
+True
+

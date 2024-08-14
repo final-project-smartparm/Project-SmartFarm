@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "dgSpecHash": "6oHHw/29r0w=",
+  "success": true,
+  "projectFilePath": "C:\\Sources\\Project-SmartParm\\SFARM - 복사본\\SFARM.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\user\\.nuget\\packages\\fontawesome.sharp\\6.3.0\\fontawesome.sharp.6.3.0.nupkg.sha512",
+    "C:\\Users\\user\\.nuget\\packages\\syncfusion.licensing\\26.1.40\\syncfusion.licensing.26.1.40.nupkg.sha512",
+    "C:\\Users\\user\\.nuget\\packages\\syncfusion.shared.wpf\\26.1.40\\syncfusion.shared.wpf.26.1.40.nupkg.sha512"
+  ],
+  "logs": []
+}
