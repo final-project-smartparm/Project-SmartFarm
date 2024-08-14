@@ -29,8 +29,8 @@ int watersupply = 0; // 급수
 
 // 급수
 const int relayPin = 11;
-const unsigned long motorOnTime = watersupply;  // 모터가 켜져 있을 시간 (밀리초)
-const unsigned long motorOffTime = 300000; // 모터가 꺼져 있을 시간 (밀리초)
+unsigned long motorOnTime = watersupply;
+const unsigned long motorOffTime = 30000; // 모터가 꺼져 있을 시간 (밀리초)
 
 unsigned long previousMillis = 0; // 마지막으로 모터 상태가 변경된 시간
 bool motorState = false;          // 모터 상태 (켜짐: true, 꺼짐: false)
@@ -99,7 +99,8 @@ void loop() {
       fMax_temp = (value - 100);
     }
       else if (value >= 200 && value < 500) {
-          watersupply = (value - 200)*37;
+          watersupply = (value - 200)*30;
+          motorOnTime = watersupply;
       }
 
     else if (command == "A") {
