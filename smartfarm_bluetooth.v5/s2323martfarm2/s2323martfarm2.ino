@@ -30,7 +30,7 @@ int watersupply = 0; // 급수
 // 급수
 const int relayPin = 11;
 const unsigned long motorOnTime = watersupply;  // 모터가 켜져 있을 시간 (밀리초)
-const unsigned long motorOffTime = 1000; // 모터가 꺼져 있을 시간 (밀리초)
+const unsigned long motorOffTime = 300000; // 모터가 꺼져 있을 시간 (밀리초)
 
 unsigned long previousMillis = 0; // 마지막으로 모터 상태가 변경된 시간
 bool motorState = false;          // 모터 상태 (켜짐: true, 꺼짐: false)
@@ -51,7 +51,7 @@ void setup() {
   fMin_temp = 18;
   fanSpeed = 2;
   Soil_moisture_reference = 50;                // 기준 수분값 설정 0 ~ 100%
-  watersupply = 1000;
+  watersupply = 5000;
   pinMode(JODO_PIN, INPUT);  // A0 핀을 입력으로 설정
   
   Serial.begin(9600);                          // 시리얼 통신 초기화 (USB)
