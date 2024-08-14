@@ -8,12 +8,12 @@ namespace SFARM.Helpers
 {
     public class Common
     {
-        public static readonly string CONNSTRING = "Data Source=localhost;" +
-                                                    "Initial Catalog=EMS;" +
+        public static readonly string CONNSTRING = "Data Source=210.119.12.79;" +
+                                                    "Initial Catalog=SFARM;" +
                                                     "Persist Security Info=True;" +
-                                                    "User ID=ems_user;" +
+                                                    "User ID=sa;" +
                                                     "Encrypt=False;" +
-                                                    "Password=ems_p@ss";
+                                                    "Password=mssql_p@ss";
 
         public static readonly string TODAY = DateTime.Now.ToString("yyyy-MM-dd");
 

@@ -12,6 +12,7 @@ using System.Windows.Shapes;
 using System.Data.SqlClient;
 using Microsoft.Data.SqlClient;
 using Microsoft.Web.WebView2.Core;
+using SFARM.Login;
 
 namespace SFARM
 {
@@ -27,6 +28,8 @@ namespace SFARM
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
+            SFARM.Login.LoginPage loginPage = new SFARM.Login.LoginPage();
+            
             ActiveItem.Content = new Views.HomeControl();
             TodayNow.Content = Helpers.Common.TODAY;
             
