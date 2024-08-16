@@ -1,0 +1,36 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Sources\\Project-SmartParm\\SFARM\uCD5C\uC8854\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{03929093-C147-4D5B-B842-5B4D8F013C0D}|SFARM.csproj|c:\\sources\\project-smartparm\\sfarm\uCD5C\uC8854\\views\\homecontrol.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{03929093-C147-4D5B-B842-5B4D8F013C0D}|SFARM.csproj|solutionrelative:views\\homecontrol.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "HomeControl.xaml",
+              "DocumentMoniker": "C:\\Sources\\Project-SmartParm\\SFARM\uCD5C\uC8854\\Views\\HomeControl.xaml",
+              "RelativeDocumentMoniker": "Views\\HomeControl.xaml",
+              "ToolTip": "C:\\Sources\\Project-SmartParm\\SFARM\uCD5C\uC8854\\Views\\HomeControl.xaml",
+              "RelativeToolTip": "Views\\HomeControl.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2024-08-14T09:56:32.171Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
