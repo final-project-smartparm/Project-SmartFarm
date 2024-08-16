@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Sources\Project-SmartParm\SFARM\obj\Debug\net8.0-windows\
+C:\Users\user\Desktop\SFARM\obj\Debug\net8.0-windows\
 SFARM
 none
 false
 TRACE;DEBUG;NET;NET8_0;NETCOREAPP
-C:\Sources\Project-SmartParm\SFARM\App.xaml
-111286036468
+C:\Users\user\Desktop\SFARM\App.xaml
+12-1910104543
 
-151234607181
+161411870359
 233622747414
-MainWindow.xaml;Styles\ButtonStyles.xaml;Styles\UIColor.xaml;Styles\WigetsStyles.xaml;Themes\Generic.xaml;Views\HomeControl.xaml;Views\MyInfoControl.xaml;Views\MyPlantsControl.xaml;Views\PanelControl.xaml;Views\PanelLiveInfo.xaml;Views\PanelPicture.xaml;
+LoginPage.xaml;MainWindow.xaml;Styles\ButtonStyles.xaml;Styles\UIColor.xaml;Styles\WigetsStyles.xaml;Themes\Generic.xaml;Views\HomeControl.xaml;Views\MyInfoControl.xaml;Views\MyPlantsControl.xaml;Views\PanelControl.xaml;Views\PanelLiveInfo.xaml;Views\PanelPicture.xaml;
 
-True
+False
 
