@@ -1,12 +1,54 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "C:\\Sources\\Project-SmartParm\\WPF_Chart\\",
-  "Documents": [],
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{00000000-0000-0000-0000-000000000000}|\u003CSolution\u003E|WPF_Chart||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D2747D55-0592-4DDD-B393-AAC1D60722B1}|WPF_Chart\\WPF_Chart.csproj|c:\\sources\\project-smartparm\\wpf_chart\\wpf_chart\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{D2747D55-0592-4DDD-B393-AAC1D60722B1}|WPF_Chart\\WPF_Chart.csproj|solutionrelative:wpf_chart\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D2747D55-0592-4DDD-B393-AAC1D60722B1}|WPF_Chart\\WPF_Chart.csproj|c:\\sources\\project-smartparm\\wpf_chart\\wpf_chart\\||{B270807C-D8C6-49EB-8EBE-8E8D566637A1}|5e9a8ac2-4f34-4521-858f-4c248ba31532"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
       "VerticalTabListWidth": 256,
-      "DocumentGroups": []
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "WPF_Chart",
+              "DocumentMoniker": "C:\\Sources\\Project-SmartParm\\WPF_Chart\\WPF_Chart\\WPF_Chart.csproj",
+              "RelativeDocumentMoniker": "WPF_Chart\\WPF_Chart.csproj",
+              "ToolTip": "C:\\Sources\\Project-SmartParm\\WPF_Chart\\WPF_Chart\\WPF_Chart.csproj",
+              "RelativeToolTip": "WPF_Chart\\WPF_Chart.csproj",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2024-08-16T07:08:37.884Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "MainWindow.xaml",
+              "DocumentMoniker": "C:\\Sources\\Project-SmartParm\\WPF_Chart\\WPF_Chart\\MainWindow.xaml",
+              "RelativeDocumentMoniker": "WPF_Chart\\MainWindow.xaml",
+              "ToolTip": "C:\\Sources\\Project-SmartParm\\WPF_Chart\\WPF_Chart\\MainWindow.xaml",
+              "RelativeToolTip": "WPF_Chart\\MainWindow.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2024-08-16T06:46:50.018Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
     }
   ]
 }

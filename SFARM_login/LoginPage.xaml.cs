@@ -23,6 +23,8 @@ namespace SFARM
     public partial class LoginPage : Window
     {
         private bool isLogin = false;
+        public string LoggedInUserName { get; private set; }
+
         public bool IsLogin { get { return isLogin; } set { isLogin = value; } }
         public LoginPage()
         {
@@ -33,61 +35,53 @@ namespace SFARM
 
         private void BtnLogin_Click(object sender, RoutedEventArgs e)
         {
-            IsLogin = LoginProcees(); // 로그인이 성공하면 True, 실패하면 False 리턴
+            IsLogin = LoginProcess(); // 로그인이 성공하면 True, 실패하면 False 리턴
             if (IsLogin)
             {
-                MainWindow mainWindow = new MainWindow(); // MainWindow 인스턴스 생성
+                MainWindow mainWindow = new MainWindow(LoggedInUserName);
                 this.Close(); // 현재 로그인 창 닫기
                 mainWindow.Show(); // 메인 창 표시
             }
+            else
+            {
+                MessageBox.Show("아이디 또는 비밀번호가 잘못되었습니다.", "로그인 실패", MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
         }
 
-        private bool LoginProcees()
+        private bool LoginProcess()
         {
-            string USER_EMAIL = TxtId.Text; // 사용자가 입력한 이메일
-            string password = TxtPass.Password; // 사용자가 입력한 비밀번호
+            string USER_EMAIL = TxtId.Text;
+            string password = TxtPass.Password;
 
             using (SqlConnection conn = new SqlConnection(Helpers.Common.CONNSTRING))
             {
                 conn.Open();
 
-                // 1단계: 이메일만 확인
-                string queryEmailCheck = @"SELECT COUNT(1) 
-                                           FROM UserInfo 
-                                           WHERE USER_EMAIL = @USER_EMAIL";
-                SqlCommand cmdEmailCheck = new SqlCommand(queryEmailCheck, conn);
-                cmdEmailCheck.Parameters.AddWithValue("@USER_EMAIL", USER_EMAIL);
-
-                int emailExists = (int)cmdEmailCheck.ExecuteScalar();
-
-                if (emailExists == 0)
-                {
-                    MessageBox.Show("아이디 오류", "로그인 실패", MessageBoxButton.OK, MessageBoxImage.Warning);
-                    return false;
-                }
-
-                // 2단계: 이메일과 비밀번호 확인
-                string query = @"SELECT COUNT(1)
+                string query = @"SELECT USER_EMAIL, USER_PASS, USER_NAME 
                                  FROM UserInfo
                                  WHERE USER_EMAIL = @USER_EMAIL 
                                    AND USER_PASS = @USER_PASS";
+
                 SqlCommand cmd = new SqlCommand(query, conn);
                 cmd.Parameters.AddWithValue("@USER_EMAIL", USER_EMAIL);
                 cmd.Parameters.AddWithValue("@USER_PASS", password);
 
-                int loginSuccess = (int)cmd.ExecuteScalar();
+                SqlDataReader reader = cmd.ExecuteReader();
 
-                if (loginSuccess == 1)
+                if (reader.Read())
                 {
+                    // 로그인 성공 시 사용자 이름 저장
+                    LoggedInUserName = reader["USER_NAME"]?.ToString();
+
                     return true;
                 }
                 else
                 {
-                    MessageBox.Show("비밀번호 오류", "로그인 실패", MessageBoxButton.OK, MessageBoxImage.Warning);
                     return false;
                 }
             }
         }
+
 
 
         private void TxtPass_KeyDown(object sender, KeyEventArgs e)

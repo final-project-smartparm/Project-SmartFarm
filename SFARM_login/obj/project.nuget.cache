@@ -1,12 +1,15 @@
 {
   "version": 2,
-  "dgSpecHash": "aAKzXcWrPm4=",
+  "dgSpecHash": "hi7LRfPwnj8=",
   "success": true,
-  "projectFilePath": "C:\\Users\\user\\Desktop\\SFARM\\SFARM.csproj",
+  "projectFilePath": "C:\\Sources\\Project-SmartParm\\SFARM_login\\SFARM.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\user\\.nuget\\packages\\azure.core\\1.38.0\\azure.core.1.38.0.nupkg.sha512",
     "C:\\Users\\user\\.nuget\\packages\\azure.identity\\1.11.3\\azure.identity.1.11.3.nupkg.sha512",
+    "C:\\Users\\user\\.nuget\\packages\\communitytoolkit.mvvm\\8.2.2\\communitytoolkit.mvvm.8.2.2.nupkg.sha512",
     "C:\\Users\\user\\.nuget\\packages\\fontawesome.sharp\\6.3.0\\fontawesome.sharp.6.3.0.nupkg.sha512",
+    "C:\\Users\\user\\.nuget\\packages\\livecharts.core\\0.9.8\\livecharts.core.0.9.8.nupkg.sha512",
+    "C:\\Users\\user\\.nuget\\packages\\livecharts.wpf.core\\0.9.8\\livecharts.wpf.core.0.9.8.nupkg.sha512",
     "C:\\Users\\user\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\1.1.1\\microsoft.bcl.asyncinterfaces.1.1.1.nupkg.sha512",
     "C:\\Users\\user\\.nuget\\packages\\microsoft.csharp\\4.5.0\\microsoft.csharp.4.5.0.nupkg.sha512",
     "C:\\Users\\user\\.nuget\\packages\\microsoft.data.sqlclient\\5.2.1\\microsoft.data.sqlclient.5.2.1.nupkg.sha512",

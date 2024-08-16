@@ -47,6 +47,22 @@
           }
         }
       },
+      "CommunityToolkit.Mvvm/8.2.2": {
+        "type": "package",
+        "compile": {
+          "lib/net6.0/CommunityToolkit.Mvvm.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "runtime": {
+          "lib/net6.0/CommunityToolkit.Mvvm.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "build": {
+          "buildTransitive/netstandard2.1/CommunityToolkit.Mvvm.targets": {}
+        }
+      },
       "FontAwesome.Sharp/6.3.0": {
         "type": "package",
         "compile": {
@@ -57,6 +73,30 @@
         },
         "frameworkReferences": [
           "Microsoft.WindowsDesktop.App"
+        ]
+      },
+      "LiveCharts.Core/0.9.8": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/LiveCharts.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/LiveCharts.dll": {}
+        }
+      },
+      "LiveCharts.Wpf.Core/0.9.8": {
+        "type": "package",
+        "dependencies": {
+          "LiveCharts.Core": "0.9.8"
+        },
+        "compile": {
+          "lib/net5.0-windows7.0/LiveCharts.Wpf.dll": {}
+        },
+        "runtime": {
+          "lib/net5.0-windows7.0/LiveCharts.Wpf.dll": {}
+        },
+        "frameworkReferences": [
+          "Microsoft.WindowsDesktop.App.WPF"
         ]
       },
       "Microsoft.Bcl.AsyncInterfaces/1.1.1": {
@@ -785,6 +825,37 @@
         "lib/netstandard2.0/Azure.Identity.xml"
       ]
     },
+    "CommunityToolkit.Mvvm/8.2.2": {
+      "sha512": "r0g0k9tGYdrnz8R7T3x5UiokDffeevzK/2P/9SBL6fqLgN8B157MIi/bVUWI1KAz6ZorZrK9AdABCWUeXZZsvA==",
+      "type": "package",
+      "path": "communitytoolkit.mvvm/8.2.2",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "License.md",
+        "ThirdPartyNotices.txt",
+        "analyzers/dotnet/roslyn4.0/cs/CommunityToolkit.Mvvm.CodeFixers.dll",
+        "analyzers/dotnet/roslyn4.0/cs/CommunityToolkit.Mvvm.SourceGenerators.dll",
+        "analyzers/dotnet/roslyn4.3/cs/CommunityToolkit.Mvvm.CodeFixers.dll",
+        "analyzers/dotnet/roslyn4.3/cs/CommunityToolkit.Mvvm.SourceGenerators.dll",
+        "build/netstandard2.0/CommunityToolkit.Mvvm.targets",
+        "build/netstandard2.1/CommunityToolkit.Mvvm.targets",
+        "buildTransitive/netstandard2.0/CommunityToolkit.Mvvm.targets",
+        "buildTransitive/netstandard2.1/CommunityToolkit.Mvvm.targets",
+        "communitytoolkit.mvvm.8.2.2.nupkg.sha512",
+        "communitytoolkit.mvvm.nuspec",
+        "lib/net6.0/CommunityToolkit.Mvvm.dll",
+        "lib/net6.0/CommunityToolkit.Mvvm.pdb",
+        "lib/net6.0/CommunityToolkit.Mvvm.xml",
+        "lib/netstandard2.0/CommunityToolkit.Mvvm.dll",
+        "lib/netstandard2.0/CommunityToolkit.Mvvm.pdb",
+        "lib/netstandard2.0/CommunityToolkit.Mvvm.xml",
+        "lib/netstandard2.1/CommunityToolkit.Mvvm.dll",
+        "lib/netstandard2.1/CommunityToolkit.Mvvm.pdb",
+        "lib/netstandard2.1/CommunityToolkit.Mvvm.xml"
+      ]
+    },
     "FontAwesome.Sharp/6.3.0": {
       "sha512": "3/Fb0N04yYK8An07oox5ISlUyNgsnWildHfoP69uqTEOsemQemRyciphMkXZOcdBupjUD+lVsRE3FqG41/dzPA==",
       "type": "package",
@@ -798,6 +869,34 @@
         "lib/net48/FontAwesome.Sharp.dll",
         "lib/net6.0-windows7.0/FontAwesome.Sharp.dll",
         "lib/netcoreapp3.1/FontAwesome.Sharp.dll"
+      ]
+    },
+    "LiveCharts.Core/0.9.8": {
+      "sha512": "USb2TBOeER19X0ar5Zgki1ezjrSXBOmUoz3IqzTeksDm6hoaLFqs3iW9+wjHFuWNQGy9lLcVh2YIhhxVIg+zNQ==",
+      "type": "package",
+      "path": "livecharts.core/0.9.8",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net40/LiveCharts.dll",
+        "lib/netstandard2.0/LiveCharts.dll",
+        "livecharts.core.0.9.8.nupkg.sha512",
+        "livecharts.core.nuspec"
+      ]
+    },
+    "LiveCharts.Wpf.Core/0.9.8": {
+      "sha512": "jMBdknuG3EOMKA0NaqqwMjhsZpRAzd0UqP0SlwXIBJ+ZoJg5TF9C4rDdKqInEs+RycYmIwmrZWvmfDxsM5MMJw==",
+      "type": "package",
+      "path": "livecharts.wpf.core/0.9.8",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net40/LiveCharts.Wpf.dll",
+        "lib/net472/LiveCharts.Wpf.dll",
+        "lib/net5.0-windows7.0/LiveCharts.Wpf.dll",
+        "lib/netcoreapp3.1/LiveCharts.Wpf.dll",
+        "livecharts.wpf.core.0.9.8.nupkg.sha512",
+        "livecharts.wpf.core.nuspec"
       ]
     },
     "Microsoft.Bcl.AsyncInterfaces/1.1.1": {
@@ -2075,7 +2174,9 @@
   },
   "projectFileDependencyGroups": {
     "net8.0-windows7.0": [
+      "CommunityToolkit.Mvvm >= 8.2.2",
       "FontAwesome.Sharp >= 6.3.0",
+      "LiveCharts.Wpf.Core >= 0.9.8",
       "Microsoft.Data.SqlClient >= 5.2.1",
       "Syncfusion.Licensing >= 26.1.40",
       "Syncfusion.SfInput.WPF >= 26.1.40",
@@ -2090,11 +2191,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\user\\Desktop\\SFARM\\SFARM.csproj",
+      "projectUniqueName": "C:\\Sources\\Project-SmartParm\\SFARM_login\\SFARM.csproj",
       "projectName": "SFARM",
-      "projectPath": "C:\\Users\\user\\Desktop\\SFARM\\SFARM.csproj",
+      "projectPath": "C:\\Sources\\Project-SmartParm\\SFARM_login\\SFARM.csproj",
       "packagesPath": "C:\\Users\\user\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\user\\Desktop\\SFARM\\obj\\",
+      "outputPath": "C:\\Sources\\Project-SmartParm\\SFARM_login\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\user\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -2104,6 +2205,7 @@
         "net8.0-windows"
       ],
       "sources": {
+        "C:\\NugetLocal": {},
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "C:\\Program Files\\dotnet\\library-packs": {},
         "C:\\Users\\user\\.nuget\\packages": {},
@@ -2130,9 +2232,17 @@
       "net8.0-windows7.0": {
         "targetAlias": "net8.0-windows",
         "dependencies": {
+          "CommunityToolkit.Mvvm": {
+            "target": "Package",
+            "version": "[8.2.2, )"
+          },
           "FontAwesome.Sharp": {
             "target": "Package",
             "version": "[6.3.0, )"
+          },
+          "LiveCharts.Wpf.Core": {
+            "target": "Package",
+            "version": "[0.9.8, )"
           },
           "Microsoft.Data.SqlClient": {
             "target": "Package",
@@ -2178,7 +2288,7 @@
             "privateAssets": "none"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.300/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.302/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

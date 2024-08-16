@@ -68,10 +68,10 @@
                 <!--#endregion-->
 
                 <!--#region 메뉴 버튼 -->
-                <Label Grid.Row="0" Style="{StaticResource TopBarMiddleLabel}" Content="안녕하세요. 익명 님!" Margin="0,0,0,-40"/>
+                <Label x:Name="lblUserName" Grid.Row="0" Style="{StaticResource TopBarMiddleLabel}" Content="안녕하세요. 익명 님!" Margin="0,0,0,-40"/>
                 <Grid Grid.Row="1">
                     <ComboBox Style="{StaticResource combobox_style}" ItemContainerStyle="{StaticResource ComboBoxItemStyle}" Height="30" Width="140" Grid.ColumnSpan="2" Margin="30,8,30,7" SelectedIndex="0"
-                              x:Name="CboPlants">
+                              x:Name="CboPlants" >
                         <ComboBoxItem Name="item1">방울토마토</ComboBoxItem>
                         <ComboBoxItem Name="item2">강낭콩</ComboBoxItem>
                         <ComboBoxItem Name="item3"></ComboBoxItem>
@@ -100,7 +100,8 @@
                         <TextBlock Text="My Info" Style="{StaticResource menuButtonText}"/>
                     </StackPanel>
                 </RadioButton>
-                <RadioButton Grid.Row ="7" Style="{StaticResource menuButton}" Tag="{StaticResource color5}">
+                <RadioButton Grid.Row ="7" Style="{StaticResource menuButton}" Tag="{StaticResource color5}"
+                             Click="BtnPrevious_Click">
                     <StackPanel Orientation="Horizontal">
                         <fa:IconImage Icon="Book" Style="{StaticResource menuButtonIcon}"/>
                         <TextBlock Text="Previous" Style="{StaticResource menuButtonText}"/>
