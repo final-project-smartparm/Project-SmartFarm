@@ -1,0 +1,218 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Sources\\Project-SmartParm\\SFARM\\SFARM\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{03929093-C147-4D5B-B842-5B4D8F013C0D}|SFARM.csproj|c:\\sources\\project-smartparm\\sfarm\\sfarm\\views\\myplantscontrol.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{03929093-C147-4D5B-B842-5B4D8F013C0D}|SFARM.csproj|solutionrelative:views\\myplantscontrol.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{03929093-C147-4D5B-B842-5B4D8F013C0D}|SFARM.csproj|c:\\sources\\project-smartparm\\sfarm\\sfarm\\views\\panelpicture.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{03929093-C147-4D5B-B842-5B4D8F013C0D}|SFARM.csproj|solutionrelative:views\\panelpicture.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{03929093-C147-4D5B-B842-5B4D8F013C0D}|SFARM.csproj|c:\\sources\\project-smartparm\\sfarm\\sfarm\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{03929093-C147-4D5B-B842-5B4D8F013C0D}|SFARM.csproj|solutionrelative:mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{03929093-C147-4D5B-B842-5B4D8F013C0D}|SFARM.csproj|c:\\sources\\project-smartparm\\sfarm\\sfarm\\styles\\buttonstyles.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{03929093-C147-4D5B-B842-5B4D8F013C0D}|SFARM.csproj|solutionrelative:styles\\buttonstyles.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{03929093-C147-4D5B-B842-5B4D8F013C0D}|SFARM.csproj|c:\\sources\\project-smartparm\\sfarm\\sfarm\\views\\panelcontrol.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{03929093-C147-4D5B-B842-5B4D8F013C0D}|SFARM.csproj|solutionrelative:views\\panelcontrol.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{03929093-C147-4D5B-B842-5B4D8F013C0D}|SFARM.csproj|c:\\sources\\project-smartparm\\sfarm\\sfarm\\views\\panelliveinfo.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{03929093-C147-4D5B-B842-5B4D8F013C0D}|SFARM.csproj|solutionrelative:views\\panelliveinfo.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{03929093-C147-4D5B-B842-5B4D8F013C0D}|SFARM.csproj|c:\\sources\\project-smartparm\\sfarm\\sfarm\\views\\panelpicture.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{03929093-C147-4D5B-B842-5B4D8F013C0D}|SFARM.csproj|solutionrelative:views\\panelpicture.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{03929093-C147-4D5B-B842-5B4D8F013C0D}|SFARM.csproj|c:\\sources\\project-smartparm\\sfarm\\sfarm\\views\\homecontrol.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{03929093-C147-4D5B-B842-5B4D8F013C0D}|SFARM.csproj|solutionrelative:views\\homecontrol.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{03929093-C147-4D5B-B842-5B4D8F013C0D}|SFARM.csproj|c:\\sources\\project-smartparm\\sfarm\\sfarm\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{03929093-C147-4D5B-B842-5B4D8F013C0D}|SFARM.csproj|solutionrelative:mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{03929093-C147-4D5B-B842-5B4D8F013C0D}|SFARM.csproj|c:\\sources\\project-smartparm\\sfarm\\sfarm\\app.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{03929093-C147-4D5B-B842-5B4D8F013C0D}|SFARM.csproj|solutionrelative:app.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{03929093-C147-4D5B-B842-5B4D8F013C0D}|SFARM.csproj|c:\\sources\\project-smartparm\\sfarm\\sfarm\\assemblyinfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{03929093-C147-4D5B-B842-5B4D8F013C0D}|SFARM.csproj|solutionrelative:assemblyinfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 141,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "PanelPicture.xaml.cs",
+              "DocumentMoniker": "C:\\Sources\\Project-SmartParm\\SFARM\\SFARM\\Views\\PanelPicture.xaml.cs",
+              "RelativeDocumentMoniker": "Views\\PanelPicture.xaml.cs",
+              "ToolTip": "C:\\Sources\\Project-SmartParm\\SFARM\\SFARM\\Views\\PanelPicture.xaml.cs",
+              "RelativeToolTip": "Views\\PanelPicture.xaml.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAADwvwAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-11T01:32:58.113Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "PanelPicture.xaml",
+              "DocumentMoniker": "C:\\Sources\\Project-SmartParm\\SFARM\\SFARM\\Views\\PanelPicture.xaml",
+              "RelativeDocumentMoniker": "Views\\PanelPicture.xaml",
+              "ToolTip": "C:\\Sources\\Project-SmartParm\\SFARM\\SFARM\\Views\\PanelPicture.xaml",
+              "RelativeToolTip": "Views\\PanelPicture.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2024-07-05T03:27:04.853Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "PanelControl.xaml",
+              "DocumentMoniker": "C:\\Sources\\Project-SmartParm\\SFARM\\SFARM\\Views\\PanelControl.xaml",
+              "RelativeDocumentMoniker": "Views\\PanelControl.xaml",
+              "ToolTip": "C:\\Sources\\Project-SmartParm\\SFARM\\SFARM\\Views\\PanelControl.xaml",
+              "RelativeToolTip": "Views\\PanelControl.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2024-07-05T03:27:03.602Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "MainWindow.xaml.cs",
+              "DocumentMoniker": "C:\\Sources\\Project-SmartParm\\SFARM\\SFARM\\MainWindow.xaml.cs",
+              "RelativeDocumentMoniker": "MainWindow.xaml.cs",
+              "ToolTip": "C:\\Sources\\Project-SmartParm\\SFARM\\SFARM\\MainWindow.xaml.cs",
+              "RelativeToolTip": "MainWindow.xaml.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-05T05:00:00.718Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "HomeControl.xaml",
+              "DocumentMoniker": "C:\\Sources\\Project-SmartParm\\SFARM\\SFARM\\Views\\HomeControl.xaml",
+              "RelativeDocumentMoniker": "Views\\HomeControl.xaml",
+              "ToolTip": "C:\\Sources\\Project-SmartParm\\SFARM\\SFARM\\Views\\HomeControl.xaml",
+              "RelativeToolTip": "Views\\HomeControl.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2024-07-05T03:27:01.439Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "MainWindow.xaml",
+              "DocumentMoniker": "C:\\Sources\\Project-SmartParm\\SFARM\\SFARM\\MainWindow.xaml",
+              "RelativeDocumentMoniker": "MainWindow.xaml",
+              "ToolTip": "C:\\Sources\\Project-SmartParm\\SFARM\\SFARM\\MainWindow.xaml",
+              "RelativeToolTip": "MainWindow.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2024-07-05T03:26:45.367Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "App.xaml",
+              "DocumentMoniker": "C:\\Sources\\Project-SmartParm\\SFARM\\SFARM\\App.xaml",
+              "RelativeDocumentMoniker": "App.xaml",
+              "ToolTip": "C:\\Sources\\Project-SmartParm\\SFARM\\SFARM\\App.xaml",
+              "RelativeToolTip": "App.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2024-07-05T05:44:47.868Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "AssemblyInfo.cs",
+              "DocumentMoniker": "C:\\Sources\\Project-SmartParm\\SFARM\\SFARM\\AssemblyInfo.cs",
+              "RelativeDocumentMoniker": "AssemblyInfo.cs",
+              "ToolTip": "C:\\Sources\\Project-SmartParm\\SFARM\\SFARM\\AssemblyInfo.cs",
+              "RelativeToolTip": "AssemblyInfo.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAADwvwAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-05T05:44:47.114Z"
+            }
+          ]
+        },
+        {
+          "DockedWidth": 259,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "ButtonStyles.xaml",
+              "DocumentMoniker": "C:\\Sources\\Project-SmartParm\\SFARM\\SFARM\\Styles\\ButtonStyles.xaml",
+              "RelativeDocumentMoniker": "Styles\\ButtonStyles.xaml",
+              "ToolTip": "C:\\Sources\\Project-SmartParm\\SFARM\\SFARM\\Styles\\ButtonStyles.xaml",
+              "RelativeToolTip": "Styles\\ButtonStyles.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2024-07-09T07:08:28.131Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "MyPlantsControl.xaml",
+              "DocumentMoniker": "C:\\Sources\\Project-SmartParm\\SFARM\\SFARM\\Views\\MyPlantsControl.xaml",
+              "RelativeDocumentMoniker": "Views\\MyPlantsControl.xaml",
+              "ToolTip": "C:\\Sources\\Project-SmartParm\\SFARM\\SFARM\\Views\\MyPlantsControl.xaml",
+              "RelativeToolTip": "Views\\MyPlantsControl.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2024-07-05T03:27:02.912Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "FloatingWindowState": {
+        "Id": "e1bbd5a5-bba4-4e0c-a16b-bebe773a6939",
+        "Display": 1,
+        "X": 114,
+        "Y": 54,
+        "Width": 643,
+        "Height": 957,
+        "WindowState": 0
+      },
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "PanelLiveInfo.xaml",
+              "DocumentMoniker": "C:\\Sources\\Project-SmartParm\\SFARM\\SFARM\\Views\\PanelLiveInfo.xaml",
+              "RelativeDocumentMoniker": "Views\\PanelLiveInfo.xaml",
+              "ToolTip": "C:\\Sources\\Project-SmartParm\\SFARM\\SFARM\\Views\\PanelLiveInfo.xaml",
+              "RelativeToolTip": "Views\\PanelLiveInfo.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2024-07-05T03:27:04.266Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
