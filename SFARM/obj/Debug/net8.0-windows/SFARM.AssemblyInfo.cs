@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("SFARM")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b136048af138a0f94fa64827100e500a4dac8605")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+31ea865d9006d594a14614f0ff79f99c62b3ce2c")]
 [assembly: System.Reflection.AssemblyProductAttribute("SFARM")]
 [assembly: System.Reflection.AssemblyTitleAttribute("SFARM")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
