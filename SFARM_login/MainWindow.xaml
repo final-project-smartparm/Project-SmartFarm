@@ -71,7 +71,7 @@
                 <Label x:Name="lblUserName" Grid.Row="0" Style="{StaticResource TopBarMiddleLabel}" Content="안녕하세요. 익명 님!" Margin="0,0,0,-40"/>
                 <Grid Grid.Row="1">
                     <ComboBox Style="{StaticResource combobox_style}" ItemContainerStyle="{StaticResource ComboBoxItemStyle}" Height="30" Width="140" Grid.ColumnSpan="2" Margin="30,8,30,7" SelectedIndex="0"
-                              x:Name="CboPlants" >
+                              x:Name="CboPlants" SelectionChanged="CboPlants_SelectionChanged" >
                         <ComboBoxItem Name="item1">방울토마토</ComboBoxItem>
                         <ComboBoxItem Name="item2">강낭콩</ComboBoxItem>
                         <ComboBoxItem Name="item3"></ComboBoxItem>

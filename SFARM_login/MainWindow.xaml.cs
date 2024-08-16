@@ -144,5 +144,19 @@ namespace SFARM
             ActiveItem.Content = new Views.PanelLiveChart();
 
         }
+
+        private void CboPlants_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (CboPlants.SelectedItem is ComboBoxItem selectedItem)
+            {
+                string selectedPlant = selectedItem.Content.ToString();
+                LoadPlantData(selectedPlant);
+            }
+        }
+
+        private void LoadPlantData(string? selectedPlant)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
