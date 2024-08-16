@@ -55,7 +55,7 @@ namespace SFARM
                                    , USER_PASS
                                 FROM UserInfo
                                WHERE USER_EMAIL = @USER_EMAIL 
-                                 AND USER_PASS = @password"; // @userId와 @password는 쿼리문 외부에서 변수 값을 안전하게 주입함
+                                 AND USER_PASS = @USER_PASS"; // @userId와 @password는 쿼리문 외부에서 변수 값을 안전하게 주입함
                 SqlCommand cmd = new SqlCommand(query, conn);
 
                 //@userId, @password 파라미터 할당

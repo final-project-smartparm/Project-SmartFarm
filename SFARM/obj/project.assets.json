@@ -2090,11 +2090,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\user\\Desktop\\SFARM\\SFARM.csproj",
+      "projectUniqueName": "C:\\Sources\\Project-SmartParm\\SFARM\\SFARM.csproj",
       "projectName": "SFARM",
-      "projectPath": "C:\\Users\\user\\Desktop\\SFARM\\SFARM.csproj",
+      "projectPath": "C:\\Sources\\Project-SmartParm\\SFARM\\SFARM.csproj",
       "packagesPath": "C:\\Users\\user\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\user\\Desktop\\SFARM\\obj\\",
+      "outputPath": "C:\\Sources\\Project-SmartParm\\SFARM\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\user\\AppData\\Roaming\\NuGet\\NuGet.Config",
