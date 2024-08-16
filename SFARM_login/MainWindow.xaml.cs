@@ -30,6 +30,11 @@ namespace SFARM
             CboPlants.Items.Clear();
         }
 
+        private void InitializeComponent()
+        {
+            throw new NotImplementedException();
+        }
+
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             ActiveItem.Content = new Views.HomeControl();
@@ -142,21 +147,6 @@ namespace SFARM
         private void BtnPrevious_Click(object sender, RoutedEventArgs e)
         {
             ActiveItem.Content = new Views.PanelLiveChart();
-
-        }
-
-        private void CboPlants_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            if (CboPlants.SelectedItem is ComboBoxItem selectedItem)
-            {
-                string selectedPlant = selectedItem.Content.ToString();
-                LoadPlantData(selectedPlant);
-            }
-        }
-
-        private void LoadPlantData(string? selectedPlant)
-        {
-            throw new NotImplementedException();
         }
     }
 }
