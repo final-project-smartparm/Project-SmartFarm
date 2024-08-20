@@ -1,51 +1,573 @@
-# Project-SmartParm
-IoT 기술을 활용하여 소형 스마트팜을 구축하는 것을 목표로 합니다. 아두이노 온도센서와 습도센서를 사용하여 환경 데이터를 수집하고, 빅데이터를 이용하여 날씨 데이터베이스를 구축하여 WPF환경에서의 작물 재배 환경을 최적화합니다.  
+# 프로젝트-SmartParm
+
+**프로젝트 목표:** IoT 기술을 활용하여 소형 스마트팜 구축한다. 아두이노 온도 및 습도 센서를 사용하여 환경 데이터 수집한다. 빅데이터를 이용해 날씨 데이터베이스 구축 후 WPF 환경에서 작물 재배 환경 최적화한다.
+
+## SmartFarm-WPF-Part
+
+### 스마트팜 WPF 개발 (UI)
+
+#### 개요:
+이 프로젝트는 아두이노 보드를 사용하여 구축된 스마트팜 환경 관리 시스템을 효율적으로 제어하고 모니터링하기 위해 WPF를 사용한 사용자 인터페이스(UI) 개발을 포함합니다.
+
+### 사용 기술:
+- **소프트웨어:** WPF, XAML, C#
+
+### WPF 선택 이유:
+- **XAML로 유연한 디자인:** XAML을 사용하여 컨트롤을 유연하게 디자인하면 스마트팜의 데이터를 효과적으로 표현하는 데 중요한 UI 요소를 세밀하게 관리할 수 있습니다.
+- **매력적인 디자인:** WPF는 시각적으로 매력적인 UI 디자인을 제공하며, 컨트롤 배치와 애니메이션 적용을 자유롭게 할 수 있어 사용자에게 매력적인 화면을 제공할 수 있습니다.
+- **디자인과 코드 분리:** WPF를 사용하면 디자인(XAML)과 기능(C# 코드)을 명확히 분리할 수 있어 프로젝트 내에서의 협업과 통합이 원활합니다.
+
+### 개발된 구성 요소
+
+#### MainWindow.xaml
+- **역할**
+    - WPF 애플리케이션에서 메인 창을 구현하고, 버튼 클릭 시 각각 다른 사용자 컨트롤을 화면에 띄우는 기능
+    - 로그인 후 식물 상세 정보를 표시하는 주 화면
+    - 메인 화면 후에 보이는 식물의 정보를 보여 줌
+    - 전체적인 시스템 상태나 다양한 정보의 통계를 한눈에 파악 할 수 있도록 보여줌
+- **주요 기능:**
+    - 물 탱크 레벨(급수량)
+    - 급수 주기
+    - 온도
+    - 조도 센서에서의 밝기
+    - 쿨링 팜 운전 시간
+    - 카메라 피드
+- ### MainWindow.xaml.cs
+1. using 문
+    - WPF와 관련된 다양한 네임스페이스를 사용
+    ```csharp
+        using System.Text;
+        using System.Windows;
+        using System.Windows.Controls;
+        using System.Windows.Data;
+        using System.Windows.Documents;
+        using System.Windows.Input;
+        using System.Windows.Media;
+        using System.Windows.Media.Imaging;
+        using System.Windows.Navigation;
+        using System.Windows.Shapes;
+    ``` 
+
+2. namespace SFARM
+    - SFARM 이라는 이름의 네임스페이스를 선언
+    ```csharp
+    namespace SFARM
+    {
+        // 클래스들과 인터페이스들 선언
+    }
+    ```
+
+3. partial class MainWindow : Window
+    - MainWIndow 클래스가 Window 클래스를 상속받음
+    ```csharp
+    public partial class MainWindow : Window
+    {
+        // 클래스 내부의 코드들이 선언
+    }
+    ```
+
+4. MainWindow 생성자 (public MainWindow())
+    - MainWindow 클래스의 생성자
+    - InitializeComponent() 메서드를 호출하여 XAML 파일과 연결된 UI를 초기화
+    ```csharp
+    public MainWindow()
+    {
+        InitializeComponent();
+    }
+    ```
+
+5. Window_Loaded 이벤트 핸들러 (private void Window_Loaded(object sender, RoutedEventArgs e))
+    - 창이 로드될 때 발생하는 이벤트 핸들러
+    - ActiveItem이라는 이름의 컨트롤의 Content를 HomeControl의 새 인스턴스로 설정하여 초기 화면을 설정
+    ```csharp
+    private void Window_Loaded(object sender, RoutedEventArgs e)
+    {
+        ActiveItem.Content = new Views.HomeControl();
+    }
+    ```
+
+6. BtnMnuHome_Click 이벤트 핸들러 (private void BtnMnuHome_Click(object sender, RoutedEventArgs e))
+    - 'Home' 버튼이 클릭될 때 발생하는 이벤트 핸들러
+    - HomeControl을 화면에 표시
+    ```csharp
+    private void BtnMnuHome_Click(object sender, RoutedEventArgs e)
+    {
+        ActiveItem.Content = new Views.HomeControl();
+    }
+    ```
+
+7. BtnMunMyPlants_Click 이벤트 핸들러 (private void BtnMunMyPlants_Click(object sender, RoutedEventArgs e))
+    - 'My Plants' 버튼이 클릭될 때 발생하는 이벤트 핸들러
+    - MyPlantsControl을 화면에 표시
+    ```csharp
+    namespace SFARM
+    private void BtnMunMyPlants_Click(object sender, RoutedEventArgs e)
+    {
+        ActiveItem.Content = new Views.MyPlantsControl();
+    }
+    ```
+
+8. BtnMyInfo_Click 이벤트 핸들러 (private void BtnMyInfo_Click(object sender, RoutedEventArgs e))
+    - 'My Info' 버튼이 클릭될 때 발생하는 이벤트 핸들러
+    - MyInfoControl을 화면에 표시
+    ```csharp
+    private void BtnMyInfo_Click(object sender, RoutedEventArgs e)
+    {
+        ActiveItem.Content = new Views.MyInfoControl();
+    }
+    ```
+  
+#### HomeControl.xaml
+- **역할:** 주 대시보드 역할을 수행
+- ### HomeControl.xaml.cs
+1. 네임스페이스와 사용할 라이브러리 가져오기
+    - System: 기본적인 데이터 형식, 예외 처리, 이벤트 처리 등의 기본적인 클래스와 구조체를 제공합니다. 이 네임스페이스는 모든 .NET 애플리케이션에서 기본적으로 사용
+    - System.Collections.Generic: 제네릭(Generic) 컬렉션을 지원하는 클래스들을 포함합니다. 제네릭 컬렉션은 데이터 형식에 대한 안전성을 보장하며, 보다 효율적인 데이터 저장 및 처리를 가능하게 함
+    - System.Linq: Language Integrated Query (LINQ)를 지원하는 클래스들을 포함합니다. LINQ는 데이터 소스에서 데이터를 쿼리하고 조작할 수 있는 강력한 기능을 제공
+    - System.Text: 문자열 처리, 인코딩 및 디코딩, 형식화된 출력 등을 지원하는 클래스들을 제공
+    - System.Threading.Tasks: 병렬 및 비동기 프로그래밍을 지원하는 클래스들을 포함합니다. Task와 같은 클래스를 사용하여 비동기적으로 실행할 코드를 정의할 수 있음
+    - System.Windows: WPF(Windows Presentation Foundation)에서 사용하는 기본적인 윈도우 및 UI 요소 클래스들을 제공
+    - System.Windows.Controls: WPF에서 사용하는 다양한 컨트롤 요소들을 포함합니다. 예를 들어, Button, TextBox, ListBox 등의 UI 컨트롤을 이 네임스페이스에서 제공
+    - System.Windows.Data: 데이터 바인딩과 관련된 클래스들을 포함합니다. 데이터 바인딩은 UI 요소와 데이터 소스를 연결하여 데이터의 변화를 자동으로 반영할 수 있도록 도와줌
+    - System.Windows.Documents: 텍스트 및 문서 처리와 관련된 클래스들을 포함합니다. 예를 들어, FlowDocument, TextBlock 등의 요소를 이용하여 텍스트 기반 문서를 생성하고 편집할 수 있음
+    - System.Windows.Input: 사용자 입력을 처리하는 클래스들을 포함합니다. 마우스, 키보드 등의 입력에 대한 이벤트를 처리하고 관리할 수 있음
+    - System.Windows.Media: 그래픽 처리와 관련된 클래스들을 포함합니다. 다양한 미디어 요소를 처리하고, 2D/3D 그래픽을 구현하는 데 사용
+    - System.Windows.Media.Imaging: 이미지 처리와 관련된 클래스들을 포함합니다. BitmapImage와 같은 클래스를 사용하여 이미지를 로드하고 표시할 수 있음
+    - System.Windows.Navigation: 네비게이션과 관련된 클래스들을 포함합니다. 예를 들어, 페이지 간 이동을 관리하고 URI 기반의 네비게이션을 처리하는 데 사용
+    ```csharp
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Text;
+    using System.Threading.Tasks;
+    using System.Windows;
+    using System.Windows.Controls;
+    using System.Windows.Data;
+    using System.Windows.Documents;
+    using System.Windows.Input;
+    using System.Windows.Media;
+    using System.Windows.Media.Imaging;
+    using System.Windows.Navigation;
+    ```
+
+2. SFARM.Views 네임스페이스와 HomeControl 클래스 정의
+    - SFARM.Views 네임스페이스 안에 위치한 HomeControl 클래스
+    - UserControl을 상속받아 사용자 정의 UI 컨트롤을 구현
+    - partial class HomeControl에서 partial 키워드는 클래스가 여러 파일에 걸쳐 정의될 수 있음을 나타냄
+    ```csharp
+    namespace SFARM.Views
+    {
+        /// <summary>
+        /// HomeControl.xaml에 대한 상호 작용 논리
+        /// </summary>
+        public partial class HomeControl : UserControl
+        {
+    ```
+
+3. 생성자 메서드
+    - HomeControl 클래스의 생성자
+    - 생성자는 클래스가 인스턴스화될 때 호출
+    - InitializeComponent() 메서드는 UI 요소들이 정의된 XAML 파일을 초기화하는 역할, 일반적으로 UI 요소들을 메모리에 로드하고 연결
+    ```csharp
+        // HomeControl 클래스 정의
+        public HomeControl()
+        {
+            InitializeComponent(); // 초기화 함수 호출
+        }
+    ```
+
+4. UserControl_Loaded 이벤트 핸들러
+    - UserControl_Loaded 메서드는 UserControl이 로드될 때 발생하는 이벤트 핸들러 (해당 UI 요소가 화면에 나타날 때 호출)
+    - 세 개의 패널 (ActiveItemPanelLiveInfo, ActiveItemPanelPicture, ActiveItemPanelControl)의 Content 프로퍼티에 각각의 패널을 채워 넣는 작업
+        ```csharp
+        // UserControl이 로드될 때 호출되는 이벤트 핸들러
+        private void UserControl_Loaded(object sender, RoutedEventArgs e)
+        {
+            // ActiveItemPanelLiveInfo의 Content에 Views.PanelLiveInfo 인스턴스 설정
+            ActiveItemPanelLiveInfo.Content = new Views.PanelLiveInfo();
+            
+            // ActiveItemPanelPicture의 Content에 Views.PanelPicture 인스턴스 설정
+            ActiveItemPanelPicture.Content = new Views.PanelPicture();
+            
+            // ActiveItemPanelControl의 Content에 Views.PanelControl 인스턴스 설정
+            ActiveItemPanelControl.Content = new Views.PanelControl();
+        }
+    ```
+
+- **구성요소:**
+- #### 제어센서 모니터링(PanelControl.xaml)
+    - 기본 DB값에서 추천해주는 기본값에 맞춰저 있는 각 수치를 사용자의 기준에 맞춰서 조절하고 환경을 최적화 할 수 있는 컨트롤 화면
+    - 물탱크의 급수량, 급수 주기, 온도, 조도 센서의 밝기 정도, 쿨링팬 작동 시간을 제어할 수 있는 기능을 제공
+
+### PanelControl.xaml.cs
+1. using 문
+    - System: 기본 .NET 클래스와 구조체를 포함하고 있는 가장 기본적인 네임스페이스
+    - System.Collections.Generic: 제네릭 컬렉션 클래스(예: List, Dictionary 등)를 사용할 수 있게 해줌
+    - System.Linq: LINQ(Language-Integrated Query) 기능을 사용하여 데이터 질의를 수행할 수 있음
+    - System.Text: 문자열 및 문자 데이터를 조작하는 클래스들을 제공
+    - System.Threading.Tasks: 멀티스레드 처리와 비동기 작업을 위한 클래스를 포함
+    - System.Windows: WPF 애플리케이션과 관련된 주요 클래스들을 포함한 네임스페이스
+    - System.Windows.Controls: WPF의 UI 컨트롤(버튼, 텍스트박스 등) 클래스들을 사용할 수 있음
+    - System.Windows.Data: 데이터 바인딩을 위한 클래스들을 제공
+    - System.Windows.Documents: 문서 편집 및 표시를 위한 클래스들을 포함
+    - System.Windows.Input: 사용자 입력(마우스, 키보드 등)을 처리하는 클래스들을 제공
+    - System.Windows.Media: 그래픽스와 미디어 관련 기능을 제공하는 클래스들을 포함
+    - System.Windows.Media.Imaging: 비트맵 이미지 처리를 위한 클래스들을 포함
+    - System.Windows.Navigation: WPF 네비게이션 관련 클래스들을 제공
+    - System.Windows.Shapes: 다양한 도형과 그래픽 요소를 만드는 클래스들을 포함
+    ```csharp
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Text;
+    using System.Threading.Tasks;
+    using System.Windows;
+    using System.Windows.Controls;
+    using System.Windows.Data;
+    using System.Windows.Documents;
+    using System.Windows.Input;
+    using System.Windows.Media;
+    using System.Windows.Media.Imaging;
+    using System.Windows.Navigation;
+    using System.Windows.Shapes;
+    ```
+2. namespace SFARM.Views
+    - SFARM.Views: PanelControl 클래스를 포함
+    - PanelControl 클래스는 UserControl을 상속받음
+    ```csharp
+    namespace SFARM.Views
+    {
+        /// <summary>
+        /// PanelControl.xaml에 대한 상호 작용 논리
+        /// </summary>
+        public partial class PanelControl : UserControl
+        {
+            // 클래스 내부의 코드들이 선언됩니다.
+        }
+    }
+    ```
+
+3. partial class PanelControl : UserControl
+    - PanelControl 클래스: UserControl을 확장한 사용자 정의 컨트롤
+    - 생성자 PanelControl(): 생성자에서는 InitializeComponent() 메서드를 호출하여 XAML 파일과 연결된 UI를 초기화
+    ```csharp
+    public partial class PanelControl : UserControl
+    {
+        public PanelControl()
+        {
+            InitializeComponent();
+        }
+    }
+    ```
+
+    - ![PanelControl.xaml](https://raw.githubusercontent.com/final-project-smartparm/SmartFarm-WPF-Part/main/img/Sparm1.png)
+- #### 실시간상태 모니터링(PanelLiveInfo.xaml)
+    - 현재 온도 , 토양 수분도 , 조도 , 물탱크 상황 등 스마트팜의 주요 환경 지표를 실시간 반영해여 보여주는 화면
+    - 사용자가 위의 실시간 데이터를 통해서 상태를 파악하고 각 필요한 조치를 취할 수가 있음
+    - ex : 각각의 모니터링화면에서 경고가 발생!
+### PanelLiveInfo.xaml.cs
+1. using 문
+    - System: 기본 .NET 클래스와 구조체를 포함하고 있는 가장 기본적인 네임스페이스
+    - System.Collections.Generic: 제네릭 컬렉션 클래스(예: List, Dictionary 등)를 사용할 수 있게 해줌
+    - System.Linq: LINQ(Language-Integrated Query) 기능을 사용하여 데이터 질의를 수행할 수 있음
+    - System.Text: 문자열 및 문자 데이터를 조작하는 클래스들을 제공
+    - System.Threading.Tasks: 멀티스레드 처리와 비동기 작업을 위한 클래스를 포함
+    - System.Windows: WPF 애플리케이션과 관련된 주요 클래스들을 포함한 네임스페이스
+    - System.Windows.Controls: WPF의 UI 컨트롤(버튼, 텍스트박스 등) 클래스들을 사용할 수 있음
+    - System.Windows.Data: 데이터 바인딩을 위한 클래스들을 제공
+    - System.Windows.Documents: 문서 편집 및 표시를 위한 클래스들을 포함
+    - System.Windows.Input: 사용자 입력(마우스, 키보드 등)을 처리하는 클래스들을 제공
+    - System.Windows.Media: 그래픽스와 미디어 관련 기능을 제공하는 클래스들을 포함
+    - System.Windows.Media.Imaging: 비트맵 이미지 처리를 위한 클래스들을 포함
+    - System.Windows.Navigation: WPF 네비게이션 관련 클래스들을 제공
+    - System.Windows.Shapes: 다양한 도형과 그래픽 요소를 만드는 클래스들을 포함
+    ```csharp
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Text;
+    using System.Threading.Tasks;
+    using System.Windows;
+    using System.Windows.Controls;
+    using System.Windows.Data;
+    using System.Windows.Documents;
+    using System.Windows.Input;
+    using System.Windows.Media;
+    using System.Windows.Media.Imaging;
+    using System.Windows.Navigation;
+    using System.Windows.Shapes;
+    ```
+
+2. namespace SFARM.Views
+    - SFARM.Views: PanelLiveInfo 클래스를 포함
+    - PanelLiveInfo 클래스는 UserControl을 상속받음
+    ```csharp
+    namespace SFARM.Views
+    {
+        /// <summary>
+        /// PanelLiveInfo.xaml에 대한 상호 작용 논리
+        /// </summary>
+        public partial class PanelLiveInfo : UserControl
+        {
+            // 클래스 내부의 코드들이 선언
+        }
+    }
+    ```
+
+3. partial class PanelLiveInfo : UserControl
+    - PanelLiveInfo 클래스: PanelLiveInfo 클래스는 UserControl을 확장한 사용자 정의 컨트롤
+    - 생성자 PanelLiveInfo(): 생성자에서는 InitializeComponent() 메서드를 호출하여 XAML 파일과 연결된 UI를 초기화
+    ```csharp
+    public partial class PanelLiveInfo : UserControl
+    {
+        public PanelLiveInfo()
+        {
+            InitializeComponent();
+        }
+    }
+    ```
+    - ![PanelLiveInfo.xaml](https://raw.githubusercontent.com/final-project-smartparm/SmartFarm-WPF-Part/main/img/Sparm2.png)
+
+- #### 성장 진행률 모니터링(PanelPicture.xaml)
+    - 식물의 성장 과정을 시각적으로 추적 할 수 있는 화면
+    - 주기적으로 촬영된 사진을 앨범처럼 보여주면서 디자인과 성장 상태의 변화를 확인할 수 있음
+### PanelPicture.xaml.cs
+1. using 문
+    - System: 기본 .NET 클래스와 구조체를 포함하고 있는 가장 기본적인 네임스페이스
+    - System.Collections.Generic: 제네릭 컬렉션 클래스(예: List, Dictionary 등)를 사용할 수 있게 해줌
+    - System.Linq: LINQ(Language-Integrated Query) 기능을 사용하여 데이터 질의를 수행할 수 있음
+    - System.Text: 문자열 및 문자 데이터를 조작하는 클래스들을 제공
+    - System.Threading.Tasks: 멀티스레드 처리와 비동기 작업을 위한 클래스를 포함
+    - System.Windows: WPF 애플리케이션과 관련된 주요 클래스들을 포함한 네임스페이스
+    - System.Windows.Controls: WPF의 UI 컨트롤(버튼, 텍스트박스 등) 클래스들을 사용할 수 있음
+    - System.Windows.Data: 데이터 바인딩을 위한 클래스들을 제공
+    - System.Windows.Documents: 문서 편집 및 표시를 위한 클래스들을 포함
+    - System.Windows.Input: 사용자 입력(마우스, 키보드 등)을 처리하는 클래스들을 제공
+    - System.Windows.Media: 그래픽스와 미디어 관련 기능을 제공하는 클래스들을 포함
+    - System.Windows.Media.Imaging: 비트맵 이미지 처리를 위한 클래스들을 포함
+    - System.Windows.Navigation: WPF 네비게이션 관련 클래스들을 제공
+    - System.Windows.Shapes: 다양한 도형과 그래픽 요소를 만드는 클래스들을 포함
+    ```csharp
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Text;
+    using System.Threading.Tasks;
+    using System.Windows;
+    using System.Windows.Controls;
+    using System.Windows.Data;
+    using System.Windows.Documents;
+    using System.Windows.Input;
+    using System.Windows.Media;
+    using System.Windows.Media.Imaging;
+    using System.Windows.Navigation;
+    using System.Windows.Shapes;
+    ```
+
+2. namespace SFARM.Views
+    - SFARM.Views라는 이름의 네임스페이스를 선언
+    - PanelPicture 클래스를 포함
+    - PanelPicture 클래스는 UserControl을 상속받음
+    ```csharp
+    namespace SFARM.Views
+    {
+        /// <summary>
+        /// PanelPicture.xaml에 대한 상호 작용 논리
+        /// </summary>
+        public partial class PanelPicture : UserControl
+        {
+            // 클래스 내부의 코드들이 선언됩니다.
+        }
+    }
+    ```
+
+3. partial class PanelPicture : UserControl
+    - PanelPicture 클래스는 UserControl을 확장한 사용자 정의 컨트롤
+    - 생성자 PanelPicture()에서 InitializeComponent() 메서드를 호출하여 XAML과 연결된 UI를 초기화
+    ```csharp
+    public partial class PanelPicture : UserControl
+    {
+        public PanelPicture()
+        {
+            InitializeComponent();
+        }
+    }
+    ```
+- ![PanelPicture.xaml](https://raw.githubusercontent.com/final-project-smartparm/SmartFarm-WPF-Part/main/img/Sparm3.png)
+
+### MyPlantsControl.xaml
+```csharp
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Text;
+    using System.Threading.Tasks;
+    using System.Windows;
+    using System.Windows.Controls;
+    using System.Windows.Data;
+    using System.Windows.Documents;
+    using System.Windows.Input;
+    using System.Windows.Media;
+    using System.Windows.Media.Imaging;
+    using System.Windows.Navigation;
+    using System.Windows.Shapes;
+
+    namespace SFARM.Views
+    {
+        /// <summary>
+        /// MyPlantsControl.xaml에 대한 상호 작용 논리
+        /// </summary>
+        public partial class MyPlantsControl : UserControl
+        {
+            public MyPlantsControl()
+            {
+                InitializeComponent();
+            }
+        }
+    }
+```
+
+### MyInfoControl.xaml
+```csharp
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Text;
+    using System.Threading.Tasks;
+    using System.Windows;
+    using System.Windows.Controls;
+    using System.Windows.Data;
+    using System.Windows.Documents;
+    using System.Windows.Input;
+    using System.Windows.Media;
+    using System.Windows.Media.Imaging;
+    using System.Windows.Navigation;
+    using System.Windows.Shapes;
+
+    namespace SFARM.Views
+    {
+        /// <summary>
+        /// MyInfoControl.xaml에 대한 상호 작용 논리
+        /// </summary>
+        public partial class MyInfoControl : UserControl
+        {
+            public MyInfoControl()
+            {
+                InitializeComponent();
+            }
+        }
+    }
+```
+
+### App.xaml.cs
+```csharp
+using System.Configuration;
+using System.Data;
+using System.Windows;
+
+namespace SFARM
+{
+    /// <summary>
+    /// Interaction logic for App.xaml
+    /// </summary>
+    public partial class App : Application
+    {
+        public App()
+        {
+            Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("Ngo9BigBOggjHTQxAR8/V1NCaF5cXmZCeUx3RHxbf1x0ZFZMZFpbRHFPMyBoS35RckVkWXtec3BTRmdbVEFz");
+        }
+    }
+}
+```
+
+#### Color
+- Background Colors
+    - <p>$\bf{\large{\color{#467362}\#467362}}$</p>
+    - <p>$\bf{\large{\color{#568C73}\#568C73}}$</p>
+    - <p>$\bf{\large{\color{#81A68A}\#81A68A}}$</p>
+    - <p>$\bf{\large{\color{#C4D9BF}\#C4D9BF}}$</p>
+- Window Border Colors
+    - <p>$\bf{\large{\color{#6D2FFF}\#6D2FFF}}$</p>
+    - <p>$\bf{\large{\color{#FB539B}\#FB539B}}$</p>
+    - <p>$\bf{\large{\color{#836EFB}\#836EFB}}$</p>
+- Color Palette
+    - <p>$\bf{\large{\color{#467362}\#467362}}$</p>
+    - <p>$\bf{\large{\color{#568C73}\#568C73}}$</p>
+    - <p>$\bf{\large{\color{#81A68A}\#81A68A}}$</p>
+    - <p>$\bf{\large{\color{#C4D9BF}\#C4D9BF}}$</p>
+    - <p>$\bf{\large{\color{#F2F2F2}\#F2F2F2}}$</p>
+    - <p>$\bf{\large{\color{#7C625A}\#7C625A}}$</p>
+    - <p>$\bf{\large{\color{#172026}\#172026}}$</p>
+- Font Colors
+    - <p>$\bf{\large{\color{#E0E1F1}\#E0E1F1}}$</p>
+    - <p>$\bf{\large{\color{#D5CFF5}\#D5CFF5}}$</p>
+    - <p>$\bf{\large{\color{#BCBEE0}\#BCBEE0}}$</p>
+    - <p>$\bf{\large{\color{#9497CD}\#9497CD}}$</p>
+    - <p>$\bf{\large{\color{#7C80C2}\#7C80C2}}$</p>
+    - <p>$\bf{\large{\color{#7376BD}\#7376BD}}$</p>
+- Panel Colors
+    - <p>$\bf{\large{\color{#200F53}\#200F53}}$</p>
+    - <p>$\bf{\large{\color{#281269}\#281269}}$</p>
+    - <p>$\bf{\large{\color{#2B1372}\#2B1372}}$</p>
+- Button Colors
+- TextBox Colors
+- Etc
 
 
 
+--------------------------------------------------------------
 
-# SmartFarm-WPF-Part
-스마트팜 프로젝트 WPF개발 (UI) 
-- 아두이노 보드를 이용하여 식물관리 시스템을 구축하고 , WPF를 사용하여 사용자 인털페이스(UI) 를 개발하여 효율적인 환경 제어와 모니터링을 제공하는 스마트팜을 구현 
+## SmartFarm---Arduino-IDE
+스마트팜 아두이노 개발 (하드웨어)
 
-## day01
-사용기술 
-- 소프트웨어 : WPF , XAML , C#
+### 아두이노 IDE 설정   
+- 아두이노 IDE 설치  
+    - 보드 매니저에서 ESP32 보드 추가 
+    - 예제 코드 업로드 : 파일 > 예제 > ESP32 > Camera > CameraWebServer
+    - 카메라 핀 설정 #define CAMERA_MODEL_AI_THINKER
+    - Wi-Fi 설정 : 예제 코드에서 사용할 Wi-Fi SSID와 패스워드를 입력
+        - ex : const char* ssid = "와이파이 이름";
+        - ex : const chsar* password : "비밀번호";
+    - 코드 업로드 
+        - 도구 업로드 속도 1152000으로 설정 
+        - 업로드 버튼을 누르고 코드 업로드 
+    - 웹캠 스트리밍 확인
+        - 시리얼 모니터 열기
+            - 업로드가 완료된 후 , 도구 > 시리얼 모니터 , 115200 baud로 설정
+            - 시리얼 모니터에서 ESP32-CAM의 IP주소 확인
+    - 웹 브라우저 스트리밍 확인
+            - 웹 브라우저에 시리얼 모니터에서 확인한 IP주소를 입력 
+            - http://아이피:포트
+            - 웹 페이지 스트리밍 확인
+    - ![ESP32 CAM 아두이노 웹캠]()
 
--  WPF를 사용하는 이유
-    - XAML 언어로 컨트롤러를 유연하게 디자인 할 수 있기 때문에 스마트팜의 보여지는 UI가 많고 디테일한 시각적인 이미지가 중요하기 때문에 XAML코드 기반으로 사용하면 좋을것이라고 생각
-    - 이쁜 디자인 : WPF는 UI를 이쁘게 꾸밀 수 있음 컨트롤러를 자유롭게 배치하고 꾸밀 수 있으면서 애니메이션 효과를 주어 사용자들에게 매력적인 화면을 제공할 수 있어서
-    - 디자인과 코드 분리 : 디자인과 behind code 부분을 분리가 가능하기 때문에 서로의 작업이 영향을 미치지 않아서 스마트팜 프로젝트와 적합하다고 생각했음 
 
-- 제어 패널 및 mainWindow UI 만들기
-    - MainWindow.xaml
-        - 메인 화면 후에 보이는 식물의 정보를 보여주는 메인화면 역할
-            - 애플리케이션 로그인 시작 후 식물 종 선택 후 보이는 화면 
-            -  전체적인 시스템 상태나 다양한 정보의 통꼐를 한눈에 파악 할 수 있도록 보여줌
-                -  물탱크의 급수량 
-                -  급수 주기 
-                -  온도 
-                -  조도센서의 밝기 정도
-                -  쿨링팬 작동시간
-                -  카메라  
-        - HomeControl.xaml
-            - 역할 : 메인 대시보드 역할
-                - 제어센서 모니터링(PanelControl.xaml) , 실시간상태 모니터링(PanelLiveInfo.xaml) , 성장 진행률 모니터링(PanelPicture.xaml)
+### 공유기 설정
+- 공유기 기본 게이트위이 접속(http://192.168.5.1)으로 접속
+    - 로그인 진행
+        - 관리 로그인
+    - 포트포워드 관리
+        - 외부에서도 사용할 수 있게 외부포트 번호를 설정해줌 
+    - LAN 연결 정보에서 범위를 변경
+        - **공유기 상태 정보창에 나와있는 서브넷 마스크를 가져와서 사용**
+        - IPAddress local_IP(172 , 30, 1, 5); //고정 아이피 
+        - IPAddress gateway(172 , 30, 1, 254); //공유기 관리 주소
+        - IPAddress subnet(255, 255, 255, 0); //서브넷 마크
+        ```python 
+        void setup() #부분에 추가
+        if(!WiFi.config(local_IP, gateway, subnet)) {
+            Serial.println("STA Failed to configure");
+        }
+        ```
+        **추가해야 고정아이피 설정이 끝이 남**
+- 공유기 상태 정보에서 인터넷 연결 정보의 ip 주소(외부 아이피)를 복사 후
+    - 인터넷 창에 http://외부아이피:포트/mjpeg/1
+    - 영상의 경우: http://외부아이피:포트/mjpeg/1
+    - 사진의 경우: http://외부아이피:포트/jpg
 
-                - PanelControl.xaml
-                    - 기본 DB값에서 추천해주는 기본값에 맞춰저 있는 각 수치를 사용자의 기준에 맞춰서 조절하고 환경을 최적화 할 수 있는 컨트롤 화면
-                    - 물탱크의 급수량, 급수 주기, 온도, 조도 센서의 밝기 정도, 쿨링팬 작동 시간을 제어할 수 있는 기능을 제공
-                - ![PanelControl.xaml](https://raw.githubusercontent.com/final-project-smartparm/SmartFarm-WPF-Part/main/img/Sparm1.png)
-                - PanelLiveInfo.xaml
-                    - 현재 온도 , 토양 수분도 , 조도 , 물탱크 상황 등 스마트팜의 주요 환경 지표를 실시간 반영해여 보여주는 화면
-                    - 사용자가 위의 실시간 데이터를 통해서 상태를 파악하고 각 필요한 조치를 취할 수가 있음
-                    - ex : 각각의 모니터링화면에서 경고가 발생!
-                - ![PanelLiveInfo.xaml](https://raw.githubusercontent.com/final-project-smartparm/SmartFarm-WPF-Part/main/img/Sparm2.png)
-                - PanelPicture.xaml
-                    - 식물의 성장 과정을 시각적으로 추적 할 수 있는 화면
-                    - 주기적으로 촬영된 사진을 앨범처럼 보여주면서 디자인과 성장 상태의 변화를 확인할 수 있음
-                - ![PanelPicture.xaml](https://raw.githubusercontent.com/final-project-smartparm/SmartFarm-WPF-Part/main/img/Sparm3.png)
+    - ![공유기설정]()
 
+<<<<<<< HEAD
 
 
 
@@ -98,6 +620,9 @@ IoT 기술을 활용하여 소형 스마트팜을 구축하는 것을 목표로 
     - 사진의 경우: http://외부아이피:포트/jpg
 
 ## 센서
+=======
+### 센서
+>>>>>>> main
 1. 센서 확장 쉴드
     - 우노 메가, 듀에 등에 적층하여 사용하는 확장형 쉴드로, 센서들을 확장하여 사용하는 용도로 사용
     - V5.0은 통신선과 LCD 인터페이스, 특히 RGB 3색으로 표현하는 그래픽 12864LCD를 확장할 수 있는 인터페이스가 추가되었으며 SD카드를 이용해 메모리를 확장할 수도 있음
@@ -145,7 +670,11 @@ IoT 기술을 활용하여 소형 스마트팜을 구축하는 것을 목표로 
 
 
 
+<<<<<<< HEAD
 ## Arduino IDE 코드
+=======
+### Arduino IDE 코드
+>>>>>>> main
 
 1. 사용된 라이브러리
     1. Wire.h
