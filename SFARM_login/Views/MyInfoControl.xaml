@@ -9,7 +9,7 @@
              mc:Ignorable="d" 
              d:DesignHeight="635" d:DesignWidth="1000" Background="{StaticResource color5}">
 
-    <Grid Margin="100,70">
+    <Grid Margin="100,50">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*"/>
             <ColumnDefinition Width="2*"/>
@@ -17,10 +17,11 @@
 
         <Grid Grid.Column="0" Background="Transparent" Grid.ColumnSpan="2" Margin="0,0,533,0">
             <Grid.RowDefinitions>
+                <RowDefinition Height="1.5*"/>
+                <RowDefinition Height="0.4*"/>
+                <RowDefinition Height="0.4*"/>
+                <RowDefinition Height="0.4*"/>
                 <RowDefinition Height="1.6*"/>
-                <RowDefinition Height="0.6*"/>
-                <RowDefinition Height="0.6*"/>
-                <RowDefinition Height="2*"/>
             </Grid.RowDefinitions>
 
 
@@ -30,7 +31,7 @@
                 <StackPanel Margin="5"
                     Orientation="Horizontal">
                     <fa:IconImage Icon="UserAlt" Style="{StaticResource UserInfoIcon}"/>
-                    <TextBox Text="익명" Style="{StaticResource UserInfoTextBox}"/>
+                    <TextBox x:Name="TxtUserName" Text="TxtUserName" Style="{StaticResource UserInfoTextBox}"/>
                 </StackPanel>
             </Border>
 
@@ -38,11 +39,18 @@
                 <StackPanel Margin="5"
         Orientation="Horizontal">
                     <fa:IconImage Icon="EnvelopesBulk" Style="{StaticResource UserInfoIcon}"/>
-                    <TextBox Text="exam@naver.com" Style="{StaticResource UserInfoTextBox}"/>
+                    <TextBox x:Name="TxtUserEmail" Text="TxtUserEmail" Style="{StaticResource UserInfoTextBox}"/>
                 </StackPanel>
             </Border>
 
-            <Grid Grid.Row="3" HorizontalAlignment="Center">
+            <Border Grid.Row="3" Style="{StaticResource UserInfoBorder}">
+                <StackPanel Margin="5" Orientation="Horizontal">
+                    <fa:IconImage Icon="MobileRetro" Style="{StaticResource UserInfoIcon}"/>
+                    <TextBox x:Name="TxtUserTell" Text="TxtUserTell" Style="{StaticResource UserInfoTextBox}"/>
+                </StackPanel>
+            </Border>
+
+            <Grid Grid.Row="4" HorizontalAlignment="Center">
                 <syncfusion:CalendarEdit Date="7/12/2024" HorizontalAlignment="Left" VerticalAlignment="Top" Width="200" MouseOverBackground="{DynamicResource color4}" SelectedDayCellBackground="{DynamicResource color4}" HeaderBackground="{DynamicResource color4}" TodayCellSelectedBackground="{DynamicResource color1}" TodayCellSelectedBorderBrush="{DynamicResource color1}" WeekNumberForeground="{DynamicResource color4}" SelectedDayCellBorderBrush="{DynamicResource color4}" SelectedDayCellHoverBackground="{DynamicResource color3}" SelectionBorderBrush="{DynamicResource color3}">
                     <syncfusion:CalendarEdit.BorderBrush>
                         <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">

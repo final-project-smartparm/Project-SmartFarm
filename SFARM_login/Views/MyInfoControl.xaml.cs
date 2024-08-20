@@ -23,6 +23,9 @@ namespace SFARM.Views
         public MyInfoControl()
         {
             InitializeComponent();
+            TxtUserName.Text = Helpers.UserInfo.USER_NAME;
+            TxtUserEmail.Text = Helpers.UserInfo.USER_EMAIL;
+            TxtUserTell.Text = Helpers.UserInfo.USER_TELL;
         }
     }
 }

@@ -101,26 +101,6 @@ namespace SFARM
 
         }
 
-
-        //private void InitComboDateFromDB()
-        //{
-        //    using (SqlConnection conn = new SqlConnection(Helpers.Common.CONNSTRING))
-        //    {
-        //        conn.Open();
-        //        SqlCommand cmd = new SqlCommand(Helpers.Common.CONNSTRING, conn);
-        //        SqlDataAdapter adapter = new SqlDataAdapter(cmd);
-        //        DataSet dSet = new DataSet();
-        //        adapter.Fill(dSet);
-        //        List<string> saveDates = new List<string>();
-
-        //        foreach (DataRow row in dSet.Tables[0].Rows)
-        //        {
-        //            saveDates.Add(row["Facilities_id"].ToString());
-        //        }
-        //        CboReqDate.ItemsSource = saveDates;
-        //    })
-        //}
-
         private void BtnMnuHome_Click(object sender, RoutedEventArgs e)
         {
             ActiveItem.Content = new Views.HomeControl();
@@ -150,7 +130,7 @@ namespace SFARM
             if (CboPlants.SelectedItem is ComboBoxItem selectedItem)
             {
                 string selectedPlant = selectedItem.Content.ToString();
-                LoadPlantData(selectedPlant);
+                //LoadPlantData(selectedPlant);
             }
         }
 

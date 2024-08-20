@@ -1,4 +1,5 @@
 ﻿using Microsoft.Data.SqlClient;
+using SFARM.Helpers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -57,7 +58,7 @@ namespace SFARM
             {
                 conn.Open();
 
-                string query = @"SELECT USER_EMAIL, USER_PASS, USER_NAME 
+                string query = @"SELECT USER_NUM, USER_EMAIL, USER_PASS, USER_NAME, USER_TELL
                                  FROM UserInfo
                                  WHERE USER_EMAIL = @USER_EMAIL 
                                    AND USER_PASS = @USER_PASS";
@@ -72,6 +73,11 @@ namespace SFARM
                 {
                     // 로그인 성공 시 사용자 이름 저장
                     LoggedInUserName = reader["USER_NAME"]?.ToString();
+
+                    
+                    Helpers.UserInfo.USER_NAME = reader["USER_NAME"]?.ToString();
+                    Helpers.UserInfo.USER_EMAIL = reader["USER_EMAIL"]?.ToString();
+                    Helpers.UserInfo.USER_TELL = reader["USER_TELL"]?.ToString();
 
                     return true;
                 }
