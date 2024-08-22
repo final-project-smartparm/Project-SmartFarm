@@ -30,6 +30,16 @@ namespace SFARM.Views
             InitializeComponent();
             StartMjpegStream();
         }
+        public void UserControl_Loaded(object sender, RoutedEventArgs e)
+        {
+            LblPlantName.Content = Helpers.SattingPlant.SATTINGP_NAME;
+
+            TxtPlant_Text.Text = Helpers.InfoPlant.PLANT_TEXT;
+            TxtPlant_Lux.Text = Helpers.InfoPlant.PLANT_LUX;
+            TxtPlant_Temp.Text = Helpers.InfoPlant.PLANT_TEMP;
+            TxtPlant_Humid.Text = Helpers.InfoPlant.PLANT_HUMID;
+            TxtPlant_Soilhumid.Text = Helpers.InfoPlant.PLANT_SOILHUMID;
+        }
 
         private void StartMjpegStream()
         {

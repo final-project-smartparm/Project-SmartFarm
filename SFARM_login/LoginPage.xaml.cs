@@ -26,6 +26,7 @@ namespace SFARM
         private bool isLogin = false;
         public string LoggedInUserName { get; private set; }
 
+
         public bool IsLogin { get { return isLogin; } set { isLogin = value; } }
         public LoginPage()
         {
@@ -74,7 +75,7 @@ namespace SFARM
                     // 로그인 성공 시 사용자 이름 저장
                     LoggedInUserName = reader["USER_NAME"]?.ToString();
 
-                    
+                    Helpers.UserInfo.USER_NUM = Int32.Parse(reader["USER_NUM"].ToString());
                     Helpers.UserInfo.USER_NAME = reader["USER_NAME"]?.ToString();
                     Helpers.UserInfo.USER_EMAIL = reader["USER_EMAIL"]?.ToString();
                     Helpers.UserInfo.USER_TELL = reader["USER_TELL"]?.ToString();

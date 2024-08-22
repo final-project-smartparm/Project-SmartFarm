@@ -22,12 +22,16 @@ namespace SFARM.Views
     public partial class PanelPicture : UserControl
     {
         private string imagesDirectory = @"C:\SFAMCapture";
-
+        
         public PanelPicture()
         {
             InitializeComponent();
-            LoadRandomIamge();
             
+        }
+        private void UserControl_Loaded(object sender, RoutedEventArgs e)
+        {
+            LoadRandomIamge();
+            LblPlantName.Content = Helpers.SattingPlant.SATTINGP_NAME + " 성장진행률";
         }
 
         private void LoadRandomIamge()
@@ -74,5 +78,6 @@ namespace SFARM.Views
             }
 
         }
+
     }
 }

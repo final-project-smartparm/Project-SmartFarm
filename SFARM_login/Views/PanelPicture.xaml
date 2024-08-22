@@ -6,7 +6,7 @@
              xmlns:Syncfusion="http://schemas.syncfusion.com/wpf"
              xmlns:local="clr-namespace:SFARM.Views"
              mc:Ignorable="d" 
-             d:DesignHeight="560" d:DesignWidth="300">
+             d:DesignHeight="560" d:DesignWidth="300" Loaded="UserControl_Loaded">
          
     <Grid Background="{StaticResource color5}">
         <Grid.RowDefinitions>
@@ -32,11 +32,8 @@
             
         </Grid>
 
-        <Label Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center">
-            <Label.Content>
-                방울토마토
-            </Label.Content>
-        </Label>
+        <Label Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" Content="성장진행률"
+               x:Name="LblPlantName"/>
 
         <Grid Grid.Row="2" Margin="30,10">
             <Grid.RowDefinitions>

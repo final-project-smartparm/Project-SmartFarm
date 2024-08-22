@@ -23,12 +23,21 @@ namespace SFARM.Views
         public PanelControl()
         {
             InitializeComponent();
+        }
+        public void UserControl_Loaded(object sender, RoutedEventArgs e)
+        {
+            textBox_Water_SupplyTick.Text = Helpers.SattingPlant.WATER_SUPPLY.ToString();
+            textBox_SoilHumidTick.Text = Helpers.SattingPlant.SATTINGP_SOILHUMID.ToString();
             textBox_TempTick.Text = Helpers.SattingPlant.SATTINGP_TEMP.ToString();
+            textBox_LuxTick.Text = Helpers.SattingPlant.SATTINGP_LUX.ToString();
+
+
         }
 
         private void textBox_TempTick_TextChanged(object sender, TextChangedEventArgs e)
         {
 
         }
+
     }
 }

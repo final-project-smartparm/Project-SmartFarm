@@ -25,7 +25,7 @@ namespace SFARM.Views
             InitializeComponent();
         }
 
-        private void UserControl_Loaded(object sender, RoutedEventArgs e)
+        public void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
             ActiveItemPanelLiveInfo.Content = new Views.PanelLiveInfo();
             ActiveItemPanelPicture.Content = new Views.PanelPicture();
