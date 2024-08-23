@@ -21,7 +21,7 @@
                 </Ellipse.Fill>
             </Ellipse>
             <Syncfusion:SfCircularProgressBar Style="{StaticResource CircularProgressBarStyle}" x:Name="CircularProgressBar" 
-                                              Progress="73">
+                                              Progress="15">
                 <Syncfusion:SfCircularProgressBar.ProgressContent>
                     <StackPanel>
                         <TextBlock Text="{Binding Progress, ElementName=CircularProgressBar, StringFormat={}{0}%}" 

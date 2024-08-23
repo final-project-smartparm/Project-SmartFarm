@@ -75,7 +75,7 @@
         <StackPanel Grid.Row="3" Margin="20,10,20,5">
             <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
                 <Label Style="{StaticResource PanelcontrolLabel}"  Content="쿨링팬 작동 온도"/>
-                <TextBox x:Name="textBox_TempTick" Text="{Binding Value, ElementName=TempSlider, Mode=TwoWay}" Style="{StaticResource SubValueTextBox}" TextChanged="textBox_TempTick_TextChanged" />
+                <TextBox x:Name="textBox_TempTick" Text="{Binding Value, ElementName=TempSlider, Mode=TwoWay}" Style="{StaticResource SubValueTextBox}"/>
                 <TextBox Text="°C" IsReadOnly="True" Style="{StaticResource SubValueTextBox}" />
             </StackPanel>
             <WrapPanel HorizontalAlignment="Center" Orientation="Horizontal" Width="230">
@@ -113,7 +113,8 @@
             </WrapPanel>
         </StackPanel>
 
-        <!-- 세이브 버튼 주석 <Button Grid.Row="8" Width="50" Height="46" Style="{StaticResource RoundButtonTemplate}" Content="save" Margin="115,46,105,45"/>-->
+        <!--<Button Grid.Row="8" Width="50" Height="46" Style="{StaticResource RoundButtonTemplate}" Content="save" Margin="115,46,105,45"
+                x:Name="BtnSave" Click="BtnSave_Click"/>-->
 
         <Line Grid.Row="2" Style="{StaticResource ControlWigetStroke}"/>
         <Line Grid.Row="5" Style="{StaticResource ControlWigetStroke}"/>

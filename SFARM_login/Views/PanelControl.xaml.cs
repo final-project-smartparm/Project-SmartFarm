@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Data.SqlClient;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -33,11 +34,10 @@ namespace SFARM.Views
 
 
         }
-
-        private void textBox_TempTick_TextChanged(object sender, TextChangedEventArgs e)
+        private void BtnSave_Click(object sender, RoutedEventArgs e)
         {
-
+            
+         
         }
-
     }
 }

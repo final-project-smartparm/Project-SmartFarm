@@ -167,7 +167,7 @@ namespace SFARM
                         Helpers.SattingPlant.SATTINGP_LUX = float.Parse(reader["SATTINGP_LUX"]?.ToString());
                         Helpers.SattingPlant.SATTINGP_SOILHUMID = float.Parse(reader["SATTINGP_SOILHUMID"]?.ToString());
                         Helpers.SattingPlant.WATER_SUPPLY = float.Parse(reader["WATER_SUPPLY"]?.ToString());
-                        Helpers.SattingPlant.SATTING_TOTALDATE = Int32.Parse(reader["WATER_SUPPLY"]?.ToString());
+                        Helpers.SattingPlant.SATTING_TOTALDATE = Int32.Parse(reader["SATTING_TOTALDATE"]?.ToString());
                     }
 
                 }
