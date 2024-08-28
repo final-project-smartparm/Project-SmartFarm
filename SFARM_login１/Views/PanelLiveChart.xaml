@@ -22,7 +22,7 @@
         x:Name="chart" 
         BorderBrush="#467362" BorderThickness="2"
         LegendLocation="Top"
-        Margin="0,0,0,34" HorizontalAlignment="Center" Width="720"/>
+        Margin="0,0,0,34" HorizontalAlignment="Center" Width="720" Loaded="chart_Loaded"/>
             <!--실제(설정) db 정보 값-->
             <live:CartesianChart 
         x:Name="chart1" 

@@ -24,9 +24,9 @@ namespace SFARM.Views
     public partial class PanelLiveChart : UserControl
     {
         private ScaleTransform scaleTransform;
-        public int PLANT_LUX {  get; set; }
-        public int PLANT_TEMP { get; set; }
-        public int PLANT_SOILHUMID { get; set; }
+        public String PLANT_LUX {  get; set; }
+        public String PLANT_TEMP { get; set; }
+        public String PLANT_SOILHUMID { get; set; }
 
         public PanelLiveChart()
         {
@@ -80,8 +80,14 @@ namespace SFARM.Views
                         }
                     }
                 }
+                
             }
             catch { }
+        }
+
+        private void chart_Loaded(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show(PLANT_TEMP.ToString());
         }
     } 
 }
