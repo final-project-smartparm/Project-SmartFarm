@@ -7,31 +7,44 @@
         xmlns:local="clr-namespace:SFARM.Views"
         xmlns:live="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
         mc:Ignorable="d"
-        Height="900" Width="800">
-    <Grid Margin="0,0,0,0">
-        <Grid x:Name="contentGrid" Margin="0,20,0,10" Height="500" VerticalAlignment="Top">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="1*"/>
-                <RowDefinition Height="1*"/>
-                
-            </Grid.RowDefinitions>
-            <!--In Code-->
+        Height="635" Width="1000">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
 
-            <!--실제 측정 값-->
-            <live:CartesianChart 
-        x:Name="chart" 
-        BorderBrush="#467362" BorderThickness="2"
-        LegendLocation="Top"
-        Margin="0,0,0,34" HorizontalAlignment="Center" Width="720" Loaded="chart_Loaded"/>
-            <!--실제(설정) db 정보 값-->
-            <live:CartesianChart 
-        x:Name="chart1" 
-        BorderBrush="#467362" BorderThickness="2"
-        LegendLocation="Top" Grid.Row="2"
-        Margin="0,0,0,34" HorizontalAlignment="Center" Width="720"/>
-
-
+        <!-- 실제 측정 값 -->
+        <Grid Grid.Row="0">
+            <live:CartesianChart
+            x:Name="chart"
+                Width="900"
+            BorderBrush="#467362"
+            BorderThickness="2"
+            LegendLocation="Top"
+            Margin="10"
+            HorizontalAlignment="Stretch"
+            VerticalAlignment="Stretch">
+            <live:CartesianChart.AxisX>
+                <live:Axis Title="Date" LabelFormatter="{Binding DateLabelFormatter}" />
+            </live:CartesianChart.AxisX>
+            <live:CartesianChart.AxisY>
+                <live:Axis Title="Temperature / Humidity" />
+            </live:CartesianChart.AxisY>
+        </live:CartesianChart>
         </Grid>
 
+        <!-- 데이터베이스 값 -->
+        <Grid Grid.Row="1">
+            <live:CartesianChart x:Name="chart1" BorderBrush="#467362" BorderThickness="2"
+                      LegendLocation="Top" Grid.Row="1" Margin="0,0,0,34" HorizontalAlignment="Center" Width="900">
+                <live:CartesianChart.AxisX>
+                    <live:Axis Title="Date" LabelFormatter="{Binding DateLabelFormatter}" />
+                </live:CartesianChart.AxisX>
+                <live:CartesianChart.AxisY>
+                    <live:Axis Title="Value" />
+                </live:CartesianChart.AxisY>
+            </live:CartesianChart>
+        </Grid>
     </Grid>
 </UserControl>

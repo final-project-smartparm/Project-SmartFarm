@@ -7,7 +7,7 @@
         xmlns:local="clr-namespace:SFARM"
         mc:Ignorable="d"
         WindowStyle="ThreeDBorderWindow"
-        Title="MainWindow" Height="700" Width="1200" Loaded="Window_Loaded">
+        Title="MainWindow" Height="740" Width="1200" Loaded="Window_Loaded">
     <Window.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
