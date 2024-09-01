@@ -37,6 +37,11 @@ namespace SFARM
             this.userName = userName;
             lblUserName.Content = $"환영합니다, {userName}님!";
             CboPlants.Items.Clear();
+
+            homeControl = new HomeControl();
+            plantsControl = new MyPlantsControl();
+            infoControl = new MyInfoControl();
+            panelLiveChart = new PanelLiveChart();
             
         }
 
@@ -259,6 +264,11 @@ namespace SFARM
             ActiveItem.Content = panelLiveChart;
 
         }
+        
 
+        private void BtnBack_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
     }
 }

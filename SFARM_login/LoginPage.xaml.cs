@@ -98,6 +98,11 @@ namespace SFARM
                 BtnLogin_Click(sender, e); // BtnLogin_Click 이벤트 호출
             }
         }
+
+        private void BtnClose_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
     }
 }
 
