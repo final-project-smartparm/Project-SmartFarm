@@ -18,6 +18,7 @@ public class BluetoothManager
     private BluetoothManager()
     {
         try
+        {
             _bluetoothClient = new BluetoothClient();
 
         }
