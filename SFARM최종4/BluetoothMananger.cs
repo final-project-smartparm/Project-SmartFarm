@@ -17,7 +17,14 @@ public class BluetoothManager
 
     private BluetoothManager()
     {
-        _bluetoothClient = new BluetoothClient();
+        try
+            _bluetoothClient = new BluetoothClient();
+
+        }
+        catch (Exception)
+        {
+
+        }
         ConnectToDevice();
     }
 
