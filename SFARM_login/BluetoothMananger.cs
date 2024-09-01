@@ -38,7 +38,7 @@ public class BluetoothManager
 
     private void ConnectToDevice()
     {
-        BluetoothDeviceInfo[] devices = _bluetoothClient.DiscoverDevices();
+        BluetoothDeviceInfo[] devices = _bluetoothClient.DiscoverDevices().ToArray();
         BluetoothDeviceInfo device = devices.FirstOrDefault(d => d.DeviceName == DEVICE_NAME);
 
         if (device != null)
