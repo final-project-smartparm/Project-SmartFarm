@@ -25,12 +25,15 @@ namespace SFARM.Views
         public PanelLiveInfo()
         {
             InitializeComponent();
-
             // 싱글톤 BluetoothManager 인스턴스 사용
             BluetoothManager bluetoothManager = BluetoothManager.Instance;
-
             // BluetoothManager의 DataReceived 이벤트를 구독
             bluetoothManager.DataReceived += OnDataReceived;
+
+        }
+
+        private void UserControl_Loaded(object sender, RoutedEventArgs e)
+        {
         }
 
         // 데이터 수신 시 UI를 업데이트하는 메소드
@@ -44,9 +47,10 @@ namespace SFARM.Views
                 if (dataParts.Length == 5)
                 {
                     string soilMoisturePart = dataParts[0].Split(':')[1].Trim();
+
                     string tempPart = dataParts[1].Split(':')[1].Trim();
-                    string lightPart = dataParts[2].Split(':')[1].Trim();
-                    string waterPart = dataParts[3].Split(':')[1].Trim();
+                    string lightPart = dataParts[3].Split(':')[1].Trim();
+                    string waterPart = dataParts[4].Split(':')[1].Trim();
 
                     lblTemperature.Content = tempPart + "˚C";
                     lblSoilMoisture.Content = soilMoisturePart + "%";
@@ -54,8 +58,15 @@ namespace SFARM.Views
                     lblLight.Content = lightPart + "lux";
                     lblWater.Content = waterPart;
                 }
+
+                lblTemperature.UpdateLayout();
+                lblLight.UpdateLayout();
+
+                lblWater.UpdateLayout();
+
             });
         }
+
 
         // DB에 식물 측정 값 저장 메서드
         private void Btnsave_Click(object sender, RoutedEventArgs e)
@@ -143,5 +154,6 @@ namespace SFARM.Views
                 }
             }
         }
+
     }
 }

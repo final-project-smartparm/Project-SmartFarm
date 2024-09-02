@@ -2,7 +2,9 @@
 using InTheHand.Net.Bluetooth;
 using InTheHand.Net.Sockets;
 using System;
+using System.Diagnostics;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Threading;
 
 public class BluetoothManager
@@ -58,7 +60,7 @@ public class BluetoothManager
         }
     }
 
-    private void ReceiveData(object obj)
+    private async void ReceiveData(object obj)
     {
         BluetoothClient client = (BluetoothClient)obj;
 
@@ -71,10 +73,20 @@ public class BluetoothManager
                 if (bytesRead > 0)
                 {
                     string data = System.Text.Encoding.UTF8.GetString(buffer, 0, bytesRead);
-                    Console.WriteLine("Received: " + data);
+                    string pattern = @"Soil_moisture:\d+, Temp:[\d\.]+, Humid:[\d\.]+, 조도:\d+, Water Level:\d+";
+
+                    Match match = Regex.Match(data, pattern);
+
+                    if (match.Success)
+                    {
+                        //.WriteLine(match.Value);
+                        string result = match.Value;
+                        DataReceived?.Invoke(result);
+                        Debug.WriteLine("Received: " + data);
+                    }
 
                     // 데이터 수신 이벤트 호출
-                    DataReceived?.Invoke(data);
+                await Task.Delay(5000);      
                 }
             }
         }

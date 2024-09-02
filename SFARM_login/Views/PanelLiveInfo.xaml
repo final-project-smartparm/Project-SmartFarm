@@ -6,7 +6,7 @@
              xmlns:fa="http://schemas.awesome.incremented/wpf/xaml/fontawesome.sharp"
              xmlns:local="clr-namespace:SFARM.Views"
              mc:Ignorable="d" 
-             d:DesignHeight="560" d:DesignWidth="270">
+             d:DesignHeight="560" d:DesignWidth="270" Loaded="UserControl_Loaded">
     <UserControl.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -50,7 +50,7 @@
             <Grid HorizontalAlignment="Right">
                 <StackPanel HorizontalAlignment="Left" Width="140">
                     <Label Content="현재 온도" Style="{StaticResource PaneLiveInfoTitle}"/>
-                    <Label x:Name="lblTemperature" Content="26˚C" Style="{StaticResource PaneLiveInfoSensor}"/>
+                    <Label x:Name="lblTemperature" Content="- " Style="{StaticResource PaneLiveInfoSensor}"/>
                 </StackPanel>
             </Grid>
         </StackPanel>
@@ -62,7 +62,7 @@
             <Grid HorizontalAlignment="Right">
                 <StackPanel HorizontalAlignment="Left" Width="140">
                     <Label Content="토양 수분도" Style="{StaticResource PaneLiveInfoTitle}"/>
-                    <Label x:Name="lblSoilMoisture" Content="60%" Style="{StaticResource PaneLiveInfoSensor}"/>
+                    <Label x:Name="lblSoilMoisture" Content="- " Style="{StaticResource PaneLiveInfoSensor}"/>
                 </StackPanel>
             </Grid>
         </StackPanel>
@@ -74,7 +74,7 @@
             <Grid HorizontalAlignment="Right">
                 <StackPanel HorizontalAlignment="Left" Width="140">
                     <Label Content="조도" Style="{StaticResource PaneLiveInfoTitle}"/>
-                    <Label x:Name="lblLight" Content="3000lux" Style="{StaticResource PaneLiveInfoSensor}" FontSize="30"/>
+                    <Label x:Name="lblLight" Content="- " Style="{StaticResource PaneLiveInfoSensor}" FontSize="30"/>
                 </StackPanel>
             </Grid>
         </StackPanel>
@@ -86,7 +86,7 @@
             <Grid HorizontalAlignment="Right">
                 <StackPanel HorizontalAlignment="Left" Width="140">
                     <Label Content="물탱크 상황" Style="{StaticResource PaneLiveInfoTitle}"/>
-                    <Label x:Name="lblWater" Content="여유" Style="{StaticResource PaneLiveInfoSensor}"/>
+                    <Label x:Name="lblWater" Content="- " Style="{StaticResource PaneLiveInfoSensor}"/>
                 </StackPanel>
             </Grid>
         </StackPanel>

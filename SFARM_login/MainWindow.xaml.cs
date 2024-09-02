@@ -181,7 +181,7 @@ namespace SFARM
             var plantIdx = Helpers.SattingPlant.PLANT_IDX;
 
 
-            // 식물 별칭/시작날짜
+            // 식물 별칭/시작날짜/블루투스 연결
             using (SqlConnection conn = new SqlConnection(Helpers.Common.CONNSTRING))
             {
                 conn.Open();
@@ -189,6 +189,7 @@ namespace SFARM
                 string query = @"SELECT PLANT_NUM
                                       , PLANT_NAME
                                       , PLANT_STARTDATE
+                                      , BLUETOOTH
                                   FROM UserPlantList
                                  WHERE USER_NUM = @userNum
                                    AND PLANT_IDX = @plantIdx";
@@ -205,6 +206,7 @@ namespace SFARM
                     Helpers.UserPlantList.PLANT_NUM = Int32.Parse(reader["PLANT_NUM"]?.ToString());
                     Helpers.UserPlantList.PLANT_NAME = reader["PLANT_NAME"]?.ToString();
                     Helpers.UserPlantList.PLANT_STARTDATE = DateTime.Parse(reader["PLANT_STARTDATE"].ToString());
+                    Helpers.UserPlantList.BLUETOOTH = reader["BLUETOOTH"].ToString();
                 }
 
             }
