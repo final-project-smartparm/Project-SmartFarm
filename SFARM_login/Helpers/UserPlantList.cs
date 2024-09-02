@@ -12,6 +12,8 @@ namespace SFARM.Helpers
         public static string PLANT_NAME { get; set; } // 별칭
         
         public static DateTime PLANT_STARTDATE { get; set; }
+        public static string BLUETOOTH {  get; set; }
+        //public static string PLANT_CAMERAIP { get; set; }
 
     }
 }
