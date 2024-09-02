@@ -375,11 +375,11 @@
     <!-- CntrolPanel SaveBtn-->
     <Style x:Key="RoundButtonTemplate" TargetType="Button">
         <Setter Property="Background" Value="Transparent"/>
-        <Setter Property="Foreground" Value="{StaticResource color3}" />
+        <Setter Property="Foreground" Value="{StaticResource color6}" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="Button">
-                    <Border CornerRadius="6" BorderBrush="{StaticResource color2}"
+                    <Border CornerRadius="6" BorderBrush="{StaticResource color6}"
                                 BorderThickness="1">
                         <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center">
 

@@ -105,7 +105,7 @@
             <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
                 <Label Style="{StaticResource PanelcontrolLabel}"  Content="식물등 세기"/>
                 <TextBox x:Name="textBox_LuxTick" Text="{Binding Value, ElementName=LuxSlider, Mode=TwoWay}" Style="{StaticResource SubValueTextBox}"/>
-                <TextBox Text="lux" IsReadOnly="True" Style="{StaticResource SubValueTextBox}"/>
+                <TextBox Text="Level" IsReadOnly="True" Style="{StaticResource SubValueTextBox}"/>
             </StackPanel>
             <WrapPanel HorizontalAlignment="Center" Orientation="Horizontal" Width="230">
                 <Slider x:Name="LuxSlider" IsSnapToTickEnabled="True" Value="{Binding ElementName=textBox_LuxTick, Path=Text, Mode=TwoWay}" 
@@ -113,8 +113,8 @@
             </WrapPanel>
         </StackPanel>
 
-        <!--<Button Grid.Row="8" Width="50" Height="46" Style="{StaticResource RoundButtonTemplate}" Content="save" Margin="115,46,105,45"
-                x:Name="BtnSave" Click="BtnSave_Click"/>-->
+        <Button Grid.Row="8" Width="240" Height="46" Style="{StaticResource RoundButtonTemplate}" Content="Apply"
+                x:Name="BtnSave" Click="BtnSave_Click"/>
 
         <Line Grid.Row="2" Style="{StaticResource ControlWigetStroke}"/>
         <Line Grid.Row="5" Style="{StaticResource ControlWigetStroke}"/>

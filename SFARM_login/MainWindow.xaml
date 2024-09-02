@@ -106,10 +106,10 @@
                         <TextBlock Text="Previous" Style="{StaticResource menuButtonText}"/>
                     </StackPanel>
                 </RadioButton>
-                <RadioButton x:Name="BtnBack" Grid.Row ="10" Style="{StaticResource menuButton}" Tag="{StaticResource color5}" Click="BtnBack_Click">
+                <RadioButton x:Name="BtnExit" Grid.Row ="10" Style="{StaticResource menuButton}" Tag="{StaticResource color5}" Click="BtnExit_Click">
                     <StackPanel Orientation="Horizontal">
                         <fa:IconImage Icon="DoorOpen" Style="{StaticResource menuButtonIcon}"/>
-                        <TextBlock Text="Back" Style="{StaticResource menuButtonText}"/>
+                        <TextBlock Text="Exit" Style="{StaticResource menuButtonText}"/>
                     </StackPanel>
                 </RadioButton>
                 <!--#endregion-->

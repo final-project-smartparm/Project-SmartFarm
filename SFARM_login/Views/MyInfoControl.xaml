@@ -23,9 +23,19 @@
                 <RowDefinition Height="0.4*"/>
                 <RowDefinition Height="1.6*"/>
             </Grid.RowDefinitions>
+            
+            
+            <!--<Ellipse Style="{StaticResource CircularPBarInnerEllipse}">
+                <Ellipse.Fill>
+                    <ImageBrush ImageSource="\Images\방울토마토4.png"/>
+                </Ellipse.Fill>
+            </Ellipse>-->
 
-
-            <Ellipse Stroke="#C4D9BF" Width="130" Height="130" StrokeThickness="1" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            <Ellipse Stroke="#C4D9BF" Width="130" Height="130" StrokeThickness="1" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <Ellipse.Fill>
+                    <ImageBrush ImageSource="\Images\BasicProfile.png"/>
+                </Ellipse.Fill>
+            </Ellipse>
 
             <Border Grid.Row="1" Style="{StaticResource UserInfoBorder}">
                 <StackPanel Margin="5"
@@ -61,10 +71,6 @@
                     </syncfusion:CalendarEdit.BorderBrush>
                 </syncfusion:CalendarEdit>
             </Grid>
-
-
-
-
 
         </Grid>
 

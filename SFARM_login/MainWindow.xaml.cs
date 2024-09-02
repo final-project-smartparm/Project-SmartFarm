@@ -266,7 +266,7 @@ namespace SFARM
         }
         
 
-        private void BtnBack_Click(object sender, RoutedEventArgs e)
+        private void BtnExit_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
         }
