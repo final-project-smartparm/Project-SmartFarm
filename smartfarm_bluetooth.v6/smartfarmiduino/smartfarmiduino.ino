@@ -138,20 +138,8 @@ void loop() {
     FanONOFF(fanSpeed); 
   }
 
-  Serial.print("Soil_moisture : ");                            // 백분율로 변환한 값
-  Serial.println(C_Soil_moisture);
-  Serial.print("temp:");
-  Serial.print(dht.readTemperature());
-  Serial.print(",");
-  Serial.print("humid:");
-  Serial.println(dht.readHumidity());
-  Serial.print("Water Level: ");
-  Serial.print(waterAmount);
-  Serial.print(" - ");
-  Serial.println(waterStatus);          // 센서 값을 시리얼 모니터에 출력
-
   // 시리얼 모니터 및 블루투스 출력
-  String data = "Soil_moisture: " + String(C_Soil_moisture) + ", Temp: " + String(temp) + ", Humid: " + String(hum) + ", 조도: " + String(JODO) + ", Water Level: " + String(waterStatus);
+  String data = "Soil_moisture:" + String(C_Soil_moisture) + ", Temp:" + String(temp) + ", Humid:" + String(hum) + ", 조도:" + String(JODO) + ", Water Level:" + String(waterStatus);
   Serial.println(data);  // USB 시리얼 모니터 출력
   bluetoothSerial.println(data);  // 블루투스 시리얼 출력
 
@@ -258,5 +246,5 @@ void FanONOFF(int OnOff)
       analogWrite(BA, 0);
       break;
   }
-  
+
 }
