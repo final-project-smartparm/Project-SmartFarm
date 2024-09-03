@@ -1,0 +1,120 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Sources\\Project-SmartParm\\SFARM\u3139\u3147\uCD5C\uC885\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{03929093-C147-4D5B-B842-5B4D8F013C0D}|SFARM.csproj|c:\\sources\\project-smartparm\\sfarm\u3139\u3147\uCD5C\uC885\\views\\panelliveinfo.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{03929093-C147-4D5B-B842-5B4D8F013C0D}|SFARM.csproj|solutionrelative:views\\panelliveinfo.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{03929093-C147-4D5B-B842-5B4D8F013C0D}|SFARM.csproj|c:\\sources\\project-smartparm\\sfarm\u3139\u3147\uCD5C\uC885\\bluetoothmananger.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{03929093-C147-4D5B-B842-5B4D8F013C0D}|SFARM.csproj|solutionrelative:bluetoothmananger.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{03929093-C147-4D5B-B842-5B4D8F013C0D}|SFARM.csproj|c:\\sources\\project-smartparm\\sfarm\u3139\u3147\uCD5C\uC885\\assemblyinfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{03929093-C147-4D5B-B842-5B4D8F013C0D}|SFARM.csproj|solutionrelative:assemblyinfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{03929093-C147-4D5B-B842-5B4D8F013C0D}|SFARM.csproj|c:\\sources\\project-smartparm\\sfarm\u3139\u3147\uCD5C\uC885\\app.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{03929093-C147-4D5B-B842-5B4D8F013C0D}|SFARM.csproj|solutionrelative:app.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{03929093-C147-4D5B-B842-5B4D8F013C0D}|SFARM.csproj|c:\\sources\\project-smartparm\\sfarm\u3139\u3147\uCD5C\uC885\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{03929093-C147-4D5B-B842-5B4D8F013C0D}|SFARM.csproj|solutionrelative:mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{03929093-C147-4D5B-B842-5B4D8F013C0D}|SFARM.csproj|c:\\sources\\project-smartparm\\sfarm\u3139\u3147\uCD5C\uC885\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{03929093-C147-4D5B-B842-5B4D8F013C0D}|SFARM.csproj|solutionrelative:mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 5,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "AssemblyInfo.cs",
+              "DocumentMoniker": "C:\\Sources\\Project-SmartParm\\SFARM\u3139\u3147\uCD5C\uC885\\AssemblyInfo.cs",
+              "RelativeDocumentMoniker": "AssemblyInfo.cs",
+              "ToolTip": "C:\\Sources\\Project-SmartParm\\SFARM\u3139\u3147\uCD5C\uC885\\AssemblyInfo.cs",
+              "RelativeToolTip": "AssemblyInfo.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAADwvwAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-02T04:58:25.935Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "App.xaml",
+              "DocumentMoniker": "C:\\Sources\\Project-SmartParm\\SFARM\u3139\u3147\uCD5C\uC885\\App.xaml",
+              "RelativeDocumentMoniker": "App.xaml",
+              "ToolTip": "C:\\Sources\\Project-SmartParm\\SFARM\u3139\u3147\uCD5C\uC885\\App.xaml",
+              "RelativeToolTip": "App.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2024-09-02T04:58:23.264Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "MainWindow.xaml.cs",
+              "DocumentMoniker": "C:\\Sources\\Project-SmartParm\\SFARM\u3139\u3147\uCD5C\uC885\\MainWindow.xaml.cs",
+              "RelativeDocumentMoniker": "MainWindow.xaml.cs",
+              "ToolTip": "C:\\Sources\\Project-SmartParm\\SFARM\u3139\u3147\uCD5C\uC885\\MainWindow.xaml.cs",
+              "RelativeToolTip": "MainWindow.xaml.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-02T04:56:46.499Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "MainWindow.xaml",
+              "DocumentMoniker": "C:\\Sources\\Project-SmartParm\\SFARM\u3139\u3147\uCD5C\uC885\\MainWindow.xaml",
+              "RelativeDocumentMoniker": "MainWindow.xaml",
+              "ToolTip": "C:\\Sources\\Project-SmartParm\\SFARM\u3139\u3147\uCD5C\uC885\\MainWindow.xaml",
+              "RelativeToolTip": "MainWindow.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2024-09-02T04:56:42.686Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "BluetoothMananger.cs",
+              "DocumentMoniker": "C:\\Sources\\Project-SmartParm\\SFARM\u3139\u3147\uCD5C\uC885\\BluetoothMananger.cs",
+              "RelativeDocumentMoniker": "BluetoothMananger.cs",
+              "ToolTip": "C:\\Sources\\Project-SmartParm\\SFARM\u3139\u3147\uCD5C\uC885\\BluetoothMananger.cs",
+              "RelativeToolTip": "BluetoothMananger.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAACIAAAANAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-02T04:53:04.713Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "PanelLiveInfo.xaml.cs",
+              "DocumentMoniker": "C:\\Sources\\Project-SmartParm\\SFARM\u3139\u3147\uCD5C\uC885\\Views\\PanelLiveInfo.xaml.cs",
+              "RelativeDocumentMoniker": "Views\\PanelLiveInfo.xaml.cs",
+              "ToolTip": "C:\\Sources\\Project-SmartParm\\SFARM\u3139\u3147\uCD5C\uC885\\Views\\PanelLiveInfo.xaml.cs",
+              "RelativeToolTip": "Views\\PanelLiveInfo.xaml.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAADwvxQAAAA8AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-02T04:52:43.834Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
