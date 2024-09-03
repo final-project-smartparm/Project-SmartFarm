@@ -1,0 +1,69 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Sources\\Project-SmartParm\\SFARM\uCD5C\uC8854\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{03929093-C147-4D5B-B842-5B4D8F013C0D}|SFARM.csproj|c:\\sources\\project-smartparm\\sfarm\uCD5C\uC8854\\views\\panelliveinfo.xaml.cs||{8B382828-6202-11D1-8870-0000F87579D2}|",
+      "RelativeMoniker": "D:0:0:{03929093-C147-4D5B-B842-5B4D8F013C0D}|SFARM.csproj|solutionrelative:views\\panelliveinfo.xaml.cs||{8B382828-6202-11D1-8870-0000F87579D2}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{03929093-C147-4D5B-B842-5B4D8F013C0D}|SFARM.csproj|c:\\sources\\project-smartparm\\sfarm\uCD5C\uC8854\\views\\panelliveinfo.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{03929093-C147-4D5B-B842-5B4D8F013C0D}|SFARM.csproj|solutionrelative:views\\panelliveinfo.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{03929093-C147-4D5B-B842-5B4D8F013C0D}|SFARM.csproj|c:\\sources\\project-smartparm\\sfarm\uCD5C\uC8854\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{03929093-C147-4D5B-B842-5B4D8F013C0D}|SFARM.csproj|solutionrelative:mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "PanelLiveInfo.xaml.cs",
+              "DocumentMoniker": "C:\\Sources\\Project-SmartParm\\SFARM\uCD5C\uC8854\\Views\\PanelLiveInfo.xaml.cs",
+              "RelativeDocumentMoniker": "Views\\PanelLiveInfo.xaml.cs",
+              "ToolTip": "C:\\Sources\\Project-SmartParm\\SFARM\uCD5C\uC8854\\Views\\PanelLiveInfo.xaml.cs",
+              "RelativeToolTip": "Views\\PanelLiveInfo.xaml.cs",
+              "ViewState": "AgIAABMAAAAAAAAAAAAQwBkAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-02T04:40:16.466Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "PanelLiveInfo.xaml",
+              "DocumentMoniker": "C:\\Sources\\Project-SmartParm\\SFARM\uCD5C\uC8854\\Views\\PanelLiveInfo.xaml",
+              "RelativeDocumentMoniker": "Views\\PanelLiveInfo.xaml",
+              "ToolTip": "C:\\Sources\\Project-SmartParm\\SFARM\uCD5C\uC8854\\Views\\PanelLiveInfo.xaml",
+              "RelativeToolTip": "Views\\PanelLiveInfo.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2024-09-02T04:40:09.927Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "MainWindow.xaml",
+              "DocumentMoniker": "C:\\Sources\\Project-SmartParm\\SFARM\uCD5C\uC8854\\MainWindow.xaml",
+              "RelativeDocumentMoniker": "MainWindow.xaml",
+              "ToolTip": "C:\\Sources\\Project-SmartParm\\SFARM\uCD5C\uC8854\\MainWindow.xaml",
+              "RelativeToolTip": "MainWindow.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2024-09-02T04:40:06.389Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
