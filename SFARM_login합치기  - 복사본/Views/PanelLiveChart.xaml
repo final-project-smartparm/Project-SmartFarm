@@ -1,0 +1,45 @@
+﻿<UserControl 
+    x:Class="SFARM.Views.PanelLiveChart"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+        xmlns:local="clr-namespace:SFARM.Views"
+        xmlns:live="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
+        mc:Ignorable="d"
+        Height="635" Width="1000">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+
+        <!-- 실제 측정 값 -->
+        <Grid Grid.Row="0">
+            <live:CartesianChart
+            x:Name="chart"
+                Width="900"
+            BorderBrush="#467362"
+            BorderThickness="2"
+            LegendLocation="Top"
+            Margin="10"
+            HorizontalAlignment="Stretch"
+            VerticalAlignment="Stretch">
+            <live:CartesianChart.AxisX>
+                <live:Axis Title="Date" LabelFormatter="{Binding DateLabelFormatter}" />
+            </live:CartesianChart.AxisX>
+            <live:CartesianChart.AxisY>
+                <live:Axis Title="Temperature / Humidity" />
+            </live:CartesianChart.AxisY>
+        </live:CartesianChart>
+        </Grid>
+
+        <Grid Grid.Row="1">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <Button Content="조도" Width="200" Height="100" x:Name="BtnLUX" Click="BtnLUX_Click"/>
+                <Button Content="습도" Width="200" Height="100" x:Name="BtnHumid" Click="BtnHumid_Click"/>
+                <Button Content="온도" Width="200" Height="100" x:Name="BtnTemp" Click="BtnTemp_Click"/>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</UserControl>
