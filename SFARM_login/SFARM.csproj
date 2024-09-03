@@ -18,6 +18,7 @@
 
   <ItemGroup>
     <None Remove="Images\BasicProfile.png" />
+    <None Remove="Images\Page.png" />
     <None Remove="Images\pic1.png" />
     <None Remove="Images\방울토마토4.png" />
   </ItemGroup>
@@ -44,6 +45,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="Images\Page.png" />
     <Resource Include="Images\pic1.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
