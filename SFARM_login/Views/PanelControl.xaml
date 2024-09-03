@@ -109,12 +109,14 @@
             </StackPanel>
             <WrapPanel HorizontalAlignment="Center" Orientation="Horizontal" Width="230">
                 <Slider x:Name="LuxSlider" IsSnapToTickEnabled="True" Value="{Binding ElementName=textBox_LuxTick, Path=Text, Mode=TwoWay}" 
-                Minimum="0" Maximum="10" TickFrequency="1" Width="230"  TickPlacement="BottomRight" Style="{StaticResource CustomSliderStyle}" Foreground="{StaticResource color3}" ValueChanged="LuxSlider_ValueChanged"/>
+                Minimum="0" Maximum="10" TickFrequency="1" Width="230"  TickPlacement="BottomRight" Style="{StaticResource CustomSliderStyle}" Foreground="{StaticResource color3}"/>
             </WrapPanel>
         </StackPanel>
 
         <Button Grid.Row="8" Width="240" Height="46" Style="{StaticResource RoundButtonTemplate}" Content="Apply"
-                x:Name="BtnSave" Click="BtnSave_Click"/>
+                x:Name="BtnSave" Click="BtnSave_Click">
+            
+        </Button>
 
         <Line Grid.Row="2" Style="{StaticResource ControlWigetStroke}"/>
         <Line Grid.Row="5" Style="{StaticResource ControlWigetStroke}"/>

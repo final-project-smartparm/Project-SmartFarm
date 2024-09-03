@@ -37,12 +37,16 @@ namespace SFARM.Views
 
 
         }
-        private void BtnSave_Click(object sender, RoutedEventArgs e)
+        private async void BtnSave_Click(object sender, RoutedEventArgs e)
         {
             FanSpeed();
+            await Task.Delay(2000);
             Ledcontrol();
+            await Task.Delay(2000);
             Tempcontrol();
+            await Task.Delay(2000);
             Soilmoisture_control();
+            await Task.Delay(2000);
             Watersupply_control();
         }
 
@@ -108,6 +112,7 @@ namespace SFARM.Views
 
             string dataToSend = adjustedValue.ToString(); // 문자열로 변환하여 전송 준비
             bluetoothManager.SendData(dataToSend); // BluetoothManager로 데이터 전송
+            
         }
 
         private void Soilmoisture_control()

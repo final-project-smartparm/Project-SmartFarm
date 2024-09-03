@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Net;
+using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -25,6 +26,8 @@ namespace SFARM.Views
         private WebClient _webClient;
         private bool _isStreaming;
         private const string StreamUrl = "http://210.119.12.74/mjpeg/1"; // Replace with your ESP32-CAM MJPEG stream URL
+        // Helpers.UserPlantList.PLANT_CAMERAIP
+        // http://210.119.12.74/mjpeg/1
         public MyPlantsControl()
         {
             InitializeComponent();

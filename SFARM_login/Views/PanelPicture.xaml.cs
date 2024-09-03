@@ -37,8 +37,11 @@ namespace SFARM.Views
             var duration = DateTime.Now - Helpers.UserPlantList.PLANT_STARTDATE;
             double countday = duration.Days;
             double percent = (countday / Convert.ToDouble(Helpers.SattingPlant.SATTING_TOTALDATE)) * 100;
-            
-            CircularProgressBar.Progress = Convert.ToInt16(percent);
+
+            int result = Convert.ToInt16(percent);
+            if (result >= 100)
+                result = 100;
+            CircularProgressBar.Progress = result;
         }
 
         private void LoadRandomIamge()

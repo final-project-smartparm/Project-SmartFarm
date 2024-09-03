@@ -190,6 +190,7 @@ namespace SFARM
                                       , PLANT_NAME
                                       , PLANT_STARTDATE
                                       , BLUETOOTH
+                                      , PLANT_CAMERAIP
                                   FROM UserPlantList
                                  WHERE USER_NUM = @userNum
                                    AND PLANT_IDX = @plantIdx";
@@ -207,6 +208,7 @@ namespace SFARM
                     Helpers.UserPlantList.PLANT_NAME = reader["PLANT_NAME"]?.ToString();
                     Helpers.UserPlantList.PLANT_STARTDATE = DateTime.Parse(reader["PLANT_STARTDATE"].ToString());
                     Helpers.UserPlantList.BLUETOOTH = reader["BLUETOOTH"].ToString();
+                    Helpers.UserPlantList.PLANT_CAMERAIP = reader["PLANT_CAMERAIP"].ToString();
                 }
 
             }
