@@ -35,12 +35,18 @@
         <StackPanel Grid.Row="0" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="-25,-20,0,-25">
             <Label Content="실시간 정보" FontFamily="Nanumgothic" FontSize="35" FontWeight="DemiBold">
             </Label>
+            <Grid>
+                <Button x:Name="Btnsave" Click="Btnsave_Click" Style="{StaticResource BtnLiveInfoSave}" Foreground="{StaticResource color1}">
+                    <ContentControl>
+                        <fa:IconImage x:Name="BtnLiveInfoSaveIcon" Icon="FloppyDisk" Height="16" Width="16" Foreground="{Binding Foreground, RelativeSource={RelativeSource AncestorType=Button}}"/>
+                    </ContentControl>
+                </Button>
+            </Grid>
             <!-- DB반영 임시 버튼-->
-            <Button x:Name="Btnsave" Width="60" Click="Btnsave_Click" Content="임시 버튼"/>
             <!-- 기존 아이콘 <fa:IconImage Icon="SunPlantWilt" Style="{StaticResource PanelLiveInfoicon}" Foreground="{StaticResource color4}"/>-->
         </StackPanel>
-        
-        
+
+
         <!--#region 센서 정보 -->
         <StackPanel Grid.Row="2" VerticalAlignment="Center" Orientation="Horizontal">
             <Grid Margin="20,0">

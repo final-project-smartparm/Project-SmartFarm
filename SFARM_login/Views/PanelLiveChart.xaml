@@ -7,79 +7,37 @@
         xmlns:local="clr-namespace:SFARM.Views"
         xmlns:live="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
         mc:Ignorable="d"
-        Height="900" Width="800">
+        Height="635" Width="1000" Loaded="UserControl_Loaded">
     <Grid>
-        <ScrollViewer x:Name="scrollViewer">
-            <Grid x:Name="contentGrid">
-            
         <Grid.RowDefinitions>
-            <RowDefinition Height="1*"/>
-            <RowDefinition Height="1*"/>
-            <RowDefinition Height="1*"/>
+            <RowDefinition Height="2*"/>
             <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
 
-        <!--In Code-->
-        <live:CartesianChart 
-            x:Name="chart" 
-            BorderBrush="#467362" BorderThickness="2"
+        <!-- 실제 측정 값 -->
+        <Grid Grid.Row="0">
+            <live:CartesianChart
+            x:Name="chart"
+                Width="900"
+            BorderBrush="#467362"
+            BorderThickness="2"
             LegendLocation="Top"
-            Margin="15"/>
+            Margin="48,10,52,10">
+                <live:CartesianChart.AxisX>
+                    <live:Axis Title="Date" LabelFormatter="{Binding DateLabelFormatter}" />
+                </live:CartesianChart.AxisX>
+                <live:CartesianChart.AxisY>
+                    <live:Axis Title="Temperature / Humidity" />
+                </live:CartesianChart.AxisY>
+            </live:CartesianChart>
+        </Grid>
 
-        <!--In Xaml-->
-        <live:CartesianChart 
-            Grid.Row="1"
-            BorderBrush="#467362" BorderThickness="2"
-            LegendLocation="Top"
-            Margin="15">
-            <live:CartesianChart.AxisY>
-                <live:Axis MinValue="0" MaxValue="1000"/>
-            </live:CartesianChart.AxisY>
-            <live:CartesianChart.AxisX>
-                <live:Axis Labels="01, 02, 03, 04, 05, 06, 07, 08, 09, 10, 11, 12"/>
-            </live:CartesianChart.AxisX>
-            <live:CartesianChart.Series>
-                <live:LineSeries Stroke="#FF937C73" Title="SOIL_HUMID" Values="700, 200, 300, 400, 500, 600, 700, 800, 900, 90, 211, 220"/>
-                <live:LineSeries Stroke="Gray" Title="Default" Values=" 70, 20, 100, 140, 50, 60, 70, 80, 90, 100, 111, 120"/>
-            </live:CartesianChart.Series>
-        </live:CartesianChart>
-
-
-        <live:CartesianChart 
-            Grid.Row="2"
-            BorderBrush="#467362" BorderThickness="2"
-            LegendLocation="Top"
-            Margin="15">
-            <live:CartesianChart.AxisY>
-                <live:Axis MinValue="0" MaxValue="1000"/>
-            </live:CartesianChart.AxisY>
-            <live:CartesianChart.AxisX>
-                <live:Axis Labels="01, 02, 03, 04, 05, 06, 07, 08, 09, 10, 11, 12"/>
-            </live:CartesianChart.AxisX>
-            <live:CartesianChart.Series>
-                <live:LineSeries Stroke="#FFD700" Title="LUX" Values="500, 400, 300, 200, 100, 50, 400, 300, 200, 100, 50, 10"/>
-                <live:LineSeries Stroke="Gray" Title="Default" Values="60, 50, 40, 30, 20, 10, 50, 40, 30, 20, 10, 5"/>
-            </live:CartesianChart.Series>
-        </live:CartesianChart>
-
-        <!-- Chart 4 -->
-        <live:CartesianChart 
-            Grid.Row="3"
-            BorderBrush="#467362" BorderThickness="2"
-            LegendLocation="Top"
-            Margin="15">
-            <live:CartesianChart.AxisY>
-                <live:Axis MinValue="0" MaxValue="1000"/>
-            </live:CartesianChart.AxisY>
-            <live:CartesianChart.AxisX>
-                <live:Axis Labels="01, 02, 03, 04, 05, 06, 07, 08, 09, 10, 11, 12"/>
-            </live:CartesianChart.AxisX>
-            <live:CartesianChart.Series>
-                <live:LineSeries Stroke="#4DB6AC" Title="WATER_LEVEL" Values="100, 200, 300, 400, 500, 600, 700, 800, 900, 1000, 1100, 1200"/>
-                <live:LineSeries Stroke="Gray" Title="Default" Values="120, 110, 100, 90, 80, 70, 60, 50, 40, 30, 20, 10"/>
-            </live:CartesianChart.Series>
-        </live:CartesianChart>
-            </Grid>
-        </ScrollViewer>
+        <Grid Grid.Row="1">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <Button Content="조도" Width="200" Height="100" x:Name="BtnLUX" Click="BtnLUX_Click"/>
+                <Button Content="온도" Width="200" Height="100" x:Name="BtnTemp" Click="BtnTemp_Click"/>
+                <Button Content="습도" Width="200" Height="100" x:Name="BtnHumid" Click="BtnHumid_Click"/>
+            </StackPanel>
+        </Grid>
     </Grid>
 </UserControl>

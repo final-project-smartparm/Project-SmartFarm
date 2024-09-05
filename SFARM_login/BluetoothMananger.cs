@@ -6,6 +6,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text.RegularExpressions;
 using System.Threading;
+using System.Windows.Annotations;
 
 public class BluetoothManager
 {
@@ -13,11 +14,14 @@ public class BluetoothManager
     private static readonly object _lock = new object();
     private BluetoothClient _bluetoothClient;
     private BluetoothClient _connectedClient;
-    private const string DEVICE_NAME = "SFARM3";  // Bluetooth 장치 이름
+   // private string DEVICE_NAME = SFARM.Helpers.UserPlantList.BLUETOOTH;
+
+    //SFARM.Helpers.UserPlantList.BLUETOOTH;  // Bluetooth 장치 이름
+
 
     public event Action<string> DataReceived;
 
-    private BluetoothManager()
+    private BluetoothManager() // 생성자
     {
         _bluetoothClient = new BluetoothClient();
         ConnectToDevice();
@@ -41,7 +45,7 @@ public class BluetoothManager
     private void ConnectToDevice()
     {
         BluetoothDeviceInfo[] devices = _bluetoothClient.DiscoverDevices().ToArray();
-        BluetoothDeviceInfo device = devices.FirstOrDefault(d => d.DeviceName == DEVICE_NAME);
+        BluetoothDeviceInfo device = devices.FirstOrDefault(d => d.DeviceName == SFARM.Helpers.UserPlantList.BLUETOOTH);
 
         if (device != null)
         {

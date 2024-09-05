@@ -25,15 +25,15 @@ namespace SFARM.Views
         public PanelLiveInfo()
         {
             InitializeComponent();
-            // 싱글톤 BluetoothManager 인스턴스 사용
-            BluetoothManager bluetoothManager = BluetoothManager.Instance;
-            // BluetoothManager의 DataReceived 이벤트를 구독
-            bluetoothManager.DataReceived += OnDataReceived;
 
         }
 
-        private void UserControl_Loaded(object sender, RoutedEventArgs e)
+        public void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
+            // 싱글톤 BluetoothManager 인스턴스 사용
+            BluetoothManager bluetoothManager =  BluetoothManager.Instance;
+            // BluetoothManager의 DataReceived 이벤트를 구독
+            bluetoothManager.DataReceived += OnDataReceived;
         }
 
         // 데이터 수신 시 UI를 업데이트하는 메소드

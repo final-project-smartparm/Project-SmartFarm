@@ -23,15 +23,13 @@ namespace SFARM.Views
     /// </summary>
     public partial class MyPlantsControl : UserControl
     {
-        private WebClient _webClient;
         private bool _isStreaming;
-        private const string StreamUrl = "http://210.119.12.74/mjpeg/1"; // Replace with your ESP32-CAM MJPEG stream URL
-        // Helpers.UserPlantList.PLANT_CAMERAIP
-        // http://210.119.12.74/mjpeg/1
+        private WebClient _webClient;
+        //"http://210.119.12.74/mjpeg/1"
+
         public MyPlantsControl()
         {
             InitializeComponent();
-            StartMjpegStream();
         }
         public void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
@@ -42,6 +40,11 @@ namespace SFARM.Views
             TxtPlant_Temp.Text = Helpers.InfoPlant.PLANT_TEMP;
             TxtPlant_Humid.Text = Helpers.InfoPlant.PLANT_HUMID;
             TxtPlant_Soilhumid.Text = Helpers.InfoPlant.PLANT_SOILHUMID;
+            
+            
+            // Helpers.UserPlantList.PLANT_CAMERAIP
+            //private string StreamUrl = SFARM.Helpers.UserPlantList.PLANT_CAMERAIP; // Replace with your ESP32-CAM MJPEG stream URL
+            StartMjpegStream();
         }
 
         private void StartMjpegStream()
@@ -57,7 +60,7 @@ namespace SFARM.Views
         {
             try
             {
-                using (Stream stream = await _webClient.OpenReadTaskAsync(new Uri(StreamUrl)))
+                using (Stream stream = await _webClient.OpenReadTaskAsync(new Uri(Helpers.UserPlantList.PLANT_CAMERAIP)))
                 {
                     byte[] buffer = new byte[4096];
                     MemoryStream imageStream = null;
