@@ -161,7 +161,7 @@
         /// HomeControl.xaml에 대한 상호 작용 논리
         /// </summary>
         public partial class HomeControl : UserControl
-        {
+        {}}
     ```
 
 3. 생성자 메서드
@@ -902,3 +902,232 @@ namespace SFARM
             }
         }
         ```
+
+#### cs.txt
+1. 네임스페이스 및 사용된 라이브러리
+    - LiveCharts.Wpf: WPF 애플리케이션에서 차트를 생성
+    - LiveCharts: 기본 차트 데이터 및 구성 요소를 제공
+    - Microsoft.Data.SqlClient: SQL Server와의 데이터베이스 연결 및 쿼리 처리를 담당
+    - System.Windows: WPF UI 요소와 기본 기능을 포함
+    - System.Windows.Controls: WPF에서 사용하는 다양한 UI 컨트롤을 제공
+    - System.Windows.Threading: UI 스레드 및 타이머 작업을 처리
+    - LiveCharts.Defaults: 차트 데이터 포인트를 정의
+    - LiveCharts.Wpf.Charts.Base: WPF 차트의 기본 클래스를 포함
+    ```csharp
+        using LiveCharts.Wpf;
+        using LiveCharts;
+        using Microsoft.Data.SqlClient;
+        using System.Windows;
+        using System.Windows.Controls;
+        using System.Windows.Threading;
+        using LiveCharts.Defaults;
+        using LiveCharts.Wpf.Charts.Base;
+    ```
+
+2. 클래스 및 생성자
+    - namespace SFARM.Views: SFARM 네임스페이스 내의 Views 폴더를 정의
+    - public partial class PanelLiveChart : UserControl: WPF의 사용자 정의 컨트롤 PanelLiveChart를 정의, UserControl을 상속받아 UI 구성 요소로 사용
+    - private DispatcherTimer _dataUpdateTimer: 데이터 업데이트를 주기적으로 처리하기 위한 타이머를 선언
+    - public PanelLiveChart(): 생성자 메서드로, 컨트롤을 초기화하고 설정
+    - InitializeComponent(): XAML에서 정의된 UI 요소를 초기화
+    - DataContext = this: 데이터 바인딩의 컨텍스트를 현재 인스턴스로 설정
+    - InitializeCharts(): 차트를 초기화
+    - StartDataUpdateTimer(): 데이터 업데이트를 위한 타이머를 시작
+    - chart.AxisX[0].LabelFormatter = x => DateLabelFormatter(x): X축 레이블의 포맷을 설정
+    ```csharp
+        namespace SFARM.Views
+        {
+            public partial class PanelLiveChart : UserControl
+            {
+                private DispatcherTimer _dataUpdateTimer;
+
+                public PanelLiveChart()
+                {
+                    InitializeComponent();
+                    DataContext = this;
+                    InitializeCharts();
+                    StartDataUpdateTimer();
+                    chart.AxisX[0].LabelFormatter = x => DateLabelFormatter(x);
+                }
+            }
+        }
+    ```
+
+3. 차트 초기화
+    - WPF 애플리케이션에서 LiveCharts를 사용하여 차트를 초기화하는 메서드를 정의
+    - private void InitializeCharts(): 차트를 설정하고 구성하는 메서드
+    - chart.Series = new SeriesCollection: 차트에 표시할 데이터 시리즈를 포함하는 컬렉션을 설정
+    - new LineSeries: 선형 차트 시리즈를 생성
+    - Title: 시리즈의 제목을 설정
+    - Values = new ChartValues<ObservablePoint>(): 차트에 표시할 데이터 포인트를 저장하는 컬렉션을 초기화
+    - PointGeometrySize = 5: 데이터 포인트의 크기를 설정
+    - 각 LineSeries 객체는 다른 유형의 데이터를 시각화하기 위해 설정되며, 모든 시리즈는 기본적으로 빈 데이터 컬렉션을 가지고 있습니다. 차트의 각 시리즈는 데이터가 추가될 때 실시간으로 업데이트
+    - InitializeCharts(): 차트를 초기화하고 필요한 시리즈를 설정
+    ```csharp
+        private void InitializeCharts()
+        {
+            chart.Series = new SeriesCollection
+            {
+                new LineSeries
+                {
+                    Title = "Temperature",
+                    Values = new ChartValues<ObservablePoint>(),
+                    PointGeometrySize = 5
+                },
+                new LineSeries
+                {
+                    Title = "Soil Humidity",
+                    Values = new ChartValues<ObservablePoint>(),
+                    PointGeometrySize = 5
+                },
+                new LineSeries
+                {
+                    Title = "Lux",
+                    Values = new ChartValues<ObservablePoint>(),
+                    PointGeometrySize = 5
+                },
+                new LineSeries
+                {
+                    Title = "Database Temperature",
+                    Values = new ChartValues<ObservablePoint>(),
+                    PointGeometrySize = 5
+                },
+                new LineSeries
+                {
+                    Title = "Database Humidity",
+                    Values = new ChartValues<ObservablePoint>(),
+                    PointGeometrySize = 5
+                }
+            };
+        }
+    ```
+
+4. 데이터 로딩
+    (1) 연결 문자열과 쿼리 정의
+    - connectionString: 데이터베이스 연결에 사용할 연결 문자열을 가져옴
+    - query1: 첫 번째 쿼리로, test 테이블에서 온도(temp), 습도(humid), 날짜(Pdate)를 선택합니다.
+    - query2: 두 번째 쿼리로, UserPlant 테이블에서 사용자별 식물의 날짜, 온도, 습도, 조도(lux)를 선택합니다.
+        ```csharp
+            string connectionString = Helpers.Common.CONNSTRING;
+            string query1 = "SELECT [temp], [humid], [Pdate] FROM [dbo].[test]";
+            string query2 = @"
+            SELECT PLANT_DATE, PLANT_TEMP, PLANT_SOILHUMID, PLANT_LUX
+            FROM UserPlant
+            WHERE USER_NUM = (
+                SELECT USER_NUM
+                FROM UserInfo
+                WHERE USER_EMAIL = 'email@address.com'
+            )
+            AND PLANT_IDX = 1";
+        ```
+    (2) 데이터 로드 및 차트 업데이트 (Dispatcher 사용)
+    - Dispatcher.Invoke: UI 스레드에서 안전하게 데이터 로드 및 차트 업데이트 작업을 수행
+    - SqlConnection: 데이터베이스에 연결
+        ```csharp
+            Dispatcher.Invoke(() =>
+            {
+                try
+                {
+                    using (SqlConnection conn = new SqlConnection(connectionString))
+                    {
+                        conn.Open();}}}
+        ```
+    (3) 데이터베이스 타입에 따른 쿼리 실행
+    - dataType이 "Database"인 경우
+        - SqlCommand: query1을 실행하기 위한 SQL 명령을 설정합니다.
+        - SqlDataReader: 쿼리 결과를 읽어들입니다.
+        - databaseTemperatureValues와 databaseHumidityValues: test 테이블의 온도와 습도 데이터를 저장할 차트 값 컬렉션입니다.
+        ```csharp
+        if (dataType == "Database")
+        {
+            using (SqlCommand cmd1 = new SqlCommand(query1, conn))
+            {
+                using (SqlDataReader reader = cmd1.ExecuteReader())
+                {
+                    var databaseTemperatureValues = new ChartValues<ObservablePoint>();
+                    var databaseHumidityValues = new ChartValues<ObservablePoint>();}}}
+        ```
+    (4) 예외 처리
+            ```csharp
+            string connectionString = Helpers.Common.CONNSTRING;
+
+            string query1 = "SELECT [temp], [humid], [Pdate] FROM [dbo].[test]";
+            string query2 = @"
+            SELECT PLANT_DATE, PLANT_TEMP, PLANT_SOILHUMID, PLANT_LUX
+            FROM UserPlant
+            WHERE USER_NUM = (
+                SELECT USER_NUM
+                FROM UserInfo
+                WHERE USER_EMAIL = 'email@address.com'
+            )
+            AND PLANT_IDX = 1";
+        ```
+
+ 
+
+5. 차트 클리어 및 타이머 시작
+    - ClearChart(): 차트의 모든 데이터를 지움
+    - StartDataUpdateTimer(): 타이머를 설정하여 주기적으로 데이터 업데이트를 수행
+    ```csharp
+        private void ClearChart()
+        {
+            foreach (var series in chart.Series)
+            {
+                series.Values.Clear();
+            }
+            chart.dataContext = null;
+        }
+
+        private void StartDataUpdateTimer()
+        {
+            _dataUpdateTimer = new DispatcherTimer
+            {
+                Interval = TimeSpan.FromSeconds(0.1) // 0.1초마다 데이터 업데이트
+            };
+            _dataUpdateTimer.Tick += (sender, args) =>
+            {
+                LoadData("LUX"); // 기본적으로 "LUX" 데이터를 로드하도록 설정
+                _dataUpdateTimer.Stop(); // 타이머 정지
+            };
+            _dataUpdateTimer.Start(); // 타이머 시작
+        }
+    ```
+
+6. 날짜 레이블 포맷터
+    - DateLabelFormatter(double xValue): X값을 기준 날짜에서의 초 단위로 변환하여 DateTime으로 변환한 뒤, 문자열로 포맷
+    ```csharp
+        public string DateLabelFormatter(double xValue)
+        {
+            DateTime baseDate = new DateTime(2024, 7, 13);
+            DateTime date = baseDate.AddSeconds(xValue);
+            return date.ToString("yyyy/MM/dd");
+        }
+    ```
+
+7. 버튼 클릭 이벤트
+    - BtnLUX_Click, BtnHumid_Click, BtnTemp_Click: 버튼 클릭 시 호출되는 메서드, 차트를 초기화하고 선택한 데이터 타입에 따라 데이터를 로드, 선택된 버튼은 비활성화하고 나머지 버튼은 활성화
+        ```csharp
+        private void BtnLUX_Click(object sender, RoutedEventArgs e)
+        {
+            ClearChart();
+            LoadData("LUX");
+            BtnLUX.IsEnabled = false;
+            BtnHumid.IsEnabled = BtnTemp.IsEnabled = true;
+        }
+
+        private void BtnHumid_Click(object sender, RoutedEventArgs e)
+        {
+            ClearChart();
+            LoadData("Humidity");
+            BtnHumid.IsEnabled = false;
+            BtnLUX.IsEnabled = BtnTemp.IsEnabled = true;
+        }
+
+        private void BtnTemp_Click(object sender, RoutedEventArgs e)
+        {
+            ClearChart();
+            LoadData("Temperature");
+            BtnTemp.IsEnabled = false;
+            BtnLUX.IsEnabled = BtnHumid.IsEnabled = true;
+        }
+    ```
