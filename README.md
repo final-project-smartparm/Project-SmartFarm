@@ -1141,23 +1141,23 @@ namespace SFARM
     ```
     - double 타입의 xValue를 입력받아 string 타입의 날짜 문자열을 반환, xValue는 X축의 값으로, 시간(초) 단위를 기준으로 하는 숫자
     ```csharp
-        public string DateLabelFormatter(double xValue):
+        public string DateLabelFormatter(double xValue)
     ```
     - 기준 날짜를 설정, 이 예제에서는 2024년 7월 13일을 기준으로 삼음, baseDate는 날짜를 기준으로 삼는 출발점 역할을 함
     ```csharp
-        DateTime baseDate = new DateTime(2024, 7, 13);:
+        DateTime baseDate = new DateTime(2024, 7, 13);
     ```
     - baseDate에 xValue만큼의 초를 추가하여 새로운 날짜를 생성,. xValue가 초 단위로 주어지기 때문에, 이 메서드는 X축의 값에 따라 baseDate에서 지정된 초만큼 이동한 날짜를 계산
     ```csharp
-        DateTime date = baseDate.AddSeconds(xValue);:
+        DateTime date = baseDate.AddSeconds(xValue);
     ```
     - 계산된 DateTime 객체를 문자열로 포맷, "yyyy/MM/dd" 형식을 사용하여 연도(4자리), 월(2자리), 일(2자리)을 포함한 문자열로 반환, 이 형식은 날짜를 년/월/일 형식으로 표시
     ```csharp
-        return date.ToString("yyyy/MM/dd");:
+        return date.ToString("yyyy/MM/dd");
     ```
 
 7. 버튼 클릭 이벤트
-    - 버튼 클릭 이벤트는 사용자가 버튼을 클릭했을 때 호출되는 메서드로, 차트를 초기화하고 데이터를 로드한 후, 버튼의 활성화 상태를 조정합니다.
+    - 버튼 클릭 이벤트는 사용자가 버튼을 클릭했을 때 호출되는 메서드로, 차트를 초기화하고 데이터를 로드한 후, 버튼의 활성화 상태를 조정
     - BtnLUX_Click: LUX 데이터 버튼 클릭 이벤트
     ```csharp
         private void BtnLUX_Click(object sender, RoutedEventArgs e)
@@ -1168,10 +1168,13 @@ namespace SFARM
             BtnHumid.IsEnabled = BtnTemp.IsEnabled = true; // 나머지 버튼을 활성화
         }
     ```
-    - ClearChart(): 차트를 초기화하여 기존의 데이터를 지웁니다. 새 데이터를 로드하기 전에 차트를 깨끗하게 만듭니다.
-    - LoadData("LUX"): LUX 데이터를 로드하는 메서드를 호출합니다. "LUX"는 데이터 로드에 필요한 매개변수로, 데이터 소스에서 LUX 관련 정보를 가져옵니다.
-    - BtnLUX.IsEnabled = false;: 클릭된 버튼인 LUX 버튼을 비활성화합니다. 사용자가 이미 선택한 데이터를 표시하고 있으므로, 해당 버튼을 비활성화하여 중복 선택을 방지합니다.
-    - BtnHumid.IsEnabled = BtnTemp.IsEnabled = true;: 나머지 버튼들인 Humidity와 Temperature 버튼을 활성화합니다. 이로 인해 사용자는 다른 데이터를 선택할 수 있게 됩니다.
+    - ClearChart(): 차트를 초기화하여 기존의 데이터를 지움, 새 데이터를 로드하기 전에 차트를 깨끗하게 만듬
+    - LoadData("LUX"): LUX 데이터를 로드하는 메서드를 호출, "LUX"는 데이터 로드에 필요한 매개변수로, 데이터 소스에서 LUX 관련 정보를 가져옴
+    - BtnLUX.IsEnabled = false;: 클릭된 버튼인 LUX 버튼을 비활성화, 사용자가 이미 선택한 데이터를 표시하고 있으므로, 해당 버튼을 비활성화하여 중복 선택을 방지
+    - 나머지 버튼들인 Humidity와 Temperature 버튼을 활성화, 이로 인해 사용자는 다른 데이터를 선택할 수 있게 됨
+        ```csharp
+        BtnHumid.IsEnabled = BtnTemp.IsEnabled = true;
+        ```
     - BtnHumid_Click: Humidity 데이터 버튼 클릭 이벤트
     ```csharp
         private void BtnHumid_Click(object sender, RoutedEventArgs e)
@@ -1182,10 +1185,16 @@ namespace SFARM
             BtnLUX.IsEnabled = BtnTemp.IsEnabled = true; // 나머지 버튼을 활성화
         }
     ```
-    - ClearChart(): 차트를 초기화하여 기존의 데이터를 지웁니다.
-    - LoadData("Humidity"): Humidity 데이터를 로드하는 메서드를 호출합니다. "Humidity"는 데이터 소스에서 습도 관련 정보를 가져옵니다.
-    - BtnHumid.IsEnabled = false;: 클릭된 버튼인 Humidity 버튼을 비활성화합니다.
-    - BtnLUX.IsEnabled = BtnTemp.IsEnabled = true;: LUX와 Temperature 버튼을 활성화하여 다른 데이터 유형을 선택할 수 있게 합니다.
+    - ClearChart(): 차트를 초기화하여 기존의 데이터를 지움
+    - LoadData("Humidity"): Humidity 데이터를 로드하는 메서드를 호출, "Humidity"는 데이터 소스에서 습도 관련 정보를 가져옴
+    - 클릭된 버튼인 Humidity 버튼을 비활성화
+    ```csharp
+        BtnHumid.IsEnabled = false;
+    ```
+    - LUX와 Temperature 버튼을 활성화하여 다른 데이터 유형을 선택할 수 있게 함
+    ```csharp
+        BtnLUX.IsEnabled = BtnTemp.IsEnabled = true;
+    ```
     - BtnTemp_Click: Temperature 데이터 버튼 클릭 이벤트
     ```csharp
         private void BtnTemp_Click(object sender, RoutedEventArgs e)
@@ -1196,7 +1205,13 @@ namespace SFARM
             BtnLUX.IsEnabled = BtnHumid.IsEnabled = true; // 나머지 버튼을 활성화
         }
     ```
-    - ClearChart(): 차트를 초기화하여 기존의 데이터를 지웁니다.
-    - LoadData("Temperature"): Temperature 데이터를 로드하는 메서드를 호출합니다. "Temperature"는 데이터 소스에서 온도 관련 정보를 가져옵니다.
-    - BtnTemp.IsEnabled = false;: 클릭된 버튼인 Temperature 버튼을 비활성화합니다.
-    - BtnLUX.IsEnabled = BtnHumid.IsEnabled = true;: LUX와 Humidity 버튼을 활성화하여 다른 데이터 유형을 선택할 수 있게 합니다.
+    - ClearChart(): 차트를 초기화하여 기존의 데이터를 지움
+    - LoadData("Temperature"): Temperature 데이터를 로드하는 메서드를 호출, "Temperature"는 데이터 소스에서 온도 관련 정보를 가져옴
+    - 클릭된 버튼인 Temperature 버튼을 비활성화
+    ```csharp
+        BtnTemp.IsEnabled = false;:
+    ```
+    - LUX와 Humidity 버튼을 활성화하여 다른 데이터 유형을 선택할 수 있게 함
+    ```csharp
+        BtnLUX.IsEnabled = BtnHumid.IsEnabled = true;:
+    ```
