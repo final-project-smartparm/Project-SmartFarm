@@ -1004,12 +1004,16 @@ namespace SFARM
 
 4. 데이터 로딩
     (1) 연결 문자열과 쿼리 정의
-    - connectionString: 데이터베이스 연결에 사용할 연결 문자열을 가져옴
-    - query1: 첫 번째 쿼리로, test 테이블에서 온도(temp), 습도(humid), 날짜(Pdate)를 선택합니다.
-    - query2: 두 번째 쿼리로, UserPlant 테이블에서 사용자별 식물의 날짜, 온도, 습도, 조도(lux)를 선택합니다.
+    - connectionString: 데이터베이스와의 연결을 설정하는 데 사용되는 연결 문자열을 가져옴, 이 문자열은 데이터베이스 서버의 주소, 데이터베이스 이름, 사용자 ID, 비밀번호 등을 포함
         ```csharp
             string connectionString = Helpers.Common.CONNSTRING;
+        ```
+    - query1: 첫 번째 SQL 쿼리로, dbo.test 테이블에서 온도(temp), 습도(humid), 그리고 날짜(Pdate) 정보를 선택합니다. 이 쿼리는 온도와 습도 데이터를 포함한 데이터의 타임라인을 조회하는 데 사용됩니다.
+        ```csharp
             string query1 = "SELECT [temp], [humid], [Pdate] FROM [dbo].[test]";
+        ```    
+    - query2: 두 번째 SQL 쿼리로, UserPlant 테이블에서 특정 사용자의 식물에 대한 날짜, 온도, 습도, 그리고 조도(lux)를 선택, 사용자의 이메일 주소를 통해 사용자 ID를 찾고, PLANT_IDX가 1인 식물의 데이터를 조회
+        ```csharp
             string query2 = @"
             SELECT PLANT_DATE, PLANT_TEMP, PLANT_SOILHUMID, PLANT_LUX
             FROM UserPlant
@@ -1020,9 +1024,9 @@ namespace SFARM
             )
             AND PLANT_IDX = 1";
         ```
+
     (2) 데이터 로드 및 차트 업데이트 (Dispatcher 사용)
-    - Dispatcher.Invoke: UI 스레드에서 안전하게 데이터 로드 및 차트 업데이트 작업을 수행
-    - SqlConnection: 데이터베이스에 연결
+    - Dispatcher.Invoke: UI 스레드에서 안전하게 데이터 로드 및 차트 업데이트 작업을 수행하기 위해 사용, Dispatcher.Invoke를 사용하면, UI 스레드에서 직접 실행되지 않는 작업을 UI 스레드에서 안전하게 실행 가능
         ```csharp
             Dispatcher.Invoke(() =>
             {
@@ -1030,25 +1034,49 @@ namespace SFARM
                 {
                     using (SqlConnection conn = new SqlConnection(connectionString))
                     {
-                        conn.Open();}}}
-        ```
-    (3) 데이터베이스 타입에 따른 쿼리 실행
-    - dataType이 "Database"인 경우
-        - SqlCommand: query1을 실행하기 위한 SQL 명령을 설정합니다.
-        - SqlDataReader: 쿼리 결과를 읽어들입니다.
-        - databaseTemperatureValues와 databaseHumidityValues: test 테이블의 온도와 습도 데이터를 저장할 차트 값 컬렉션입니다.
-        ```csharp
-        if (dataType == "Database")
-        {
-            using (SqlCommand cmd1 = new SqlCommand(query1, conn))
-            {
-                using (SqlDataReader reader = cmd1.ExecuteReader())
+                        conn.Open();
+                        // 데이터 로드 및 처리 로직
+                    }
+                }
+                catch (Exception ex)
                 {
-                    var databaseTemperatureValues = new ChartValues<ObservablePoint>();
-                    var databaseHumidityValues = new ChartValues<ObservablePoint>();}}}
+                    MessageBox.Show($"데이터베이스 오류: {ex.Message}", "오류", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+            });
         ```
+    - SqlConnection: 데이터베이스와의 연결을 설정하고 여는 데 사용, connectionString을 통해 연결을 초기화하고, conn.Open()으로 데이터베이스 연결을 연다
+        ```csharp
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
+                // 추가적인 데이터 처리 작업
+            }
+        ```
+
+    (3) 데이터베이스 타입에 따른 쿼리 실행
+    - dataType이 "Database"인 경우: 데이터 소스가 데이터베이스일 때 실행되는 코드 블록, query1을 사용하여 SQL 쿼리를 실행하고, 결과를 읽음
+        ```csharp
+            if (dataType == "Database")
+            {
+                using (SqlCommand cmd1 = new SqlCommand(query1, conn))
+                {
+                    using (SqlDataReader reader = cmd1.ExecuteReader())
+                    {
+                        var databaseTemperatureValues = new ChartValues<ObservablePoint>();
+                        var databaseHumidityValues = new ChartValues<ObservablePoint>();
+                        
+                        // 데이터 읽기 및 차트 업데이트 로직
+                    }
+                }
+            }
+        ```
+    - SqlCommand: query1 쿼리를 실행하기 위한 SQL 명령을 설정, conn 연결 객체를 사용하여 명령을 설정
+    - SqlDataReader: SqlCommand를 실행하여 결과를 읽음, reader를 사용하여 데이터베이스에서 반환된 데이터를 읽음
+    - databaseTemperatureValues 및 databaseHumidityValues: test 테이블에서 읽어온 온도 및 습도 데이터를 저장할 차트 값 컬렉션,ChartValues<ObservablePoint>는 차트에 표시할 데이터 포인트를 담는 컬렉션
+
     (4) 예외 처리
-            ```csharp
+    - 예외 처리: 데이터베이스 연결 또는 데이터 처리 중 발생할 수 있는 예외를 처리, try-catch 블록을 사용하여 예외를 포착하고 적절한 조치를 취함
+        ```csharp
             string connectionString = Helpers.Common.CONNSTRING;
 
             string query1 = "SELECT [temp], [humid], [Pdate] FROM [dbo].[test]";
@@ -1066,7 +1094,7 @@ namespace SFARM
  
 
 5. 차트 클리어 및 타이머 시작
-    - ClearChart(): 차트의 모든 데이터를 지움
+    - ClearChart(): 차트의 모든 데이터를 지우는 메서드
     - StartDataUpdateTimer(): 타이머를 설정하여 주기적으로 데이터 업데이트를 수행
     ```csharp
         private void ClearChart()
@@ -1077,7 +1105,11 @@ namespace SFARM
             }
             chart.dataContext = null;
         }
-
+    ```
+    - 차트 데이터 클리어: chart.Series는 차트에 포함된 데이터 시리즈의 컬렉션을 나타냄, foreach 루프를 사용하여 각 시리즈를 순회하며, series.Values.Clear() 메서드를 호출하여 각 시리즈의 데이터를 삭제, 이를 통해 차트에 표시된 모든 데이터를 제거
+    - 데이터 컨텍스트 초기화: chart.dataContext = null;은 차트의 데이터 컨텍스트를 초기화하여, 차트가 이전 데이터와 연결되지 않도록 함, 이 작업은 데이터가 완전히 제거되었음을 보장하고, 차트가 새로운 데이터와 연결될 준비가 되었음을 의미
+    - StartDataUpdateTimer(): 타이머를 설정하여 주기적으로 데이터 업데이트를 수행하는 메서드
+    ```csharp
         private void StartDataUpdateTimer()
         {
             _dataUpdateTimer = new DispatcherTimer
@@ -1092,9 +1124,13 @@ namespace SFARM
             _dataUpdateTimer.Start(); // 타이머 시작
         }
     ```
+    - 타이머 설정: DispatcherTimer를 사용하여 주기적으로 특정 작업을 수행하도록 설정, DispatcherTimer는 WPF 애플리케이션에서 UI 스레드에서 실행되는 타이머
+    - Interval: 타이머의 간격을 설정, TimeSpan.FromSeconds(0.1)을 사용하여 0.1초(100밀리초)마다 타이머가 Tick 이벤트를 발생, 이 간격은 데이터 업데이트의 빈도를 정의
+    - Tick 이벤트: 타이머가 설정된 간격마다 호출되는 이벤트, Tick 이벤트 핸들러에서 LoadData("LUX") 메서드를 호출하여 "LUX" 데이터를 로드, 이후 타이머를 정지하기 위해 _dataUpdateTimer.Stop()을 호출, 타이머를 정지함으로써 데이터 업데이트가 한 번만 수행되도록 함
+    - 타이머 시작: _dataUpdateTimer.Start()을 호출하여 타이머를 시작, 타이머가 시작되면 설정된 간격에 따라 Tick 이벤트가 발생하며, 지정된 데이터 업데이트 작업이 수행
 
 6. 날짜 레이블 포맷터
-    - DateLabelFormatter(double xValue): X값을 기준 날짜에서의 초 단위로 변환하여 DateTime으로 변환한 뒤, 문자열로 포맷
+    - X값을 날짜로 변환하여 차트의 X축 레이블로 표시할 때, 사용자가 이해할 수 있는 형식으로 문자열로 포맷
     ```csharp
         public string DateLabelFormatter(double xValue)
         {
@@ -1103,31 +1139,64 @@ namespace SFARM
             return date.ToString("yyyy/MM/dd");
         }
     ```
+    - double 타입의 xValue를 입력받아 string 타입의 날짜 문자열을 반환, xValue는 X축의 값으로, 시간(초) 단위를 기준으로 하는 숫자
+    ```csharp
+        public string DateLabelFormatter(double xValue):
+    ```
+    - 기준 날짜를 설정, 이 예제에서는 2024년 7월 13일을 기준으로 삼음, baseDate는 날짜를 기준으로 삼는 출발점 역할을 함
+    ```csharp
+        DateTime baseDate = new DateTime(2024, 7, 13);:
+    ```
+    - baseDate에 xValue만큼의 초를 추가하여 새로운 날짜를 생성,. xValue가 초 단위로 주어지기 때문에, 이 메서드는 X축의 값에 따라 baseDate에서 지정된 초만큼 이동한 날짜를 계산
+    ```csharp
+        DateTime date = baseDate.AddSeconds(xValue);:
+    ```
+    - 계산된 DateTime 객체를 문자열로 포맷, "yyyy/MM/dd" 형식을 사용하여 연도(4자리), 월(2자리), 일(2자리)을 포함한 문자열로 반환, 이 형식은 날짜를 년/월/일 형식으로 표시
+    ```csharp
+        return date.ToString("yyyy/MM/dd");:
+    ```
 
 7. 버튼 클릭 이벤트
-    - BtnLUX_Click, BtnHumid_Click, BtnTemp_Click: 버튼 클릭 시 호출되는 메서드, 차트를 초기화하고 선택한 데이터 타입에 따라 데이터를 로드, 선택된 버튼은 비활성화하고 나머지 버튼은 활성화
-        ```csharp
+    - 버튼 클릭 이벤트는 사용자가 버튼을 클릭했을 때 호출되는 메서드로, 차트를 초기화하고 데이터를 로드한 후, 버튼의 활성화 상태를 조정합니다.
+    - BtnLUX_Click: LUX 데이터 버튼 클릭 이벤트
+    ```csharp
         private void BtnLUX_Click(object sender, RoutedEventArgs e)
         {
-            ClearChart();
-            LoadData("LUX");
-            BtnLUX.IsEnabled = false;
-            BtnHumid.IsEnabled = BtnTemp.IsEnabled = true;
-        }
-
-        private void BtnHumid_Click(object sender, RoutedEventArgs e)
-        {
-            ClearChart();
-            LoadData("Humidity");
-            BtnHumid.IsEnabled = false;
-            BtnLUX.IsEnabled = BtnTemp.IsEnabled = true;
-        }
-
-        private void BtnTemp_Click(object sender, RoutedEventArgs e)
-        {
-            ClearChart();
-            LoadData("Temperature");
-            BtnTemp.IsEnabled = false;
-            BtnLUX.IsEnabled = BtnHumid.IsEnabled = true;
+            ClearChart(); // 차트의 모든 데이터를 지움
+            LoadData("LUX"); // LUX 데이터 로드
+            BtnLUX.IsEnabled = false; // 현재 클릭한 버튼을 비활성화
+            BtnHumid.IsEnabled = BtnTemp.IsEnabled = true; // 나머지 버튼을 활성화
         }
     ```
+    - ClearChart(): 차트를 초기화하여 기존의 데이터를 지웁니다. 새 데이터를 로드하기 전에 차트를 깨끗하게 만듭니다.
+    - LoadData("LUX"): LUX 데이터를 로드하는 메서드를 호출합니다. "LUX"는 데이터 로드에 필요한 매개변수로, 데이터 소스에서 LUX 관련 정보를 가져옵니다.
+    - BtnLUX.IsEnabled = false;: 클릭된 버튼인 LUX 버튼을 비활성화합니다. 사용자가 이미 선택한 데이터를 표시하고 있으므로, 해당 버튼을 비활성화하여 중복 선택을 방지합니다.
+    - BtnHumid.IsEnabled = BtnTemp.IsEnabled = true;: 나머지 버튼들인 Humidity와 Temperature 버튼을 활성화합니다. 이로 인해 사용자는 다른 데이터를 선택할 수 있게 됩니다.
+    - BtnHumid_Click: Humidity 데이터 버튼 클릭 이벤트
+    ```csharp
+        private void BtnHumid_Click(object sender, RoutedEventArgs e)
+        {
+            ClearChart(); // 차트의 모든 데이터를 지움
+            LoadData("Humidity"); // Humidity 데이터 로드
+            BtnHumid.IsEnabled = false; // 현재 클릭한 버튼을 비활성화
+            BtnLUX.IsEnabled = BtnTemp.IsEnabled = true; // 나머지 버튼을 활성화
+        }
+    ```
+    - ClearChart(): 차트를 초기화하여 기존의 데이터를 지웁니다.
+    - LoadData("Humidity"): Humidity 데이터를 로드하는 메서드를 호출합니다. "Humidity"는 데이터 소스에서 습도 관련 정보를 가져옵니다.
+    - BtnHumid.IsEnabled = false;: 클릭된 버튼인 Humidity 버튼을 비활성화합니다.
+    - BtnLUX.IsEnabled = BtnTemp.IsEnabled = true;: LUX와 Temperature 버튼을 활성화하여 다른 데이터 유형을 선택할 수 있게 합니다.
+    - BtnTemp_Click: Temperature 데이터 버튼 클릭 이벤트
+    ```csharp
+        private void BtnTemp_Click(object sender, RoutedEventArgs e)
+        {
+            ClearChart(); // 차트의 모든 데이터를 지움
+            LoadData("Temperature"); // Temperature 데이터 로드
+            BtnTemp.IsEnabled = false; // 현재 클릭한 버튼을 비활성화
+            BtnLUX.IsEnabled = BtnHumid.IsEnabled = true; // 나머지 버튼을 활성화
+        }
+    ```
+    - ClearChart(): 차트를 초기화하여 기존의 데이터를 지웁니다.
+    - LoadData("Temperature"): Temperature 데이터를 로드하는 메서드를 호출합니다. "Temperature"는 데이터 소스에서 온도 관련 정보를 가져옵니다.
+    - BtnTemp.IsEnabled = false;: 클릭된 버튼인 Temperature 버튼을 비활성화합니다.
+    - BtnLUX.IsEnabled = BtnHumid.IsEnabled = true;: LUX와 Humidity 버튼을 활성화하여 다른 데이터 유형을 선택할 수 있게 합니다.
