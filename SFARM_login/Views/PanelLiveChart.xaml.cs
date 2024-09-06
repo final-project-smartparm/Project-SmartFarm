@@ -20,6 +20,9 @@ using System.Windows.Shapes;
 using System.Windows.Threading;
 using System.Windows.Forms;
 using UserControl = System.Windows.Controls.UserControl;
+using Syncfusion.Windows.Controls;
+using Syncfusion.Windows.Shared;
+using System.Diagnostics;
 
 namespace SFARM.Views
 {
@@ -29,6 +32,10 @@ namespace SFARM.Views
     public partial class PanelLiveChart : UserControl
     {
         private DispatcherTimer _dataUpdateTimer;
+
+        private string preDate;
+        private string endDate;
+
 
         public PanelLiveChart()
         {
@@ -82,23 +89,79 @@ namespace SFARM.Views
             };
         }
 
+        // TODO 날짜 범위 설정 후 그래프 재출력
+        private void DatePickerSet()
+        {
+            string preQuery = @"SELECT TOP 1
+                                       [PLANT_DATE]
+                                  FROM [dbo].[UserPlant]
+                                 WHERE USER_NUM = @USER_NUM
+                                   AND PLANT_NUM = @PLANT_NUM
+                              ORDER BY PLANT_DATE ASC";
+
+            string endQuery = @"SELECT TOP 1
+                                       [PLANT_DATE]
+                                  FROM [dbo].[UserPlant]
+                                 WHERE USER_NUM = @USER_NUM
+                                   AND PLANT_NUM = @PLANT_NUM
+                              ORDER BY PLANT_DATE DESC";
+
+            DateTime pre;
+            DateTime end;
+
+            using (SqlConnection conn = new SqlConnection(Helpers.Common.CONNSTRING))
+            {
+                conn.Open();
+
+                SqlCommand cmd = new SqlCommand(preQuery, conn);
+                cmd.Parameters.AddWithValue("@USER_NUM", Helpers.UserInfo.USER_NUM);
+                cmd.Parameters.AddWithValue("@PLANT_NUM", Helpers.UserPlantList.PLANT_NUM);
+
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                if (reader.Read())
+                {
+
+                    // 로그인 성공 시 사용자 이름 저장
+                    pre = reader["PLANT_DATE"].ToDateTime();
+                    this.preDate = pre.ToString("yyyy/MM/ddd");
+                    Debug.WriteLine(preDate);
+                    //DatePre.DisplayDateStart = preDate;
+                }
+            }
+
+            using (SqlConnection conn = new SqlConnection(Helpers.Common.CONNSTRING))
+            {
+                conn.Open();
+
+                SqlCommand cmd = new SqlCommand(endQuery, conn);
+                cmd.Parameters.AddWithValue("@USER_NUM", Helpers.UserInfo.USER_NUM);
+                cmd.Parameters.AddWithValue("@PLANT_NUM", Helpers.UserPlantList.PLANT_NUM);
+
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                if (reader.Read())
+                {
+                    end = reader["PLANT_DATE"].ToDateTime();
+                    this.endDate = end.ToString("yyyy/MM/ddd");
+                    Debug.WriteLine(endDate);
+
+                    //Datepre.DisplayDateEnd = endDate;
+                }
+            }
+
+            // 초기 설정
+
+            //DateEnd.DisplayDateStart = preDate;
+            //DateEnd.DisplayDateEnd = endDate;
+        }
+
         public void LoadData(string dataType)
         {
             string connectionString = Helpers.Common.CONNSTRING;
 
             // 첫 번째 쿼리: test 테이블에서 데이터 가져오기
             string query1 = "SELECT [temp], [humid], [Pdate] FROM [dbo].[test]";
-
-            // 두 번째 쿼리: UserPlant 테이블에서 데이터 가져오기
-            //string query2 = @"
-            //SELECT PLANT_DATE, PLANT_TEMP, PLANT_SOILHUMID, PLANT_LUX
-            //FROM UserPlant
-            //WHERE USER_NUM = (
-            //    SELECT USER_NUM
-            //    FROM UserInfo
-            //    WHERE USER_EMAIL = 'email@address.com'
-            //)
-            //AND PLANT_IDX = 1";
 
             string query2 = @"
             SELECT PLANT_DATE, PLANT_TEMP, PLANT_SOILHUMID, PLANT_LUX

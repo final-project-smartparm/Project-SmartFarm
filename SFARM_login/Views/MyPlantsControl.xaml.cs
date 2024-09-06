@@ -28,6 +28,8 @@ namespace SFARM.Views
         private WebClient _webClient;
         //"http://210.119.12.74/mjpeg/1"
 
+
+
         public MyPlantsControl()
         {
             InitializeComponent();
