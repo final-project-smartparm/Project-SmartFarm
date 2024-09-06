@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Net;
@@ -58,6 +59,8 @@ namespace SFARM.Views
 
         private async void StreamMjpeg()
         {
+            Debug.WriteLine(Helpers.UserPlantList.PLANT_CAMERAIP);
+
             try
             {
                 using (Stream stream = await _webClient.OpenReadTaskAsync(new Uri(Helpers.UserPlantList.PLANT_CAMERAIP)))

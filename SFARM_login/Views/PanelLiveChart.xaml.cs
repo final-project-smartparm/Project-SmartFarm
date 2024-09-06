@@ -19,6 +19,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Windows.Threading;
 using System.Windows.Forms;
+using UserControl = System.Windows.Controls.UserControl;
 
 namespace SFARM.Views
 {
@@ -140,7 +141,7 @@ namespace SFARM.Views
                                         }
                                         catch (Exception ex)
                                         {
-                                            MessageBox.Show($"데이터 형식 오류: {ex.Message}", "오류", MessageBoxButton.OK, MessageBoxImage.Error);
+                                            //MessageBox.Show($"데이터 형식 오류: {ex.Message}", "오류", MessageBoxButton.OK, MessageBoxImage.Error);
                                         }
                                     }
 
@@ -190,7 +191,7 @@ namespace SFARM.Views
                                         }
                                         catch (Exception ex)
                                         {
-                                            MessageBox.Show($"데이터 형식 오류: {ex.Message}", "오류", MessageBoxButton.OK, MessageBoxImage.Error);
+                                            System.Windows.MessageBox.Show($"데이터 형식 오류: {ex.Message}", "오류", MessageBoxButton.OK, MessageBoxImage.Error);
                                         }
                                     }
 
@@ -214,7 +215,7 @@ namespace SFARM.Views
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show($"데이터베이스 오류: {ex.Message}", "오류", MessageBoxButton.OK, MessageBoxImage.Error);
+                    System.Windows.MessageBox.Show($"데이터베이스 오류: {ex.Message}", "오류", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
             });
         }
