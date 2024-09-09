@@ -353,20 +353,33 @@
         <Setter Property="FontSize" Value="20"/>
         <Setter Property="FontWeight" Value="DemiBold"/>
         <!--<Setter Property="FontFamily" Value="Nanumgothic"/>-->
+        <Setter Property="Foreground" Value="{StaticResource color2}"/>
+        <Setter Property="Opacity" Value="30"/>
+        <Setter Property="BorderBrush" Value="Transparent"/>
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="Margin" Value="0,3,0,0"/>
+    </Style>
+
+    <Style x:Key="unitTextBox" TargetType="TextBox">
+        <Setter Property="HorizontalAlignment" Value="Center"/>
+        <Setter Property="FontSize" Value="20"/>
+        <Setter Property="FontWeight" Value="DemiBold"/>
+        <!--<Setter Property="FontFamily" Value="Nanumgothic"/>-->
         <Setter Property="Foreground" Value="{StaticResource color3}"/>
+        <Setter Property="Opacity" Value="50"/>
         <Setter Property="BorderBrush" Value="Transparent"/>
         <Setter Property="Background" Value="Transparent"/>
         <Setter Property="Margin" Value="0,3,0,0"/>
     </Style>
 
     <!-- CntrolPanel SaveBtn-->
-    <Style x:Key="RoundButtonTemplate" TargetType="Button">
+    <!--<Style x:Key="RoundButtonTemplate" TargetType="Button">
         <Setter Property="Background" Value="Transparent"/>
-        <Setter Property="Foreground" Value="{StaticResource color3}" />
+        <Setter Property="Foreground" Value="{StaticResource color6}" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="Button">
-                    <Border CornerRadius="6" BorderBrush="{StaticResource color2}"
+                    <Border CornerRadius="6" BorderBrush="{StaticResource color6}"
                                 BorderThickness="1">
                         <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center">
 
@@ -375,6 +388,57 @@
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background" Value="{StaticResource color4}"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>-->
+    <Style x:Key="RoundButtonTemplate" TargetType="Button">
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="Foreground" Value="{StaticResource color6}" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border x:Name="border" CornerRadius="6" 
+                        BorderBrush="{StaticResource color6}"
+                        Background="{TemplateBinding Background}"
+                        BorderThickness="1">
+                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background" Value="{StaticResource color4}"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <Style x:Key="BtnLiveInfoSave" TargetType="Button">
+        <Setter Property="Background" Value="{StaticResource color5}"/>
+        <Setter Property="Foreground" Value="{StaticResource color6}" />
+        <Setter Property="Height" Value="30"/>
+        <Setter Property="Width" Value="30"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border x:Name="border" CornerRadius="100" 
+                    BorderBrush="{StaticResource color4}"
+                    Background="{TemplateBinding Background}"
+                    BorderThickness="1">
+                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background" Value="{StaticResource color4}"/>
+                <Setter Property="Foreground" Value="{StaticResource color1}"/>
+            </Trigger>
+        </Style.Triggers>
     </Style>
 
 
@@ -464,4 +528,89 @@
         </Style.Triggers>
     </Style>
     <!--#endregion-->
+    
+    
+    <!-- LiveChart Btn -->
+    <Style x:Key="LivechartBtnLUX" TargetType="Button">
+        <Setter Property="Width" Value="150"/>
+        <Setter Property="Height" Value="30"/>
+        <Setter Property="FontWeight" Value="SemiBold"/>
+        <Setter Property="Background" Value="{StaticResource color4}"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button" x:Name="BtnLogin">
+                    <Border Background="{TemplateBinding Background}" CornerRadius="5,0,0,5" BorderBrush="{StaticResource color4}">
+                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="true">
+                <Setter Property = "Background" Value="{StaticResource color3}"/>
+            </Trigger>
+            <Trigger Property="IsPressed" Value="true">
+                <Setter Property = "Background" Value="{StaticResource color2}"/>
+            </Trigger>
+            <Trigger Property="IsEnabled" Value="False">
+                <Setter Property = "Background" Value="#FFFFE6A0"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <Style x:Key="LivechartBtnTemp" TargetType="Button">
+        <Setter Property="Width" Value="150"/>
+        <Setter Property="Height" Value="30"/>
+        <Setter Property="FontWeight" Value="SemiBold"/>
+        <Setter Property="Background" Value="{StaticResource color4}"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button" x:Name="BtnLogin">
+                    <Border Background="{TemplateBinding Background}" BorderBrush="{StaticResource color4}">
+                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="true">
+                <Setter Property = "Background" Value="{StaticResource color3}"/>
+            </Trigger>
+            <Trigger Property="IsPressed" Value="true">
+                <Setter Property = "Background" Value="{StaticResource color2}"/>
+            </Trigger>
+            <Trigger Property="IsEnabled" Value="False">
+                <Setter Property = "Background" Value="#FFFF9A9A"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+
+    <Style x:Key="LivechartBtnHumid" TargetType="Button">
+        <Setter Property="Width" Value="150"/>
+        <Setter Property="Height" Value="30"/>
+        <Setter Property="FontWeight" Value="SemiBold"/>
+        <Setter Property="Background" Value="{StaticResource color4}"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button" x:Name="BtnLogin">
+                    <Border Background="{TemplateBinding Background}" CornerRadius="0,5,5,0" BorderBrush="{StaticResource color4}">
+                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="true">
+                <Setter Property = "Background" Value="{StaticResource color3}"/>
+            </Trigger>
+            <Trigger Property="IsPressed" Value="true">
+                <Setter Property = "Background" Value="{StaticResource color2}"/>
+            </Trigger>
+            <Trigger Property="IsEnabled" Value="False">
+                <Setter Property = "Background" Value="#FFC5F5FB"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
 </ResourceDictionary>

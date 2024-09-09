@@ -6,7 +6,7 @@
              xmlns:fa="http://schemas.awesome.incremented/wpf/xaml/fontawesome.sharp"
              xmlns:local="clr-namespace:SFARM.Views"
              mc:Ignorable="d" 
-             d:DesignHeight="560" d:DesignWidth="270">
+             d:DesignHeight="560" d:DesignWidth="270" Loaded="UserControl_Loaded">
     <UserControl.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -35,8 +35,18 @@
         <StackPanel Grid.Row="0" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="-25,-20,0,-25">
             <Label Content="실시간 정보" FontFamily="Nanumgothic" FontSize="35" FontWeight="DemiBold">
             </Label>
-            <fa:IconImage Icon="SunPlantWilt" Style="{StaticResource PanelLiveInfoicon}" Foreground="{StaticResource color4}"/>
+            <Grid>
+                <Button x:Name="Btnsave" Click="Btnsave_Click" Style="{StaticResource BtnLiveInfoSave}">
+                    <ContentControl>
+                        <fa:IconImage x:Name="BtnLiveInfoSaveIcon" Icon="FloppyDisk" Height="16" Width="16" Foreground="{Binding Foreground, RelativeSource={RelativeSource AncestorType=Button}}"/>
+                    </ContentControl>
+                </Button>
+            </Grid>
+            <!-- DB반영 임시 버튼-->
+            <!-- 기존 아이콘 <fa:IconImage Icon="SunPlantWilt" Style="{StaticResource PanelLiveInfoicon}" Foreground="{StaticResource color4}"/>-->
         </StackPanel>
+
+
         <!--#region 센서 정보 -->
         <StackPanel Grid.Row="2" VerticalAlignment="Center" Orientation="Horizontal">
             <Grid Margin="20,0">
@@ -46,7 +56,7 @@
             <Grid HorizontalAlignment="Right">
                 <StackPanel HorizontalAlignment="Left" Width="140">
                     <Label Content="현재 온도" Style="{StaticResource PaneLiveInfoTitle}"/>
-                    <Label Content="26도" Style="{StaticResource PaneLiveInfoSensor}"/>
+                    <Label x:Name="lblTemperature" Content="- " Style="{StaticResource PaneLiveInfoSensor}"/>
                 </StackPanel>
             </Grid>
         </StackPanel>
@@ -58,7 +68,7 @@
             <Grid HorizontalAlignment="Right">
                 <StackPanel HorizontalAlignment="Left" Width="140">
                     <Label Content="토양 수분도" Style="{StaticResource PaneLiveInfoTitle}"/>
-                    <Label Content="60%" Style="{StaticResource PaneLiveInfoSensor}"/>
+                    <Label x:Name="lblSoilMoisture" Content="- " Style="{StaticResource PaneLiveInfoSensor}"/>
                 </StackPanel>
             </Grid>
         </StackPanel>
@@ -70,7 +80,7 @@
             <Grid HorizontalAlignment="Right">
                 <StackPanel HorizontalAlignment="Left" Width="140">
                     <Label Content="조도" Style="{StaticResource PaneLiveInfoTitle}"/>
-                    <Label Content="3000lux" Style="{StaticResource PaneLiveInfoSensor}" FontSize="30"/>
+                    <Label x:Name="lblLight" Content="- " Style="{StaticResource PaneLiveInfoSensor}" FontSize="30"/>
                 </StackPanel>
             </Grid>
         </StackPanel>
@@ -82,7 +92,7 @@
             <Grid HorizontalAlignment="Right">
                 <StackPanel HorizontalAlignment="Left" Width="140">
                     <Label Content="물탱크 상황" Style="{StaticResource PaneLiveInfoTitle}"/>
-                    <Label Content="여유" Style="{StaticResource PaneLiveInfoSensor}"/>
+                    <Label x:Name="lblWater" Content="- " Style="{StaticResource PaneLiveInfoSensor}"/>
                 </StackPanel>
             </Grid>
         </StackPanel>

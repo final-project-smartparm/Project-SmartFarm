@@ -5,53 +5,67 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:inputLayout="clr-namespace:Syncfusion.UI.Xaml.TextInputLayout;assembly=Syncfusion.SfTextInputLayout.WPF"
       xmlns:syncfusion="http://schemas.syncfusion.com/wpf"
+      xmlns:fa="http://schemas.awesome.incremented/wpf/xaml/fontawesome.sharp"  
       xmlns:local="clr-namespace:SFARM"
       mc:Ignorable="d" 
-      Width="300" Height="500"
-      Title="LoginPage">
+      Width="300" Height="500" Title="LoginPage" WindowStartupLocation="CenterScreen" WindowStyle="None">
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/Styles/ButtonStyles.xaml"/>
+                <ResourceDictionary Source="/Styles/UIcolor.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
+    <Border CornerRadius="15" Background="Transparent">
 
-    <Grid Margin="25,0">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="20*"/>
-            <RowDefinition Height="60*"/>
-            <RowDefinition Height="72*"/>
-            <RowDefinition Height="72*"/>
-            <RowDefinition Height="40*"/>
-            <RowDefinition Height="40*"/>
-            <RowDefinition Height="20*"/>
-        </Grid.RowDefinitions>
-
-        <StackPanel Grid.Row="1">
-            <Label Content="Sing in" Foreground="{StaticResource color1}" FontSize="25" FontWeight="Bold"/>
-            <TextBlock Grid.Row="2" Text="Log in by entering your email address and password." FontSize="9"
-               Foreground="{StaticResource color6}" Width="219"/>
-        </StackPanel>
-
-
-        <StackPanel Grid.Row="2">
-            <Label Content="Email address" Foreground="{StaticResource color1}"/>
-            <inputLayout:SfTextInputLayout Hint="email@address.com" HintFloatMode= "None"
-        Foreground="{StaticResource color6}">
-                <TextBox x:Name="TxtId"/>
-            </inputLayout:SfTextInputLayout>
-        </StackPanel>
-
-        <StackPanel Grid.Row="3">
-            <Label Content="Password" Foreground="{StaticResource color1}"/>
-            <inputLayout:SfTextInputLayout Hint="●●●●●●●●●" Foreground="{StaticResource color6}">
-                <PasswordBox x:Name="TxtPass" KeyDown="TxtPass_KeyDown"/>
-            </inputLayout:SfTextInputLayout>
-        </StackPanel>
-
-        <syncfusion:ButtonAdv Grid.Row="4" Label="Log-in" Foreground="{StaticResource color6}" 
-                              x:Name="BtnLogin" Click="BtnLogin_Click"/>
-
-        <StackPanel Grid.Row="5" Orientation="Horizontal">
-            <Label Content="Don't have an account?" Foreground="{StaticResource color1}"/>
-            <Grid>
-                <Button Background="Transparent"/>
-                <Label Content="sing up" Foreground="{StaticResource color6}"/>
+        <Grid Margin="25,0" Grid.Row="1" Background="White">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="15*"/>
+                <RowDefinition Height="75*"/>
+                <RowDefinition Height="62*"/>
+                <RowDefinition Height="62*"/>
+                <RowDefinition Height="40*"/>
+                <RowDefinition Height="40*"/>
+                <RowDefinition Height="20*"/>
+            </Grid.RowDefinitions>
+            <!-- BtnClose -->
+            <Grid Grid.Row="0" Height="20" Width="20" HorizontalAlignment="Right" Margin="-20,0">
+                <Button Background="Transparent" x:Name="BtnClose" Click="BtnClose_Click">
+                    <fa:IconImage Icon="CircleXmark" Height="18" Foreground="{StaticResource color2}"/>
+                </Button>
             </Grid>
-        </StackPanel>
-    </Grid>
+            <StackPanel Grid.Row="1" VerticalAlignment="Center">
+                <Label Content="Log in" Foreground="{StaticResource color1}" FontSize="25" FontWeight="Bold"/>
+                <TextBlock Grid.Row="2" Text="Log in by entering your email address and password." FontSize="12" TextWrapping="Wrap"
+               Foreground="Gray" Margin="5,0"/>
+            </StackPanel>
+
+
+            <StackPanel Grid.Row="2">
+                <Label Content="Email address" Foreground="{StaticResource color1}" FontWeight="Bold"/>
+                <inputLayout:SfTextInputLayout Hint="email@address.com" HintFloatMode= "None"
+        Foreground="{StaticResource color6}">
+                    <TextBox x:Name="TxtId"/>
+                </inputLayout:SfTextInputLayout>
+            </StackPanel>
+
+            <StackPanel Grid.Row="3">
+                <Label Content="Password" Foreground="{StaticResource color1}" FontWeight="Bold"/>
+                <inputLayout:SfTextInputLayout Hint="●●●●●●●●●" Foreground="{StaticResource color6}" HintFloatMode="None">
+                    <PasswordBox x:Name="TxtPass" KeyDown="TxtPass_KeyDown"/>
+                </inputLayout:SfTextInputLayout>
+            </StackPanel>
+
+            <Button Grid.Row="4" Content="Log in" x:Name="BtnLogin" Click="BtnLogin_Click"/>
+
+            <StackPanel Grid.Row="5" Orientation="Horizontal">
+                <Label Content="Don't have an account?" Foreground="{StaticResource color1}" Height="30"/>
+                <Grid>
+                    <Label Content="sign up" Foreground="{StaticResource color6}" Height="30"/>
+                </Grid>
+            </StackPanel>
+        </Grid>
+        
+    </Border>
 </Window>

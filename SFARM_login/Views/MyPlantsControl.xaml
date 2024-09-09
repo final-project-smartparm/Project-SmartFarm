@@ -7,7 +7,7 @@
              xmlns:fa="http://schemas.awesome.incremented/wpf/xaml/fontawesome.sharp"
              xmlns:custom="clr-namespace:SFARM.Custom"
              mc:Ignorable="d" 
-             d:DesignHeight="635" d:DesignWidth="1000">
+             d:DesignHeight="635" d:DesignWidth="1000" Loaded="UserControl_Loaded">
 
     <Grid Margin="30,25" Background="{StaticResource color5}">
         <Grid.ColumnDefinitions>
@@ -22,7 +22,7 @@
             </Grid.RowDefinitions>
 
             <StackPanel Grid.Row="0" Margin="10,0,0,-30" VerticalAlignment="Center" HorizontalAlignment="Left" Orientation="Horizontal">
-                <Label Content="방울토마토" Style="{StaticResource InfoMainTitleLbl}"/>
+                <Label x:Name="LblPlantName" Content="식물" Style="{StaticResource InfoMainTitleLbl}"/>
                 <Label Content="정보" Style="{StaticResource InfoMainTitleLbl}"/>
             </StackPanel>
             <Grid Grid.Row="1" Margin="10,10">
@@ -34,7 +34,8 @@
                     <RowDefinition Height="1*"/>
                 </Grid.RowDefinitions>
 
-                <TextBlock Grid.Row="0" Text="방울토마토는 일일 빛 조절 시간이" FontSize="12" Margin="5,0"/>
+                <TextBlock Grid.Row="0" Text="방울토마토는 일일 빛 조절 시간이" FontSize="12" Margin="5,0"
+                           x:Name="TxtPlant_Text" TextWrapping="Wrap"/>
 
                 <StackPanel Grid.Row="1">
                     <StackPanel Orientation="Horizontal">
@@ -43,7 +44,7 @@
                     </StackPanel>
                     <ScrollViewer Height="65">
                         <TextBlock Text="방울토마토는 일일 빛 조절 시간이 10-20시간이 필요하므로, 조명을 적절하게 설정해야 합니다 방울토마토는 일일 빛 조절 시간이 10-20시간이 필요하므로, 조명을 적절하게 설정해야 합니다방울토마토는 일일 빛 조절 시간이 10-20시간이 필요하므로, 조명을 적절하게 설정해야 합니다" 
-                                   Style="{StaticResource InfoDescripTxt}"/>
+                                   x:Name="TxtPlant_Lux" Style="{StaticResource InfoDescripTxt}"/>
                     </ScrollViewer>
                 </StackPanel>
                 <StackPanel Grid.Row="2">
@@ -53,7 +54,7 @@
                     </StackPanel>
                     <ScrollViewer Height="65">
                         <TextBlock Text="방울토마토는 일일 빛 조절 시간이 10-20시간이 필요하므로, 조명을 적절하게 설정해야 합니다 방울토마토는 일일 빛 조절 시간이 10-20시간이 필요하므로, 조명을 적절하게 설정해야 합니다방울토마토는 일일 빛 조절 시간이 10-20시간이 필요하므로, 조명을 적절하게 설정해야 합니다" 
-                   Style="{StaticResource InfoDescripTxt}"/>
+                                   x:Name="TxtPlant_Temp" Style="{StaticResource InfoDescripTxt}"/>
                     </ScrollViewer>
                 </StackPanel>
                 <StackPanel Grid.Row="3">
@@ -63,7 +64,7 @@
                     </StackPanel>
                     <ScrollViewer Height="65">
                         <TextBlock Text="방울토마토는 일일 빛 조절 시간이 10-20시간이 필요하므로, 설정해야 합니다" 
-                   Style="{StaticResource InfoDescripTxt}"/>
+                                   x:Name="TxtPlant_Humid" Style="{StaticResource InfoDescripTxt}"/>
                     </ScrollViewer>
                 </StackPanel>
                 <StackPanel Grid.Row="4">
@@ -73,7 +74,7 @@
                     </StackPanel>
                     <ScrollViewer Height="65">
                         <TextBlock Text="방울토마토는 일일 빛 조절 시간이 10-20시간이 필요하므로, 조명을 적절하게 설정해야 합니다 방울토마토는 일일 빛 조절 시간이 10-20시간이 필요하므로, 조명을 적절하게 설정해야 합니다방울토마토는 일일 빛 조절 시간이 10-20시간이 필요하므로, 조명을 적절하게 설정해야 합니다" 
-                   Style="{StaticResource InfoDescripTxt}"/>
+                                   x:Name="TxtPlant_Soilhumid" Style="{StaticResource InfoDescripTxt}"/>
                     </ScrollViewer>
                 </StackPanel>
             </Grid>

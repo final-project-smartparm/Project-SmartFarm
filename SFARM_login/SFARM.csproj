@@ -6,6 +6,7 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <UseWPF>true</UseWPF>
+    <ApplicationIcon>SFARM.ico</ApplicationIcon>
   </PropertyGroup>
 
   <ItemGroup>
@@ -16,13 +17,24 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="Images\BasicProfile.png" />
+    <None Remove="Images\Page.png" />
     <None Remove="Images\pic1.png" />
     <None Remove="Images\방울토마토4.png" />
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="Images\BasicProfile.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="SFARM.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.2" />
     <PackageReference Include="FontAwesome.Sharp" Version="6.3.0" />
+    <PackageReference Include="InTheHand.Net.Bluetooth" Version="4.1.44" />
     <PackageReference Include="LiveCharts.Wpf.Core" Version="0.9.8" />
     <PackageReference Include="Microsoft.Data.SqlClient" Version="5.2.1" />
     <PackageReference Include="Syncfusion.Licensing" Version="26.1.40" />
@@ -33,6 +45,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="Images\Page.png" />
     <Resource Include="Images\pic1.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>

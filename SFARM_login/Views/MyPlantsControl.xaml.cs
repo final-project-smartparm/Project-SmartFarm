@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Net;
+using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -22,12 +24,29 @@ namespace SFARM.Views
     /// </summary>
     public partial class MyPlantsControl : UserControl
     {
-        private WebClient _webClient;
         private bool _isStreaming;
-        private const string StreamUrl = "http://210.119.12.74/mjpeg/1"; // Replace with your ESP32-CAM MJPEG stream URL
+        private WebClient _webClient;
+        //"http://210.119.12.74/mjpeg/1"
+
+
+
         public MyPlantsControl()
         {
             InitializeComponent();
+        }
+        public void UserControl_Loaded(object sender, RoutedEventArgs e)
+        {
+            LblPlantName.Content = Helpers.SattingPlant.SATTINGP_NAME;
+
+            TxtPlant_Text.Text = Helpers.InfoPlant.PLANT_TEXT;
+            TxtPlant_Lux.Text = Helpers.InfoPlant.PLANT_LUX;
+            TxtPlant_Temp.Text = Helpers.InfoPlant.PLANT_TEMP;
+            TxtPlant_Humid.Text = Helpers.InfoPlant.PLANT_HUMID;
+            TxtPlant_Soilhumid.Text = Helpers.InfoPlant.PLANT_SOILHUMID;
+            
+            
+            // Helpers.UserPlantList.PLANT_CAMERAIP
+            //private string StreamUrl = SFARM.Helpers.UserPlantList.PLANT_CAMERAIP; // Replace with your ESP32-CAM MJPEG stream URL
             StartMjpegStream();
         }
 
@@ -42,9 +61,11 @@ namespace SFARM.Views
 
         private async void StreamMjpeg()
         {
+            Debug.WriteLine(Helpers.UserPlantList.PLANT_CAMERAIP);
+
             try
             {
-                using (Stream stream = await _webClient.OpenReadTaskAsync(new Uri(StreamUrl)))
+                using (Stream stream = await _webClient.OpenReadTaskAsync(new Uri(Helpers.UserPlantList.PLANT_CAMERAIP)))
                 {
                     byte[] buffer = new byte[4096];
                     MemoryStream imageStream = null;

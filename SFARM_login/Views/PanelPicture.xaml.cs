@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -22,12 +23,25 @@ namespace SFARM.Views
     public partial class PanelPicture : UserControl
     {
         private string imagesDirectory = @"C:\SFAMCapture";
-
+        
         public PanelPicture()
         {
             InitializeComponent();
-            LoadRandomIamge();
             
+        }
+        private void UserControl_Loaded(object sender, RoutedEventArgs e)
+        {
+            LoadRandomIamge();
+            LblPlantName.Content = Helpers.SattingPlant.SATTINGP_NAME + " 성장진행률";
+
+            var duration = DateTime.Now - Helpers.UserPlantList.PLANT_STARTDATE;
+            double countday = duration.Days;
+            double percent = (countday / Convert.ToDouble(Helpers.SattingPlant.SATTING_TOTALDATE)) * 100;
+
+            int result = Convert.ToInt16(percent);
+            if (result >= 100)
+                result = 100;
+            CircularProgressBar.Progress = result;
         }
 
         private void LoadRandomIamge()
@@ -74,5 +88,6 @@ namespace SFARM.Views
             }
 
         }
+
     }
 }

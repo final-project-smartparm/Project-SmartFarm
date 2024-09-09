@@ -14,5 +14,6 @@ namespace SFARM.Helpers
         public static string USER_TELL { get; set; }
 
         public static string USER_NAME { get; set; }
+        public static string USER_MEMO { get; set; }
     }
 }

@@ -26,6 +26,7 @@ namespace SFARM
         private bool isLogin = false;
         public string LoggedInUserName { get; private set; }
 
+
         public bool IsLogin { get { return isLogin; } set { isLogin = value; } }
         public LoginPage()
         {
@@ -58,7 +59,7 @@ namespace SFARM
             {
                 conn.Open();
 
-                string query = @"SELECT USER_NUM, USER_EMAIL, USER_PASS, USER_NAME, USER_TELL
+                string query = @"SELECT USER_NUM, USER_EMAIL, USER_PASS, USER_NAME, USER_TELL, USER_MEMO
                                  FROM UserInfo
                                  WHERE USER_EMAIL = @USER_EMAIL 
                                    AND USER_PASS = @USER_PASS";
@@ -74,11 +75,12 @@ namespace SFARM
                     // 로그인 성공 시 사용자 이름 저장
                     LoggedInUserName = reader["USER_NAME"]?.ToString();
 
-                    
+                    Helpers.UserInfo.USER_NUM = Int32.Parse(reader["USER_NUM"].ToString());
                     Helpers.UserInfo.USER_NAME = reader["USER_NAME"]?.ToString();
                     Helpers.UserInfo.USER_EMAIL = reader["USER_EMAIL"]?.ToString();
                     Helpers.UserInfo.USER_TELL = reader["USER_TELL"]?.ToString();
-
+                    Helpers.UserInfo.USER_MEMO = reader["USER_MEMO"]?.ToString();
+                    SetUserPalntList();
                     return true;
                 }
                 else
@@ -88,7 +90,44 @@ namespace SFARM
             }
         }
 
+        private void SetUserPalntList()
+        {
+            // 식물 별칭/시작날짜/블루투스 연결
+            using (SqlConnection conn = new SqlConnection(Helpers.Common.CONNSTRING))
+            {
+                conn.Open();
 
+                string query = @"SELECT TOP 1
+	                                    USER_NUM
+                                      , PLANT_IDX
+                                      , PLANT_NUM
+                                      , PLANT_NAME
+                                      , PLANT_STARTDATE
+                                      , BLUETOOTH
+                                      , PLANT_CAMERAIP
+                                   FROM UserPlantList
+                                  WHERE USER_NUM = @userNum
+                               ORDER BY PLANT_NUM ASC";
+
+                SqlCommand cmd = new SqlCommand(query, conn);
+                cmd.Parameters.AddWithValue("@userNum", Helpers.UserInfo.USER_NUM);
+                
+
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                if (reader.Read())
+                {
+                    // 세팅 값 저장
+                    Helpers.UserPlantList.PLANT_NUM = Int32.Parse(reader["PLANT_NUM"]?.ToString());
+                    Helpers.UserPlantList.PLANT_NAME = reader["PLANT_NAME"]?.ToString();
+                    Helpers.UserPlantList.PLANT_STARTDATE = DateTime.Parse(reader["PLANT_STARTDATE"].ToString());
+                    Helpers.UserPlantList.BLUETOOTH = reader["BLUETOOTH"].ToString();
+                    Helpers.UserPlantList.PLANT_CAMERAIP = reader["PLANT_CAMERAIP"].ToString();
+                }
+
+            }
+        }
+       
 
         private void TxtPass_KeyDown(object sender, KeyEventArgs e)
         {
@@ -96,6 +135,11 @@ namespace SFARM
             {
                 BtnLogin_Click(sender, e); // BtnLogin_Click 이벤트 호출
             }
+        }
+
+        private void BtnClose_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
         }
     }
 }
