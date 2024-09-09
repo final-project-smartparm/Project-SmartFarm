@@ -23,6 +23,7 @@ using UserControl = System.Windows.Controls.UserControl;
 using Syncfusion.Windows.Controls;
 using Syncfusion.Windows.Shared;
 using System.Diagnostics;
+using LiveCharts.Helpers;
 
 namespace SFARM.Views
 {
@@ -53,7 +54,7 @@ namespace SFARM.Views
             InitializeCharts();
             DatePickerSet();
             //StartDataUpdateTimer();
-            //chart.AxisX[0].LabelFormatter = x => DateLabelFormatter(x);
+            chart.AxisX[0].LabelFormatter = x => DateLabelFormatter(x);
             BtnLUX_Click(sender, e);
         }
 
@@ -81,6 +82,7 @@ namespace SFARM.Views
                     PointGeometrySize = 5
                 }
             };
+
         }
 
         // TODO 날짜 범위 설정 후 그래프 재출력
@@ -439,7 +441,7 @@ namespace SFARM.Views
         {
             ClearChart();
             this.DateSet = true;
-            //chart.AxisX[0].LabelFormatter = x => DateLabelFormatter(x);
+            chart.AxisX[0].LabelFormatter = x => DateLabelFormatter(x);
             InitializeCharts();
             LoadData(BtnMethod);
 
