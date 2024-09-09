@@ -38,6 +38,7 @@ namespace SFARM.Views
 
         private bool DateSet;
 
+        private string BtnMethod;
         public PanelLiveChart()
         {
             InitializeComponent();
@@ -47,11 +48,13 @@ namespace SFARM.Views
         {
             DataContext = this;
             DateSet = false;
-            InitializeCharts();
-            StartDataUpdateTimer();
-            chart.AxisX[0].LabelFormatter = x => DateLabelFormatter(x);
-            DatePickerSet();
 
+            BtnMethod = "LUX";
+            InitializeCharts();
+            DatePickerSet();
+            //StartDataUpdateTimer();
+            //chart.AxisX[0].LabelFormatter = x => DateLabelFormatter(x);
+            BtnLUX_Click(sender, e);
         }
 
         private void InitializeCharts()
@@ -74,18 +77,6 @@ namespace SFARM.Views
                 new LineSeries
                 {
                     Title = "Lux",
-                    Values = new ChartValues<ObservablePoint>(), // 데이터가 추가됩니다.
-                    PointGeometrySize = 5
-                },
-                new LineSeries
-                {
-                    Title = "Database Temperature",
-                    Values = new ChartValues<ObservablePoint>(), // 데이터가 추가됩니다.
-                    PointGeometrySize = 5
-                },
-                new LineSeries
-                {
-                    Title = "Database Humidity",
                     Values = new ChartValues<ObservablePoint>(), // 데이터가 추가됩니다.
                     PointGeometrySize = 5
                 }
@@ -248,7 +239,7 @@ namespace SFARM.Views
                                                 double soilHumid = reader.GetDouble(2);
                                                 double lux = reader.GetDouble(3);
 
-                                                double xValue = (date - new DateTime(2024, 7, 13)).TotalSeconds;
+                                                double xValue = (date - preDate).TotalSeconds;
 
                                                 if (dataType == "LUX")
                                                 {
@@ -310,7 +301,7 @@ namespace SFARM.Views
                                                 double soilHumid = reader.GetDouble(2);
                                                 double lux = reader.GetDouble(3);
 
-                                                double xValue = (date - new DateTime(2024, 7, 13)).TotalSeconds;
+                                                double xValue = (date - preDate).TotalSeconds;
 
                                                 if (dataType == "LUX")
                                                 {
@@ -364,7 +355,7 @@ namespace SFARM.Views
             {
                 series.Values.Clear();
             }
-            chart.DataContext = null;
+          //  chart.DataContext = null;
         }
 
         private void StartDataUpdateTimer()
@@ -375,7 +366,7 @@ namespace SFARM.Views
             };
             _dataUpdateTimer.Tick += (sender, args) =>
             {
-                LoadData("LUX"); // 기본적으로 "LUX" 데이터를 로드하도록 설정
+                LoadData(BtnMethod); // 기본적으로 "LUX" 데이터를 로드하도록 설정
                 _dataUpdateTimer.Stop(); // 타이머 정지
             };
             _dataUpdateTimer.Start();
@@ -388,7 +379,8 @@ namespace SFARM.Views
         public string DateLabelFormatter(double xValue)
         {
             // 기준 날짜를 설정합니다.
-            DateTime baseDate = new DateTime(2024, 7, 13);
+            DateTime baseDate = this.preDate;
+
 
             // xValue를 DateTime으로 변환합니다.
             DateTime date = baseDate.AddSeconds(xValue);
@@ -401,7 +393,8 @@ namespace SFARM.Views
         private void BtnLUX_Click(object sender, RoutedEventArgs e)
         {
             ClearChart();  // 차트 초기화
-            LoadData("LUX");
+            BtnMethod = "LUX";
+            LoadData(BtnMethod);
 
             BtnLUX.IsEnabled = false;
             BtnHumid.IsEnabled = BtnTemp.IsEnabled = true;
@@ -411,7 +404,8 @@ namespace SFARM.Views
         private void BtnHumid_Click(object sender, RoutedEventArgs e)
         {
             ClearChart();  // 차트 초기화
-            LoadData("Humidity");
+            BtnMethod = "Humidity";
+            LoadData(BtnMethod);
 
             BtnHumid.IsEnabled = false;
             BtnLUX.IsEnabled = BtnTemp.IsEnabled = true;
@@ -421,7 +415,8 @@ namespace SFARM.Views
         private void BtnTemp_Click(object sender, RoutedEventArgs e)
         {
             ClearChart();  // 차트 초기화
-            LoadData("Temperature");
+            BtnMethod = "Temperature";
+            LoadData(BtnMethod);
 
             BtnTemp.IsEnabled = false;
             BtnLUX.IsEnabled = BtnHumid.IsEnabled = true;
@@ -442,9 +437,12 @@ namespace SFARM.Views
 
         private void BtnSearchDate_Click(object sender, RoutedEventArgs e)
         {
-            this.DateSet = true;
             ClearChart();
-            LoadData("LUX");
+            this.DateSet = true;
+            //chart.AxisX[0].LabelFormatter = x => DateLabelFormatter(x);
+            InitializeCharts();
+            LoadData(BtnMethod);
+
         }
     }
 }
