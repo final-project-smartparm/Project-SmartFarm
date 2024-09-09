@@ -33,9 +33,10 @@ namespace SFARM.Views
     {
         private DispatcherTimer _dataUpdateTimer;
 
-        private string preDate;
-        private string endDate;
+        private DateTime preDate;
+        private DateTime endDate;
 
+        private bool DateSet;
 
         public PanelLiveChart()
         {
@@ -45,9 +46,11 @@ namespace SFARM.Views
         public void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
             DataContext = this;
+            DateSet = false;
             InitializeCharts();
             StartDataUpdateTimer();
             chart.AxisX[0].LabelFormatter = x => DateLabelFormatter(x);
+            DatePickerSet();
 
         }
 
@@ -106,8 +109,6 @@ namespace SFARM.Views
                                    AND PLANT_NUM = @PLANT_NUM
                               ORDER BY PLANT_DATE DESC";
 
-            DateTime pre;
-            DateTime end;
 
             using (SqlConnection conn = new SqlConnection(Helpers.Common.CONNSTRING))
             {
@@ -123,10 +124,8 @@ namespace SFARM.Views
                 {
 
                     // 로그인 성공 시 사용자 이름 저장
-                    pre = reader["PLANT_DATE"].ToDateTime();
-                    this.preDate = pre.ToString("yyyy/MM/ddd");
-                    Debug.WriteLine(preDate);
-                    //DatePre.DisplayDateStart = preDate;
+                    this.preDate = (reader["PLANT_DATE"].ToDateTime()).Date;
+                    
                 }
             }
 
@@ -142,18 +141,18 @@ namespace SFARM.Views
 
                 if (reader.Read())
                 {
-                    end = reader["PLANT_DATE"].ToDateTime();
-                    this.endDate = end.ToString("yyyy/MM/ddd");
-                    Debug.WriteLine(endDate);
-
-                    //Datepre.DisplayDateEnd = endDate;
+                    this.endDate = (reader["PLANT_DATE"].ToDateTime()).Date;
                 }
             }
 
             // 초기 설정
+            DatePickerPre.DisplayDateStart = preDate;
+            DatePickerPre.DisplayDateEnd = endDate;
 
-            //DateEnd.DisplayDateStart = preDate;
-            //DateEnd.DisplayDateEnd = endDate;
+            DatePickerEnd.DisplayDateStart = preDate;
+            DatePickerEnd.DisplayDateEnd= endDate;
+
+            DatePickerEnd.IsEnabled = false;
         }
 
         public void LoadData(string dataType)
@@ -168,6 +167,15 @@ namespace SFARM.Views
             FROM UserPlant
             WHERE USER_NUM = @UserNum
               AND PLANT_NUM = @PlantNum
+         ORDER BY PLANT_DATE ASC
+            ";
+
+            string query3 = @"
+            SELECT PLANT_DATE, PLANT_TEMP, PLANT_SOILHUMID, PLANT_LUX
+            FROM UserPlant
+            WHERE USER_NUM = @UserNum
+              AND PLANT_NUM = @PlantNum
+              AND PLANT_DATE BETWEEN CONVERT(DATE, @preDate) AND CONVERT(DATE, @endDate)
          ORDER BY PLANT_DATE ASC
             ";
             Dispatcher.Invoke(() =>
@@ -216,60 +224,126 @@ namespace SFARM.Views
                         }
                         else
                         {
-                            // 두 번째 쿼리 실행 (UserPlant 테이블에서 데이터 가져오기)
-                            using (SqlCommand cmd2 = new SqlCommand(query2, conn))
+                            if(this.DateSet) // true ===> 기간 설정 조회
                             {
-                                cmd2.Parameters.AddWithValue("@UserNum", Helpers.UserInfo.USER_NUM);
-                                cmd2.Parameters.AddWithValue("@PlantNum", Helpers.UserPlantList.PLANT_NUM);
-
-                                using (SqlDataReader reader = cmd2.ExecuteReader())
+                                using (SqlCommand cmd2 = new SqlCommand(query3, conn))
                                 {
-                                    var temperatureValues = new ChartValues<ObservablePoint>();
-                                    var soilHumidityValues = new ChartValues<ObservablePoint>();
-                                    var luxValues = new ChartValues<ObservablePoint>();
+                                    cmd2.Parameters.AddWithValue("@UserNum", Helpers.UserInfo.USER_NUM);
+                                    cmd2.Parameters.AddWithValue("@PlantNum", Helpers.UserPlantList.PLANT_NUM);
+                                    cmd2.Parameters.AddWithValue("@preDate", DatePickerPre.Text);
+                                    cmd2.Parameters.AddWithValue("@endDate", DatePickerEnd.Text);
 
-                                    while (reader.Read())
+                                    using (SqlDataReader reader = cmd2.ExecuteReader())
                                     {
-                                        try
+                                        var temperatureValues = new ChartValues<ObservablePoint>();
+                                        var soilHumidityValues = new ChartValues<ObservablePoint>();
+                                        var luxValues = new ChartValues<ObservablePoint>();
+
+                                        while (reader.Read())
                                         {
-                                            DateTime date = reader.GetDateTime(0);
-                                            double temp = reader.GetDouble(1);
-                                            double soilHumid = reader.GetDouble(2);
-                                            double lux = reader.GetDouble(3);
+                                            try
+                                            {
+                                                DateTime date = reader.GetDateTime(0);
+                                                double temp = reader.GetDouble(1);
+                                                double soilHumid = reader.GetDouble(2);
+                                                double lux = reader.GetDouble(3);
 
-                                            double xValue = (date - new DateTime(2024, 7, 13)).TotalSeconds;
+                                                double xValue = (date - new DateTime(2024, 7, 13)).TotalSeconds;
 
-                                            if (dataType == "LUX")
-                                            {
-                                                luxValues.Add(new ObservablePoint(xValue, lux));
+                                                if (dataType == "LUX")
+                                                {
+                                                    luxValues.Add(new ObservablePoint(xValue, lux));
+                                                }
+                                                else if (dataType == "Humidity")
+                                                {
+                                                    soilHumidityValues.Add(new ObservablePoint(xValue, soilHumid));
+                                                }
+                                                else if (dataType == "Temperature")
+                                                {
+                                                    temperatureValues.Add(new ObservablePoint(xValue, temp));
+                                                }
                                             }
-                                            else if (dataType == "Humidity")
+                                            catch (Exception ex)
                                             {
-                                                soilHumidityValues.Add(new ObservablePoint(xValue, soilHumid));
-                                            }
-                                            else if (dataType == "Temperature")
-                                            {
-                                                temperatureValues.Add(new ObservablePoint(xValue, temp));
+                                                System.Windows.MessageBox.Show($"데이터 형식 오류: {ex.Message}", "오류", MessageBoxButton.OK, MessageBoxImage.Error);
                                             }
                                         }
-                                        catch (Exception ex)
+
+                                        // 차트에 데이터 추가
+                                        if (dataType == "LUX")
                                         {
-                                            System.Windows.MessageBox.Show($"데이터 형식 오류: {ex.Message}", "오류", MessageBoxButton.OK, MessageBoxImage.Error);
+                                            ((LineSeries)chart.Series[2]).Values = luxValues;
+                                        }
+                                        else if (dataType == "Humidity")
+                                        {
+                                            ((LineSeries)chart.Series[0]).Values = soilHumidityValues;
+                                        }
+                                        else if (dataType == "Temperature")
+                                        {
+                                            ((LineSeries)chart.Series[1]).Values = temperatureValues;
                                         }
                                     }
+                                }
 
-                                    // 차트에 데이터 추가
-                                    if (dataType == "LUX")
+                            }
+                            else
+                            {
+
+                                // 두 번째 쿼리 실행 (UserPlant 테이블에서 데이터 가져오기)
+                                using (SqlCommand cmd2 = new SqlCommand(query2, conn))
+                                {
+                                    cmd2.Parameters.AddWithValue("@UserNum", Helpers.UserInfo.USER_NUM);
+                                    cmd2.Parameters.AddWithValue("@PlantNum", Helpers.UserPlantList.PLANT_NUM);
+
+                                    using (SqlDataReader reader = cmd2.ExecuteReader())
                                     {
-                                        ((LineSeries)chart.Series[2]).Values = luxValues;
-                                    }
-                                    else if (dataType == "Humidity")
-                                    {
-                                        ((LineSeries)chart.Series[0]).Values = soilHumidityValues;
-                                    }
-                                    else if (dataType == "Temperature")
-                                    {
-                                        ((LineSeries)chart.Series[1]).Values = temperatureValues;
+                                        var temperatureValues = new ChartValues<ObservablePoint>();
+                                        var soilHumidityValues = new ChartValues<ObservablePoint>();
+                                        var luxValues = new ChartValues<ObservablePoint>();
+
+                                        while (reader.Read())
+                                        {
+                                            try
+                                            {
+                                                DateTime date = reader.GetDateTime(0);
+                                                double temp = reader.GetDouble(1);
+                                                double soilHumid = reader.GetDouble(2);
+                                                double lux = reader.GetDouble(3);
+
+                                                double xValue = (date - new DateTime(2024, 7, 13)).TotalSeconds;
+
+                                                if (dataType == "LUX")
+                                                {
+                                                    luxValues.Add(new ObservablePoint(xValue, lux));
+                                                }
+                                                else if (dataType == "Humidity")
+                                                {
+                                                    soilHumidityValues.Add(new ObservablePoint(xValue, soilHumid));
+                                                }
+                                                else if (dataType == "Temperature")
+                                                {
+                                                    temperatureValues.Add(new ObservablePoint(xValue, temp));
+                                                }
+                                            }
+                                            catch (Exception ex)
+                                            {
+                                                System.Windows.MessageBox.Show($"데이터 형식 오류: {ex.Message}", "오류", MessageBoxButton.OK, MessageBoxImage.Error);
+                                            }
+                                        }
+
+                                        // 차트에 데이터 추가
+                                        if (dataType == "LUX")
+                                        {
+                                            ((LineSeries)chart.Series[2]).Values = luxValues;
+                                        }
+                                        else if (dataType == "Humidity")
+                                        {
+                                            ((LineSeries)chart.Series[0]).Values = soilHumidityValues;
+                                        }
+                                        else if (dataType == "Temperature")
+                                        {
+                                            ((LineSeries)chart.Series[1]).Values = temperatureValues;
+                                        }
                                     }
                                 }
                             }
@@ -351,6 +425,26 @@ namespace SFARM.Views
 
             BtnTemp.IsEnabled = false;
             BtnLUX.IsEnabled = BtnHumid.IsEnabled = true;
+        }
+
+
+        private void DatePickerPre_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
+        {
+            DatePickerEnd.DisplayDateStart = DatePickerPre.Text.ToDateTime();
+            this.preDate = DatePickerPre.Text.ToDateTime();
+            DatePickerEnd.IsEnabled = true;
+        }
+
+        private void DatePickerEnd_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
+        {
+            this.endDate = DatePickerEnd.Text.ToDateTime();
+        }
+
+        private void BtnSearchDate_Click(object sender, RoutedEventArgs e)
+        {
+            this.DateSet = true;
+            ClearChart();
+            LoadData("LUX");
         }
     }
 }

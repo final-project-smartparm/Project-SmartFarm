@@ -53,12 +53,12 @@
             </StackPanel>
                 
             <!-- TODO 날짜 설정 -->
-            <!--<StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right">
-                <DatePicker x:Name="DatePre" Height="30" BorderBrush="{StaticResource color4}" Margin="5,0" SelectedDateFormat="Short"/>
+            <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right">
+                <DatePicker x:Name="DatePickerPre" Height="30" BorderBrush="{StaticResource color4}" Margin="5,0" SelectedDateFormat="Short" SelectedDateChanged="DatePickerPre_SelectedDateChanged"/>
                 <TextBlock Text="~" Height="15" VerticalAlignment="Center"/>
-                <DatePicker x:Name="DateEnd" Height="30" BorderBrush="{StaticResource color4}" Margin="5,0" SelectedDateFormat="Short"/>
-                <Button Width="30" Height="30"/>
-            </StackPanel>-->
+                <DatePicker x:Name="DatePickerEnd" Height="30" BorderBrush="{StaticResource color4}" Margin="5,0" SelectedDateFormat="Short" SelectedDateChanged="DatePickerEnd_SelectedDateChanged"/>
+                <Button x:Name="BtnSearchDate" Width="30" Height="30" Click="BtnSearchDate_Click" />
+            </StackPanel>
         </Grid>
     </Grid>
 </UserControl>
