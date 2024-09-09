@@ -14,7 +14,7 @@ public class BluetoothManager
     private static readonly object _lock = new object();
     private BluetoothClient _bluetoothClient;
     private BluetoothClient _connectedClient;
-   // private string DEVICE_NAME = SFARM.Helpers.UserPlantList.BLUETOOTH;
+    private string DEVICE_NAME = SFARM.Helpers.UserPlantList.BLUETOOTH;
 
     //SFARM.Helpers.UserPlantList.BLUETOOTH;  // Bluetooth 장치 이름
 
