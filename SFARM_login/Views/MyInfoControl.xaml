@@ -1,0 +1,90 @@
+﻿<UserControl
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:SFARM.Views"
+             xmlns:fa="http://schemas.awesome.incremented/wpf/xaml/fontawesome.sharp"
+             xmlns:syncfusion="http://schemas.syncfusion.com/wpf" x:Class="SFARM.Views.MyInfoControl"
+             mc:Ignorable="d" 
+             d:DesignHeight="635" d:DesignWidth="1000" Background="{StaticResource color5}">
+
+    <Grid Margin="100,50">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="2*"/>
+        </Grid.ColumnDefinitions>
+        <!-- 개인정보 -->
+        <Grid Grid.Column="0" Background="Transparent" Grid.ColumnSpan="2" Margin="0,0,533,0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1.5*"/>
+                <RowDefinition Height="0.4*"/>
+                <RowDefinition Height="0.4*"/>
+                <RowDefinition Height="0.4*"/>
+                <RowDefinition Height="1.6*"/>
+            </Grid.RowDefinitions>
+            
+
+            <Ellipse Stroke="#C4D9BF" Width="130" Height="130" StrokeThickness="1" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <Ellipse.Fill>
+                    <ImageBrush ImageSource="\Images\BasicProfile.png"/>
+                </Ellipse.Fill>
+            </Ellipse>
+
+            <Border Grid.Row="1" Style="{StaticResource UserInfoBorder}">
+                <StackPanel Margin="5"
+                    Orientation="Horizontal">
+                    <fa:IconImage Icon="UserAlt" Style="{StaticResource UserInfoIcon}"/>
+                    <TextBox x:Name="TxtUserName" Text="TxtUserName" Style="{StaticResource UserInfoTextBox}"/>
+                </StackPanel>
+            </Border>
+
+            <Border Grid.Row="2" Style="{StaticResource UserInfoBorder}">
+                <StackPanel Margin="5"
+        Orientation="Horizontal">
+                    <fa:IconImage Icon="EnvelopesBulk" Style="{StaticResource UserInfoIcon}"/>
+                    <TextBox x:Name="TxtUserEmail" Text="TxtUserEmail" Style="{StaticResource UserInfoTextBox}"/>
+                </StackPanel>
+            </Border>
+
+            <Border Grid.Row="3" Style="{StaticResource UserInfoBorder}">
+                <StackPanel Margin="5" Orientation="Horizontal">
+                    <fa:IconImage Icon="MobileRetro" Style="{StaticResource UserInfoIcon}"/>
+                    <TextBox x:Name="TxtUserTell" Text="TxtUserTell" Style="{StaticResource UserInfoTextBox}"/>
+                </StackPanel>
+            </Border>
+
+            <Grid Grid.Row="4" HorizontalAlignment="Center">
+                <syncfusion:CalendarEdit Date="7/12/2024" HorizontalAlignment="Left" VerticalAlignment="Top" Width="200" MouseOverBackground="{DynamicResource color4}" SelectedDayCellBackground="{DynamicResource color4}" HeaderBackground="{DynamicResource color4}" TodayCellSelectedBackground="{DynamicResource color1}" TodayCellSelectedBorderBrush="{DynamicResource color1}" WeekNumberForeground="{DynamicResource color4}" SelectedDayCellBorderBrush="{DynamicResource color4}" SelectedDayCellHoverBackground="{DynamicResource color3}" SelectionBorderBrush="{DynamicResource color3}">
+                    <syncfusion:CalendarEdit.BorderBrush>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <GradientStop Color="{DynamicResource primaryBackColor3}"/>
+                            <GradientStop Color="{DynamicResource primaryBackColor1}" Offset="1"/>
+                            <GradientStop Color="{DynamicResource primaryBackColor2}" Offset="0.474"/>
+                        </LinearGradientBrush>
+                    </syncfusion:CalendarEdit.BorderBrush>
+                </syncfusion:CalendarEdit>
+            </Grid>
+
+        </Grid>
+
+        <!-- 메모 -->
+        <Grid Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Height="460">
+            <Border BorderBrush="{StaticResource color3}" BorderThickness="1">
+                <Image Source="/Images\Page.png" Stretch="Fill"/>
+            </Border>
+            <Grid HorizontalAlignment="Center">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="70px"/>
+                    <RowDefinition Height="1*"/>
+                </Grid.RowDefinitions>
+                <Button Grid.Row="0" Style="{StaticResource BtnLiveInfoSave}" Background="Transparent" Margin="210,23,120,17" Visibility="Hidden"
+                       x:Name="BtnMemoSave" Click="BtnMemoSave_Click">
+                    <fa:IconImage Icon="FloppyDisk" Height="16" Width="16" Foreground="{Binding Foreground, RelativeSource={RelativeSource AncestorType=Button}}"/>
+                </Button>
+                <TextBox Grid.Row="1" Width="400" Height="280" VerticalAlignment="Top" BorderBrush="Transparent"
+                          x:Name="TxtMemo" TextChanged="TxtMemo_TextChanged"/>
+            </Grid>
+        </Grid>
+    </Grid>
+</UserControl>
